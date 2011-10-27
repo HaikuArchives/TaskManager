@@ -33,7 +33,7 @@ class CInstallationDialog : public CSingletonWindow
 	protected:
 	CInstallationDialog();
 	
-	friend CSingleton;
+	friend class CSingleton;
 };
 
 class CInstallationDialogView : public CDialogBase

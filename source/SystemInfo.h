@@ -36,7 +36,7 @@ class CSystemInfo : public CSingleton
 	system_info cachedSystemInfo;
 	bigtime_t timeStamp;
 
-	friend CSingleton;		
+	friend class CSingleton;		
 };
 
 inline status_t get_cached_system_info(system_info *systemInfo, bigtime_t *timeStamp)

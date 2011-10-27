@@ -33,7 +33,7 @@ class CSelectTeamWindow : public CSingletonWindow
 	protected:
 	CSelectTeamWindow();
 	
-	friend CSingleton;
+	friend class CSingleton;
 };
 
 class CSelectTeamWindowView : public BView

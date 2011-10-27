@@ -19,7 +19,7 @@
 #include "Color.h"
 
 // ====== globals ======
-
+/*
 #if B_BEOS_VERSION < B_BEOS_VERSION_DANO
 // Dano defines these operators in rbg_color
 
@@ -51,7 +51,7 @@ bool operator != (const rgb_color &o1, const rgb_color &o2)
 }
 
 #endif // B_BEOS_VERSION_DANO
-
+*/
 // ====== CColor ======
 
 //: Default constructor

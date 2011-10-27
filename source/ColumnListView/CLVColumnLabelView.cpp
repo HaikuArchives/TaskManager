@@ -30,7 +30,7 @@
 #include "CLVEasyItem.h"
 #include "MouseWatcher.h"
 
-#include "../Splitter/MakCursors.h"
+#include "MakCursors.h"
 
 //******************************************************************************************************
 //**** FUNCTION DEFINITIONS

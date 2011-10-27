@@ -34,7 +34,7 @@ class CAboutWindow : public CSingletonWindow
 	protected:
 	CAboutWindow();
 
-	friend CSingleton;		
+	friend class CSingleton;		
 };
 
 #endif // ABOUT_WINDOW_H

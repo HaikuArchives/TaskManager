@@ -64,7 +64,7 @@ class CPerformanceAddWindow : public CSingletonWindow
 	protected:
 	CPerformanceAddWindow();
 	
-	friend CSingleton;
+	friend class CSingleton;
 };
 
 class CPerformanceAddView : public CLocalizedDialogBase, public BInvoker

@@ -34,7 +34,7 @@ class CCreateTeamWindow : public CSingletonWindow
 	protected:	
 	CCreateTeamWindow();
 	
-	friend CSingleton;
+	friend class CSingleton;
 };
 
 #endif // CREATE_TEAM_WINDOW_H

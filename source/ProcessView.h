@@ -126,7 +126,7 @@ class CProcessView : public CTabNotifcationView
 	CTeamModel		   *teamModel;
 	CTeamModelListener *teamModelListener;
 	
-	friend CTeamModelListener;
+	friend class CTeamModelListener;
 };
 
 #endif // PROCESS_VIEW_H

@@ -13,6 +13,7 @@
 
 
 #include <Looper.h>
+#include <Messenger.h>
 
 #include "MouseDragOrPopupWatcher.h"
 

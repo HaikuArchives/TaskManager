@@ -26,7 +26,7 @@
 CFBitmap::CFBitmap(BBitmap &bitmap)
 { BRect rect=bitmap.Bounds();
   if ((rect.Height()) && (rect.Width()))
-  { buffer=new char[rect.Height()*rect.Width()*6+1];
+  { buffer=new char[(int)(rect.Height()*rect.Width()*6+1)];
     cfrowbytes=(uint32)rect.Width()*6;
     width=(uint32)rect.Width();
     height=(uint32)rect.Height();
@@ -214,7 +214,7 @@ BBitmap *CFBitmap::GetAsBitmap(color_space cspace)
           target=(uint8 *)bmp->Bits();
           targetrowbytes=bmp->BytesPerRow();
           targetstart=target;
-          ditherfunction=&Dither16;
+          ditherfunction=&CFBitmap::Dither16;
           srcbuffer=(uint16 *)buffer;
           targetmovep=2;
           cfrowbytesv=cfrowbytes/2;
@@ -232,7 +232,7 @@ BBitmap *CFBitmap::GetAsBitmap(color_space cspace)
           target=(uint8 *)bmp->Bits();
           targetrowbytes=bmp->BytesPerRow();
           targetstart=target;
-          ditherfunction=&Dither15;
+          ditherfunction=&CFBitmap::Dither15;
           srcbuffer=(uint16 *)buffer;
           targetmovep=2;
           cfrowbytesv=cfrowbytes/2;
@@ -247,7 +247,7 @@ BBitmap *CFBitmap::GetAsBitmap(color_space cspace)
           target=(uint8 *)bmp->Bits();
           targetrowbytes=bmp->BytesPerRow();
           targetstart=target;
-          ditherfunction=&Dither256;
+          ditherfunction=&CFBitmap::Dither256;
           srcbuffer=(uint16 *)buffer;
           targetmovep=1;
           cfrowbytesv=cfrowbytes/2;
@@ -265,7 +265,7 @@ BBitmap *CFBitmap::GetAsBitmap(color_space cspace)
           target=(uint8 *)bmp->Bits();
           targetrowbytes=bmp->BytesPerRow();
           targetstart=target;
-          ditherfunction=&DitherGray8;
+          ditherfunction=&CFBitmap::DitherGray8;
           srcbuffer=(uint16 *)buffer;
           targetmovep=1;
           cfrowbytesv=cfrowbytes/2;
@@ -285,7 +285,7 @@ BBitmap *CFBitmap::GetAsBitmap(color_space cspace)
           target=(uint8 *)bmp->Bits();
           targetrowbytes=bmp->BytesPerRow();
           targetstart=target;
-          ditherfunction=&Dither1;
+          ditherfunction=&CFBitmap::Dither1;
           srcbuffer=(uint16 *)buffer;
           targetmovep=0; // wont work - think again!
           cfrowbytesv=cfrowbytes/2;

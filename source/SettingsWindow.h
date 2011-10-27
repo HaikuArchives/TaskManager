@@ -30,7 +30,7 @@ class CSettingsWindow : public CSingletonWindow
 	protected:
 	CSettingsWindow();
 	
-	friend CSingleton;
+	friend class CSingleton;
 };
 
 #endif // SETTINGS_WINDOW_H
