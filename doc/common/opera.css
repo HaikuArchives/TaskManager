@@ -1,0 +1,25 @@
+/* Stylesheet for the BeOS version of opera */
+
+a:link          { color:blue; }
+a:visited       { color:blue; }
+a:active        { color:blue; }
+
+@font-face      { font-family:BeDefaultFont; src:local(Swis721 BT Roman), url(Swiss721.ttf) format(TrueType); }
+body            { background-color:#ffffff; }
+font            { font-family:BeDefaultFont, sans-serif; }
+code            { font-family:monospace }
+
+h1              { font-family:sans-serif; font-size:18pt; font-weight:bold }
+h2              { font-family:sans-serif; font-size:16pt; font-weight:bold }
+h3              { font-family:sans-serif; font-size:14pt; font-weight:bold }
+
+.header         { font-family:BeDefaultFont, sans-serif; font-size:16pt;  }
+.footer         { font-family:BeDefaultFont, sans-serif; font-size:10pt;  }
+
+.doc            { font-family:BeDefaultFont, sans-serif; font-size:12pt;  }
+.classheader    { font-family:BeDefaultFont, sans-serif; font-size:18pt;  }
+.sectionheader  { font-family:BeDefaultFont, sans-serif; font-size:12pt;  }
+.linktext       { font-family:BeDefaultFont, sans-serif; font-size:12pt;  }
+
+td.colheader    { background-color:#aaaaaa; font-family:BeDefaultFont, sans-serif; vertical-align:top; }
+td.descr        { background-color:#dddddd; font-family:BeDefaultFont, sans-serif; vertical-align:top; }

@@ -1,0 +1,689 @@
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" TYPE="text/css" HREF="common/opera.css">
+<SCRIPT LANGUAGE="JavaScript" SRC="common/stylesheet.js"></SCRIPT>
+<TITLE>Scripting Properties</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- Header -->
+
+<A NAME="top"></A>
+
+<TABLE WIDTH="100%" BORDER="0"> 
+<TR> 
+<TD COLSPAN="2" BGCOLOR="#FFCB00"> 
+<FONT FACE="Helvetica" SIZE="+1" CLASS="header">&nbsp;<I>Be TaskManager Documentation</I></FONT> 
+</TD> 
+</TR> 
+</TABLE>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="index.html"><IMG BORDER="0" ALT="Up" WIDTH="11" HEIGHT="6" SRC="images/arrow_up.gif"></A>&nbsp;
+<A HREF="index.html">Index</A>
+</P>
+</FONT>
+
+<!-- Content -->
+
+<FONT FACE="Helvetica">
+
+<HR>
+<H1>Scripting Properties</H1>
+
+<P CLASS="doc">
+Scripting properties expose the functionality of applications to scripting languages.
+This allows to automate common tasks by combining multiple applications to archive
+a goal. There a plugins available for various scripting languages to access these
+properties. For the examples in this document I used the small command line application
+&quot;hey&quot;. It is available for download from <A HREF="http://www.bebits.com/app/2042">BeBits</A>.
+</P>
+
+<P CLASS="doc">
+Be TaskManager exposes two types of scripting properties:
+</P>
+
+<UL CLASS="doc">
+<LI><A HREF="#team_list_properties">Team List Properties</A>
+<LI><A HREF="#gui_properties">GUI Properties</A>
+</UL>
+
+<A NAME="team_list_properties">
+
+<H1>Team List Properties</H1>
+
+<P CLASS="doc">
+The team list is a property of the application and gives access to the running teams
+and their properties. The following table lists the properties of the team list.
+</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" ROWSPAN="2" CLASS="descr">Team</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_COUNT_PROPERTIES</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Returns the number of teams.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">any</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        B_INDEX_SPECIFIER<BR>
+        B_REVERSE_INDEX_SPECIFIER<BR>
+        B_NAME_SPECIFIER<BR>
+        B_ID_SPECIFIER
+    </TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">-</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Directs the scripting message to the specified team.
+    </TD>
+</TR>
+</TABLE>
+
+<P CLASS="doc">
+Every team has the following scripting properties:
+</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">ID</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Returns the team ID.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">IsSystemTeam</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">bool</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        True if the team is part of the BeOS
+        (e.g. the Tracker application is a system team).
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">IsIdleTeam</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">bool</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        True if this team contains the idle threads for each CPU
+        (normally this is the kernel_team).
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">TheadCount</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        The number of threads.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">AreaCount</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        The number of areas
+        (see the kernel kit documentation for more information on areas).
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">ImageCount</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        The number of images
+        (see the kernel kit documentation for more information on images).
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Filename</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">string</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+    	Full filename of the executable.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Priority</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>
+    												 B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        The priority. Possible values are in the range 1 to 120. 
+        If the priority is in the range 1 to 99 it is a time-sharing application.
+        If the priority is greater than 100 it's a realtime application.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Kill</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_EXECUTE_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">-</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+    	Kills the team without any warning.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Quit</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_EXECUTE_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">-</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+    	Quits the team.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Activate</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_EXECUTE_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">-</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+    	Activate the team (bring main window to front).
+    </TD>
+</TR>
+</TABLE>
+
+<P CLASS="doc">This example gets the filename of the TaskManager executable:</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+hey application/x-vnd.task_manager get Filename of Team "TaskManager" 
+of Teamlist</CODE>
+</TD>
+</TR>
+</TABLE>
+
+
+<A NAME="gui_properties">
+
+<H1>GUI Properties</H1>
+
+<P CLASS="doc">
+Through scripting properties you can access and change most
+of the UI elements of Be TaskManager. Additional to the normal
+BeOS UI elements BeTaskManager contains a list of non-standard
+UI interface elements like CGraphView, which displays the
+CPU usage history in the usage tab. The following list contains
+a short discription of all those UI elements and their script
+properties.
+</P>
+
+<H2>CColumnListViewEx</H2>
+
+<P CLASS="doc">A column list view like the one in the "Teams" tab.</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" ROWSPAN="2" CLASS="descr">Column</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_COUNT_PROPERTIES</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Returns the number of columns.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">any</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        B_INDEX_SPECIFIER<BR>
+        B_REVERSE_INDEX_SPECIFIER<BR>
+        B_NAME_SPECIFIER
+        
+    </TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">-</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Directs the scripting message to the specified column.
+    </TD>
+</TR>
+</TABLE>
+
+<P CLASS="doc">Every column has the following scripting properties:</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Label</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">string</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Column label.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Visible</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">bool</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        True if this column is visible. If the current value is changed the column is hidden
+        or shown, depending on the value of "data".
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Width</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Column width.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">SortMode</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        0=ascending, 1=descending, 2=no sort. If you change the sort mode from
+        "no sort" to ascending or descending the column is added as sort key.
+        The sequence in which the sort keys are added is relevant. The first
+        added sort key gets the primary sort key, the second added the secundary
+        and so on.
+    </TD>
+</TR>
+</TABLE>
+
+<P CLASS="doc">This example displays the label of the first column of the team list view:</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+hey application/x-vnd.task_manager get Label of Column 1 of View 4
+of View 0 of View 1 of View 0 of View 0 of View 1 of Window 0
+</CODE>
+</TD>
+</TR>
+</TABLE>
+
+<H2>CGraphView</H2>
+<P CLASS="doc">
+An example for this view is the CPU usage history displayed in
+the usage tab. It contains a list of "data provider" objects.
+Every data provider reports the current state of some system 
+resource e.g. the current CPU usage. Because
+a graph view displays the history of such a data provider, it
+stores the information in a "data info" object. Such a object
+contains all the information needed to display a data provider:
+color, scale and history.
+</P>
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">AutoScale</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">bool</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        If this property is set to true, the maximum value
+        is ajusted to match greates value currently 
+        displayed.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">PointDistance</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Distance between the two points of the line which connects two values of
+        the history (in pixel).
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">GridSpace</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Distance between two grid lines. Multiple of PointDistance.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">GridColor</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">rgb_color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Color of the grid lines.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">MaxValue</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Maximal value this view can display. This value is used to scale the values in
+        the history. If AutoScale is true this value is adjusted, if any value in the
+        history exceeds this value. Otherwise any value greater that this value isn't 
+        displayed.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" ROWSPAN="3" CLASS="descr">DataInfo</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_COUNT_PROPERTIES</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Returns the number of data info objects.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DELETE_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_INDEX_SPECIFIER<BR>B_REVERSE_INDEX_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">-</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Delete the data info object at "index".
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">any</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        B_INDEX_SPECIFIER<BR>
+        B_REVERSE_INDEX_SPECIFIER<BR>
+        B_RANGE_SPECIFIER<BR>
+        B_REVERSE_RANGE_SPECIFIER
+    </TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">-</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Directs the scripting message to the specified data info object.
+    </TD>
+</TR>
+</TABLE>
+
+<P CLASS="doc">Every data info object supports the following scripting properties:</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">rgb_color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Color for the lines which are used to connect the values of the history of this
+        data info object.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Scale</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Scale for this data info object. Before the values are displayed they are mutliplied
+        by this value. Afterwards an additional scale is applied to transform the values to
+        pixels. That second scale is calculated using MaxValue of the GraphView.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">DataProvider</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">IDataProvider&nbsp;*</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        For internal use only.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Max</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Maximal value. "Raw" data, not muliplied by scale.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Avg</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Average value. "Raw" data, not muliplied by scale.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">Current</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Current value. "Raw" data, not muliplied by scale.
+    </TD>
+</TR>
+</TABLE>
+
+<P CLASS="doc">This example sets the color of the CPU Usage Graph's first data info (the CPU usage line)
+to red:</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+hey application/x-vnd.task_manager set Color of DataInfo 0 
+of View 2 of View 1 of View 0 of View 0 of View 0 of View 1 
+of Window 0 to 'rgb_color(255, 0, 0, 255)'</CODE>
+</TD>
+</TR>
+</TABLE>
+
+<H2>COverlayGraphView</H2>
+
+<P CLASS="doc">An example for an object of this class is the graph view in the performance tab. If
+you select a data info object in the legend, it displays an overlay. That overlay contains
+the maximum, average and current value of the selected data info object.</P>
+<P CLASS="doc">This class is derived from CGraphView and supports all scripting properties of the base
+class and these additional properties:</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">TextColor</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">rgb_color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Color of the text in the overlay.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">TextBackgroundColor</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">rgb_color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Background of the overlay. If you set the alpha component to a value less
+        than 255, the overlay is displayed transludent.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">BackgroundColor</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">rgb_color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Background color for the whole view.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">OverlayIndex</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">int32</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Index of the "data info" object which is displayed in the overlay.
+    </TD>
+</TR>
+</TABLE>
+
+<H2>CLEDView</H2>
+
+<P CLASS="doc">
+An object of this class is used in the "Usage" tab to display the current CPU usage. It
+displays single LEDs. Usually some of the lower leds are on, the upper ones are off. Under
+the LEDs a text is displayed.
+</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Name</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">what Field</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Specifier</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Data&nbsp;Type</TD>
+    <TD VALIGN="top" BGCOLOR="#AAAAAA" CLASS="colheader">Description</TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">LEDOnColor</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">rgb_color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Color of LEDs which are on.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">LEDOffColor</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">rgb_color</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Color of LEDs which are off.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">LEDSize</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Vertical size of the LEDs.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">MaxValue</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY<BR>B_SET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">float</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        Maximum value of the data provider. Used to calculate which LEDs are lit and 
+        which aren't.
+    </TD>
+</TR>
+<TR>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">DataProvider</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_GET_PROPERTY</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">B_DIRECT_SPECIFIER</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">IDataProvider&nbsp;*</TD>
+    <TD VALIGN="top" BGCOLOR="#DDDDDD" CLASS="descr">
+        For internal use only.
+    </TD>
+</TR>
+</TABLE>
+<BR>
+
+<H2>How do I find a specific view?</H2>
+
+<P CLASS="doc">To find a specific view inside a window you can use its
+&quot;InternalName&quot; property. Simply go through the views and
+take a look at their name.</P>
+
+<P CLASS="doc">The following example displays the name of the first 
+tab view (which is &quot;Usage&quot;):</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+hey application/x-vnd.task_manager get InternalName 
+of View 0 of View 0 of View 0 of View 1 of Window 0
+</CODE>
+</TD>
+</TR>
+</TABLE>
+
+</FONT>
+
+<!-- Footer -->
+
+<BR>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="#top"><IMG ALT="Top" BORDER="0" WIDTH="11" HEIGHT="10" SRC="images/arrow_top.gif"></A>&nbsp;
+<A HREF="#top">Top</A>
+</P>
+</FONT>
+
+<HR>
+
+<CENTER>
+<FONT FACE="Helvetica" SIZE="-1">
+<I CLASS="footer">&copy; 2002 by <A HREF="mailto:tkrammer@3rd-evolution.de">Thomas Krammer</A></I>
+</FONT>
+</CENTER>
+
+</BODY>
+</HTML>

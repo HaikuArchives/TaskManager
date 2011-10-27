@@ -1,0 +1,11 @@
+MakSplitterView - A class to give you a flexible splitter bar between two BViews
+
+Suppose you have two Lists, but don't know how much space to allow for each. Well, why not let the user of the app decide?
+Leave a little gap (recommended 5 pizels) between the two BScrollViews that hold the BListView, stick a MakSplitterView in that gap, give it a colour (grey is a good colour, thats the default) and you're done.
+You can even place a horizontal and vertical MakSplitterView together, just ensure you send them the corrent resizing mode flag when you constuct them.
+
+
+You can use this class as in whatever way you like, but I'd like at least a little credit please.
+
+-Makhno
+mak@imakhno.freeserve.co.uk

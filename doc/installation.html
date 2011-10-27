@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" TYPE="text/css" HREF="common/opera.css">
+<SCRIPT LANGUAGE="JavaScript" SRC="common/stylesheet.js"></SCRIPT>
+<TITLE>Installation</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- Header -->
+
+<A NAME="top"></A>
+
+<TABLE WIDTH="100%" BORDER="0"> 
+<TR> 
+<TD COLSPAN="2" BGCOLOR="#FFCB00"> 
+<FONT FACE="Helvetica" SIZE="+1" CLASS="header">&nbsp;<I>Be TaskManager Documentation</I></FONT> 
+</TD> 
+</TR> 
+</TABLE>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="index.html"><IMG BORDER="0" ALT="Up" WIDTH="11" HEIGHT="6" SRC="images/arrow_up.gif"></A>&nbsp;
+<A HREF="index.html">Index</A>
+</P>
+</FONT>
+
+<HR>
+
+<!-- Content -->
+
+<FONT FACE="Helvetica">
+
+<H1>Installation</H1>
+
+<H2>General</H2>
+
+<P CLASS="doc">Double click the archive file. The typical BeOS installation
+wizard will guide you through the rest of the process.
+<P>
+
+<A NAME="installation_dialog"></A>
+
+<P CLASS="doc">After the installation this dialog pops up:
+</P>
+
+<IMG SRC="images/taskmgr_installation.gif">
+
+<P CLASS="doc">In this dialog you can select you preferred language 
+and create links to Be TaskManager on the desktop and in the Be menu.
+If you choose to create a link in the Be menu you can select the group
+in which the link is created by the &quot;Group&quot; drop down box. 
+The "View Deskbar Replicant at Startup" setting causes the deskbar replicant 
+to be shown by default.
+</P>
+
+<A NAME="lm78"></A>
+
+<H2>LM78 Motherboard Sensor Plugin</H2>
+
+<P CLASS="doc">BeTaskManager in the latest release includes a plugin (addon) for the
+LM78 motherboard sensor. If your motherboard is equipped with this sensor
+chip you can add the current motherboard temperature and fan speeds to the
+<A HREF="tabs.html#perf_tab">performance view</A>. This plugin is 
+available for the x86 version only.</P>
+<P CLASS="doc">This plugin depends on the LM78 driver with is part of the Sensor2
+distribution. If that driver isn't installed, the options to add the
+sensor data to the performance view isn't available.</P>
+<P CLASS="doc">
+To use the sensor plugin follow the following steps:
+</P>
+<OL CLASS="doc">
+<LI>Download the Sensor2 application from 
+<A HREF="http://www.bebits.com/app/96/">here</A>.
+<LI>Install the Sensor2 application.
+<LI>Restart your system.
+</OL>
+<P CLASS="doc">
+If you start BeTaskManager now, you will have the following options in
+the &quot;Add&quot; dialog of the performance view:
+</P>
+<UL CLASS="doc">
+<LI>Chassis Fan
+<LI>Power Fan
+<LI>CPU Fan
+<LI>Motherboard Temperature
+</UL>
+<P CLASS="doc">
+NOTE: The motherboard sensor driver can only be used by one program
+at a time. If the driver is already in use by another program a warning
+dialog is displayed. Until the driver is released by the other program the
+above counters will always be zero.
+</P>
+
+</FONT>
+
+<!-- Footer -->
+
+<BR>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="#top"><IMG ALT="Top" BORDER="0" WIDTH="11" HEIGHT="10" SRC="images/arrow_top.gif"></A>&nbsp;
+<A HREF="#top">Top</A>
+</P>
+</FONT>
+
+<HR>
+
+<CENTER>
+<FONT FACE="Helvetica" SIZE="-1">
+<I CLASS="footer">&copy; 2002 by <A HREF="mailto:tkrammer@3rd-evolution.de">Thomas Krammer</A></I>
+</FONT>
+</CENTER>
+
+</BODY>
+</HTML>

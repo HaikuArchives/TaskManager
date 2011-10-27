@@ -1,0 +1,141 @@
+UsageTab.Label = Uso
+TeamsTab.Label = Procesos
+PerformanceTab.Label = Rendimiento
+
+FileMenu = Archivo
+FileMenu.NewTeam = Nuevo Proceso...
+FileMenu.About = Acerca de TaskManager...
+FileMenu.Quit = Salir
+
+ViewMenu = Ver
+ViewMenu.UpdateSpeed = Velocidad de refresco
+ViewMenu.UpdateSpeed.Slow = Lento
+ViewMenu.UpdateSpeed.Normal = Normal
+ViewMenu.UpdateSpeed.Fast = Rapido
+ViewMenu.InDeskBar = Muestra en Deskbar
+ViewMenu.InAllWorkspaces = Muestra en todos los escritorios
+ViewMenu.Settings = Opciones...
+
+CPULedBox.Label = Uso CPU
+CPUGraphBox.Label = Grafico Uso CPU
+MemLedBox.Label = Uso Memoria
+MemGraphBox.Label = Grafico Uso Memoria
+
+ColumnInfo.Name.Label	= Nombre
+ColumnInfo.TeamId.Label	= Ident. Proceso
+ColumnInfo.ThreadCount.Label	= Contador de Proceso
+ColumnInfo.AreaCount.Label	= Contador de Area
+ColumnInfo.ImageCount.Label	= Contador de Imagen
+ColumnInfo.CPUUsage.Label	= Uso CPU
+ColumnInfo.MemoryUsage.Label = Uso Memoria (%)
+ColumnInfo.MemoryUsageAbs.Label = Uso Memoria (absoluto)
+ColumnInfo.Directory.Label = Carpeta
+
+DialogBase.OkButton.Label = OK
+DialogBase.CancelButton.Label = Cancelar
+DialogBase.HelpButton.Label = Ayuda
+
+CreateTeamWindow.Title = Nuevo Proceso
+MRUSelectFileView.PathControl.Label = Controlar:
+MRUSelectFileView.BrowseMenuItem.Label = Navegar...
+
+SettingsWindow.Title = Opciones
+SettingsWindow.DontHideCheckBox.Label = No ocultar replica deskbar al salir
+SettingsWindow.HideSystemTeamsCheckBox.Label = Ocultar procesos del sistema
+SettingsWindow.ColumnsGroup.Label = Columnas
+
+TeamView.ContextMenu.Activate.Label = Activar
+TeamView.ContextMenu.Quit.Label = Salir
+TeamView.ContextMenu.Kill.Label = Kill
+TeamView.ContextMenu.AddToPerfTab.Label = Añadir al tabulador Rendimiento...
+TeamView.ContextMenu.Priority.Label = Prioridad
+TeamView.ContextMenu.Priority.Low.Label = Baja Prioridad
+TeamView.ContextMenu.Priority.Normal.Label = Prioridad Normal
+TeamView.ContextMenu.Priority.Display.Label = Muestra Prioridad
+TeamView.ContextMenu.Priority.UrgentDisplay.Label = Muestra Urgente Prioridad
+TeamView.ContextMenu.Priority.Realtime.Label = Prioridad en Tiempo Real
+TeamView.KillButton.Label = Kill
+TeamView.SelectTeamButton.Label = X-Kill...
+
+TeamView.Warning.ShowAgain = Muestra este mensaje de nuevo
+TeamView.Warning.CanKillKernel = No se puede parar (kill) el proceso kernel!
+TeamView.Warning.BeOSTeam = El proceso '\0' es un componente de BeOS.\n\nKill a pesar de ello el proceso ??
+TeamView.Warning.NormalTeam = Esta seguro de querer parar (Kill) el proceso '\0'??
+TeamView.Warning.ControlledByDebugger = El proceso '\0' esta siendo controlado por un debugger.\nDesea parar (kill) el debugger??
+TeamView.Warning.NotResponding = La aplicacion '\0' no responde.
+TeamView.Warning.KillFailed = No se puede parar (kill) el proceso '\0'.\nRazon: \1
+TeamView.Warnung.KillButton.Label = Kill
+TeamView.Warnung.RetryButton.Label = Reintentar
+
+PerformanceAddView.ChangeButton.Label = Cambiar
+PerformanceAddView.DoneButton.Label = Listo
+PerformanceAddView.AddButton.Label = Agregar
+
+PerformanceAddView.ColorSelector.Label = Color:
+PerformanceAddView.ScaleSelector.Label = Escala:
+
+PerformanceAddView.ColorSelectDialog.Title = Color
+PerformanceAddView.ErrorMessage.ScriptRequestFailed = Peticion fallida de Script.\nRazon: \0 (\1)
+
+PerformanceAddView.ColorList.Automatic.Label = Automatico
+PerformanceAddView.ColorList.Select.Label = Selecionar...
+PerformanceAddView.ColorList.Red.Label = Rojo
+PerformanceAddView.ColorList.Green.Label = Verde
+PerformanceAddView.ColorList.Blue.Label = Azul
+PerformanceAddView.ColorList.Magenta.Label = Magenta
+PerformanceAddView.ColorList.Cyan.Label	= Cyan
+PerformanceAddView.ColorList.Yellow.Label = Amarillo
+PerformanceAddView.ColorList.DarkRed.Label = Rojo oscuro
+PerformanceAddView.ColorList.DarkGreen.Label = Verde oscuro
+PerformanceAddView.ColorList.DarkBlue.Label = Azul oscuro
+PerformanceAddView.ColorList.LightRed.Label = Rojo claro
+PerformanceAddView.ColorList.LightGreen.Label = Verde claro
+PerformanceAddView.ColorList.LightBlue.Label = Azul claro
+PerformanceAddView.ColorList.Brown.Label = Marron
+
+PerformanceAddWindow.Title = Agregar
+
+PerformanceView.AddButton.Label	= Agregar...
+PerformanceView.RemoveButton.Label = Suprimir
+
+OverlayGraphView.Unit.Byte = bytes
+OverlayGraphView.Unit.KiloByte = K
+OverlayGraphView.Unit.MegaByte = M
+OverlayGraphView.Unit.RPM = RPM
+OverlayGraphView.Unit.Degress = °
+OverlayGraphView.Unit.Volt = V
+OverlayGraphView.Unit.Watt = W
+OverlayGraphView.Unit.Ampere = A
+
+OverlayGraphView.Current = act:
+OverlayGraphView.Average = promed:
+OverlayGraphView.Maximum = max:
+
+OverlayGraphView.ContextMenu.Overlay = Overlay
+
+CPUGraphView.ContextMenu.CPU = CPU
+CPUGraphView.ContextMenu.CPU.Format = CPU %ld
+CPUGraphView.ContextMenu.CPU.Average = Promedio de todos los CPUs
+
+DeskbarLedView.Tooltip.Format = CPU Usage: %.0f %%
+DeskbarLedView.ContextMenu.ShowTaskManager = Muestra TaskManager
+DeskbarLedView.ContextMenu.HideReplicant = Oculta Replicante
+
+AboutWindow.Title = Acerca de TaskManager
+
+CommandLineParser.ErrorMessage.FileNotFound = Archivo '\0' no encontrado.
+CommandLineParser.ErrorMessage.FileOnVFS = Imposible ejecutar proceso (la aplicacion esta hubicada en un sistema de ficheros virtual).
+CommandLineParser.ErrorMessage.LaunchFailed = Imposible ejecutar proceso.\nRazon: \0
+
+CounterNamespace.ErrorMessage.LoadDefaultFailed = El plugin por defecto'\0' no pudo ser cargado. Be TaskManager no podra funcionar correctamente.\n\nBe TaskManager buscaba en esta carpeta por plugins: '\1'.
+CounterNamespace.ErrorMessage.EntryPointFailed = CrearContadorPlugin() fallo ('\0')\nRazon: \1
+CounterNamespace.ErrorMessage.EntryPointNotFound = No se pudo encontrar punto de entrada del CrearContadorPlugin en '\0'\nRazon: \1
+CounterNamespace.ErrorMessage.LoadFailed = No se pudo cargar addon '\0'\nRazon: \1
+
+OpenURL.ErrorMessage.OpenBrowserFailed = No se pudo abrir navegador por defecto.\nRazon: \0
+
+MainWindow.ErrorMessage.ShowReplicantFailed = Imposible agregar replicante deskbar.\nRazon: \0
+MainWindow.ErrorMessage.HideReplicantFailed = Imposible suprimir replicante deskbar.\nRazon: \0
+
+SelectTeamWindow.Title = Selecionar Proceso
+SelectTeamWindowView.HintText = Arrastra el punto de mira sobre una ventana. Esto parara (kill) la aplicacion seleccionada.

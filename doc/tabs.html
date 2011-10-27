@@ -1,0 +1,217 @@
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" TYPE="text/css" HREF="common/opera.css">
+<SCRIPT LANGUAGE="JavaScript" SRC="common/stylesheet.js"></SCRIPT>
+<TITLE>The Tabs</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- Header -->
+
+<A NAME="top"></A>
+
+<TABLE WIDTH="100%" BORDER="0"> 
+<TR> 
+<TD COLSPAN="2" BGCOLOR="#FFCB00"> 
+<FONT FACE="Helvetica" SIZE="+1" CLASS="header">&nbsp;<I>Be TaskManager Documentation</I></FONT> 
+</TD> 
+</TR> 
+</TABLE>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="index.html"><IMG BORDER="0" ALT="Up" WIDTH="11" HEIGHT="6" SRC="images/arrow_up.gif"></A>&nbsp;
+<A HREF="index.html">Index</A>
+</P>
+</FONT>
+
+<HR>
+
+<!-- Content -->
+
+<FONT FACE="Helvetica">
+
+<H1>The Tabs</H1>
+
+<P CLASS="doc">Be TaskManager is display three different tabs:</P>
+<UL CLASS="doc">
+<LI>The <A HREF="#usage_tab">Usage tab</A>
+<LI>The <A HREF="#teams_tab">Teams tab</A>
+<LI>The <A HREF="#perf_tab">Performance tab</A>
+</UL>
+
+<P CLASS="doc">Each of the tabs lets you inspect another aspect of your system.</P>
+
+<A NAME="usage_tab"></A>
+<H2>The Usage Tab</H2>
+
+<IMG WIDTH="613" HEIGHT="386" ALT="Usage Tab" SRC="images/taskmgr_usage_tab.gif"><BR>
+
+<P CLASS="doc">The Usage tab displays your computer's memory and CPU usage. The memory
+usage is the usage of your <I>physical</I> memory, not the virtual
+memory.</P>
+<P CLASS="doc">Each of the views inside that tab can be used as a 
+<A HREF="replicant.html">replicant</A>.
+
+<A NAME="teams_tab"></A>
+<H2>The Teams Tab</H2>
+
+<IMG WIDTH="616" HEIGHT="385" ALT="Teams Tab" SRC="images/taskmgr_teams_tab.gif"><BR>
+
+<P CLASS="doc">The teams tab displays all the teams (processes) in your system.
+Depending on your settings it displays additional information for each
+team, including:</P>
+
+<UL CLASS="doc">
+<LI>Name of the team's image (executable).
+<LI>Directoy of the team's image.
+<LI>The team's ID.
+<LI>Its CPU usage.
+<LI>Its memory usage (either in percent of all used memory or absolute).
+<LI>Its thread, image and area count
+</UL>
+
+<P CLASS="doc">The CPU and memory usage are displayed not only as text but also as
+bar. The CPU usage bar contains the kernel usage (the lighter bar) and
+the total CPU usage (the darker bar) of that team.</P>
+
+<P CLASS="doc">The name of BeOS system teams is displayed in blue. You can disable
+that the system teams are displayed. This is done through the
+<A HREF="settings.html">settings dialog</A>.
+
+<P CLASS="doc">By a right click on a team (or a left click while holding down 
+the option key) you can bring up its context menu. The context menu contains 
+these options:</P>
+
+<UL CLASS="doc">
+<LI>Activate the team.
+<LI>Kill the team
+<LI>Quit the team
+<LI>Add some of the team's information to the performance tab.
+<LI>Set the team's priority.
+</UL>
+
+<P CLASS="doc">The kill button just works like the &quot;Kill&quot; context menu entry.
+Double-clicking a team's entry will activate it.</P>
+
+<P CLASS="doc">To quit a team is a more gentle way to get rid of it than to kill it.
+This gives the team the possibility to save it's settings and to ask
+if some documents are still unsaved. If you kill a team you may loose
+your unsaved work. If you try to quit a team, which doesn't respond
+(e.g. because it hangs) Be TaskManager waits for 10 seconds and displays
+a dialog asking if you want to kill that team.</P>
+<P CLASS="doc">Killing a teams - especially system teams - is dangerous and may 
+compromise your system's stability. Therefore a warning dialog is
+displayed before you can kill a team. If you don't want that dialog
+to show up again simply disable its &quot;Show this dialog again&quot;
+checkmark. Doing so will kill the team next time -- without a warning.
+<B>Note:</B> there are diffent warning dialogs for system teams and normal 
+teams. These warning dialogs need to be disabled seperately.</P>
+
+<A NAME="x-kill"></A>
+<P CLASS="doc">If you want to kill a team but don't know the exact name
+of the executable klick on the &quot;X-Kill&quot; button. This will open this window:
+</P>
+<IMG SRC="images/taskmgr_select_team.gif" ALT="X-Kill Window" WIDTH="211" HEIGHT="111">
+
+<P CLASS="doc">When you drag the crosshair on a window the application which opened
+that window will be killed.
+</P>
+
+<P CLASS="doc">You can't kill teams that are controlled by a debugger. If you
+try it anyway you get the option to kill the debugger instead of the
+controlled team.</P>
+
+<P CLASS="doc">If you set the priority of a team you change the team's base priority.
+The base priority is simply the average priority of all threads of
+that team. This means changing the teams priority won't change the 
+relative priority of the threads. Also the priority of realtime threads
+won't be changed. This can result in an unchanged base priority, if the
+team contains many realtime threads. You can't change the base priority to
+real time priority. This is simply a safety feature.</P>
+
+<A NAME="perf_tab"></A>
+<H2>The Performance Tab</H2>
+
+<P CLASS="doc">The performance tab is the most complex and most flexible. It works
+like the Memory and CPU Graph View in the Usage tab. But here you can
+configure which information is displayed.</P>
+<P CLASS="doc">When you start Be TaskManager the graph view is empty. Before it
+displays something you must add a performance counter to it. This is done
+through the add dialog:</P>
+
+<A NAME="perf_tab_add_dialog"></A>
+
+<IMG WIDTH="271" HEIGHT="391" ALT="Add Dialog" SRC="images/taskmgr_add.gif">
+
+<P CLASS="doc">The upper part of the add dialog displays a list of all available
+performance counters. This includes:</P>
+
+<UL CLASS="doc">
+<LI>Total CPU Usage.</LI>
+<LI>Total Memory Usage.</LI>
+<LI>CPU Usage of a specific team.</LI>
+<LI>Memory Usage of a specific team.</LI>
+<LI>CPU Usage of a specific thread.</LI>
+<LI>LM78 sensor data (motherboard temperature, fan speeds etc.). 
+Only available if the LM78 driver is installed
+(see <A HREF="installation.html#lm78">Installation</A>).</LI>
+<LI>And many more...</LI>
+</UL>
+
+<P CLASS="doc">Select one of the performance counters in the list. Some of the
+entries in the list are only included to group the data providers.
+If you select one of these entries the &quot;Add&quot; button is 
+disabled. Then you can select the color which is used to display
+that data provider. If you leave it on &quot;Automatic&quot; Be 
+TaskManager selects an unused color for you. Because you can
+add performance counters with different unit to the graph view, you
+can change the scale to ajust the counters to stay in the same range.
+If you only add performance information with the same unit (e.g. only
+CPU usage information, which is always expressed in percent) you should
+use the default setting (which is &quot;1&quot;). If your are comfortable
+with your settings hit the &quot;Add&quot; button.</P>
+<P CLASS="doc">The performance counter is added to the graph view immediately. Add
+as many performance counters as you wish. If you are done simply hit
+the &quot;Done&quot; button. The performance tab should now look 
+similar to this:</P>
+
+<IMG WIDTH="615" HEIGHT="385" ALT="Performance Tab" SRC="images/taskmgr_perf_tab.gif"><BR>
+
+<P CLASS="doc">Note that the graph view displays the maximum, minimum and current
+value of the selected performance counter in the upper left coner.
+To select another entry simply click on it in the legend. By 
+double-clicking an entry in the legend you can change its
+settings (color and scale). To remove the currently selected performance
+counter simply hit the &quot;Remove&quot; button.</P>
+<P CLASS="doc">You can use the graph view as <A HREF="replicant.html">replicant</A>.
+Please note that some of the performance counters can't be persistent.
+For example the CPU usage performance counter of a team will always display
+zero, if the team no longer exists. When you drag a view to the desktop
+which contains such a performance counter, it will display zero if
+your machine comes up again, because most certainly a team with that
+team-id doesn't exist after the reboot.</P>
+
+</FONT>
+
+<!-- Footer -->
+
+<BR>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="#top"><IMG ALT="Top" WIDTH="11" HEIGHT="10" BORDER="0" SRC="images/arrow_top.gif"></A>&nbsp;
+<A HREF="#top">Top</A>
+</P>
+</FONT>
+
+<HR>
+
+<CENTER>
+<FONT FACE="Helvetica" SIZE="-1">
+<I CLASS="footer">&copy; 2002 by <A HREF="mailto:tkrammer@3rd-evolution.de">Thomas Krammer</A></I>
+</FONT>
+</CENTER>
+
+</BODY>
+</HTML>

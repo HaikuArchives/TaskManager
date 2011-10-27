@@ -1,0 +1,180 @@
+<!--This file created 12/7/98 2:58 AM by Claris Home Page version 1.0-->
+<HTML>
+<HEAD>
+   <TITLE>CLVEasyItem.html</TITLE>
+   <META NAME=GENERATOR CONTENT="Claris Home Page 1.0">
+   <X-SAS-WINDOW TOP=43 BOTTOM=760 LEFT=108 RIGHT=971>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<P><HR></P>
+
+<H1>CLVEasyItem</H1>
+
+<P>&nbsp;</P>
+
+<P>Derived from: <B>public CLVListItem</B></P>
+
+<P>Declared in: <B>CLVEasyItem.h</B></P>
+
+<P>Library: <B>none</B></P>
+
+<P><HR></P>
+
+<H2><A NAME="Overview"></A><FONT SIZE=6>O</FONT>verview</H2>
+
+<P>&nbsp;</P>
+
+<P>A CLVEasyItem is a list item that automates display of text and
+graphics, automates string truncation of items that don't fit in the
+column, and automates sorting of the items based on the text.  In
+most cases, it is best to use a CLVEasyItem instead of a CLVListItem,
+since it can save you a lot of work and gives nice results.</P>
+
+<P><HR></P>
+
+<H2><A NAME="Constructor and Destructor"></A><FONT SIZE=6>C</FONT>onstructor
+and <FONT SIZE=6>D</FONT>estructor</H2>
+
+<P><HR></P>
+
+<H3><A NAME="CLVEasyItem()"></A>CLVEasyItem()</H3>
+
+<P>&nbsp;</P>
+
+<PRE>      <TT>CLVEasyItem(</TT>uint32 <I>level</I> = 0, bool superitem = false, bool <I>expanded</I> = false, float <I>minheight</I> = 0.0<TT>)</TT> 
+      <TT>CLVEasyItem(</TT>BMessage *<I>archive<TT>)</TT></I>    /*Not implemented*/</PRE>
+
+<P>Marks the CLVEasyItem as being at the specified outline
+<I>level</I> , as being an expandable superitem if the superitem flag
+is <B><TT>true</TT></B>, and as controlling an expanded section of
+the outline if the expanded flag is <B><TT>true</TT></B> or a
+collapsed section if expanded is <B><TT>false</TT></B>. Minheight
+specifies the minimum height that the item may be. This is useful if
+the item's height is to vary to respond to user preferences, but
+elements of the item (an icon, for example), place a constraint on
+how small the item may be. Outline levels are indicated by an index,
+with 0 as the outer level, 1 for one level of indentation, 2 for two
+levels of indentation, and so on.</P>
+
+<P>Initially, the item has a width and height of 0.0 coordinate
+units, is enabled, and is not selected.</P>
+
+<P>Construction from an archive is currently not implemented. It
+isn't high on my priorities, since archival is not something I'm
+making use of. If someone needs this functionality and fills it in,
+please send me the modified code so that others can benefit from it.
+</P>
+
+<P><HR></P>
+
+<H3><A NAME="~CLVEasyItem()"></A>~CLVEasyItem()</H3>
+
+<P>&nbsp;</P>
+
+<PRE>      virtual <TT>~CLVEasyItem()</TT> </PRE>
+
+<P>&nbsp;</P>
+
+<P>Frees all memory used for storing the item's column contents.</P>
+
+<P><HR></P>
+
+<H2><A NAME="Member Functions"></A><FONT SIZE=6>M</FONT>ember
+<FONT SIZE=6>F</FONT>unctions</H2>
+
+<P>&nbsp;</P>
+
+<P><HR></P>
+
+<H3><A NAME="Archive()"></A>Archive()</H3>
+
+<P>&nbsp;</P>
+
+<PRE>      virtual status_t <TT>Archive(</TT>BMessage *<I>archive</I>, bool <I>deep</I> = true<TT>)</TT> const
+&nbsp;</PRE>
+
+<P>Currently not implemented. It isn't high on my priorities, since
+archival is not something I'm making use of. If someone needs this
+functionality and fills it in, please send me the modified code so
+that others can benefit from it.</P>
+
+<P><B>See also:
+<TT><A HREF="../support/Arch.html#Archive()">BArchivable::Archive()</A></TT></B>,
+<B><TT>Instantiate()</TT></B> static function</P>
+
+<P><HR></P>
+
+<H3><A NAME="GetColumnContentBitmap()"></A>GetColumnContentBitmap(), <A NAME="GetColumnContentText()"></A>GetColumnContentText()</H3>
+
+<P>&nbsp;</P>
+
+<PRE>      const Bitmap* GetColumnContentBitmap(int <I>column_index</I>)
+      const char* GetColumnContentText(int <I>column_index</I>)
+&nbsp;
+&nbsp;</PRE>
+
+<P>Gets the contents of the specified column.  If the column either has the wrong content 
+type for the function version or no content, the function returns <B><TT>NULL</TT></B>.</P>
+
+<P><B>See also:
+<TT><A HREF="#SetColumnContent()">SetColumnContent()</A></TT></B></P>
+
+<P><HR></P>
+
+<H3><A NAME="SetColumnContent()"></A>SetColumnContent()</H3>
+
+<P>&nbsp;</P>
+
+<PRE>      virtual void SetColumnContent(int <I>column_index</I>, const char *<I>text</I>, bool <I>truncate</I> = true)
+      virtual void SetColumnContent(int <I>column_index</I>, const BBitmap *<I>bitmap</I>, float <I>horizontal_offset</I> = 2.0,
+            bool <I>copy</I> = true); ;
+&nbsp;
+&nbsp;</PRE>
+
+<P>For the text version, sets the column <I>column_index </I> to
+display the specified <I>text.</I>  If <I>truncate</I>  is
+<B><TT>true</TT></B>, if the text does not fit in the column, it will
+be truncated with an ellipsis instead of being chopped off at the
+edge of the column.  If <I>truncate</I> is <B><TT>true</TT></B>, the
+CLVColumn for <I>column_index</I> should have its
+<B><TT>CLV_HEADER_TRUNCATE</TT></B> flag set, and must have its
+<B><TT>CLV_TELL_ITEMS_WIDTH</TT></B> flag set.  In hierarchical
+ColumnListViews with string truncation columns, it is not advisable
+to have the <B><TT>CLV_PUSH_PASS</TT></B> flag set for a string
+truncation column.  Doing so makes for bad UI since the text doesn't
+fall under its column header, and will cause some flicker during column
+resizing in the area where the content "encroaches" into the
+subsequent column.  It can also lead to truncation failure for columns
+to the left of a column being resized (a display glitch, not a crash;
+it's a known bug which is being left for efficiency reasons because it
+only arises when these UI guidelines are ignored).  The advisable
+column configuration is an expander column followed by an icon column
+with the <B><TT>CLV_PUSH_PASS</TT></B> flag set, followed by any number
+of string truncation or bitmap columns with the
+<B><TT>CLV_PUSH_PASS</TT></B> flag cleared.</P>
+
+<P>For the bitmap version, sets the column <I>column_index </I> to
+display the specified <I>bitmap.</I>  It will be rendered
+<I>horizontal_offset</I>  pixels to the right of the left edge of the
+column.  If <I>copy</I>  is <B><TT>true</TT></B>, it will make a copy
+of the <I>bitmap</I>.  Otherwise, it will just store a pointer to
+<I>bitmap</I>, and the application must not delete <I>bitmap</I>  as
+long as the item is using it.</P>
+
+<P><B>See also:
+<TT><A HREF="#GetColumnContentBitmap()">GetColumnContentBitmap()</A></TT></B>,<B><TT>
+<A HREF="#GetColumnContentText()">GetColumnContentText()</A></TT></B></P>
+
+<P><HR></P>
+
+<P>By Brian Tietz</P>
+
+<P>Copyright 1997</P>
+
+<P>Bug reports (including documentation errors) and feature requests
+can be sent to <A HREF="mailto:briant@digaudio.com">briant@digaudio.com</A>.</P>
+
+<P>&nbsp;</P>
+</BODY>
+</HTML>

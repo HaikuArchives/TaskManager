@@ -1,0 +1,362 @@
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" TYPE="text/css" HREF="common/opera.css">
+<SCRIPT LANGUAGE="JavaScript" SRC="common/stylesheet.js"></SCRIPT>
+<TITLE>Version History</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- Header -->
+
+<A NAME="top"></A>
+
+<TABLE WIDTH="100%" BORDER="0"> 
+<TR> 
+<TD COLSPAN="2" BGCOLOR="#FFCB00"> 
+<FONT FACE="Helvetica" SIZE="+1" CLASS="header">&nbsp;<I>Be TaskManager Documentation</I></FONT> 
+</TD> 
+</TR> 
+</TABLE>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="index.html"><IMG BORDER="0" ALT="Up" WIDTH="11" HEIGHT="6" SRC="images/arrow_up.gif"></A>&nbsp;
+<A HREF="index.html">Index</A>
+</P>
+</FONT>
+
+<HR>
+
+<!-- Content -->
+
+<FONT FACE="Helvetica">
+
+<H1>Changes</H1>
+
+<H3>Version 0.1.7</H3>
+
+<UL CLASS="doc">
+<LI>Included Italian localization (thanks to Besom).</LI>
+<LI>Released source code.</LI>
+</UL>
+
+<H3>Version 0.1.6</H3>
+
+<UL CLASS="doc">
+<LI>Included Japanese localization (thanks to Besom).</LI>
+<LI>Fixed some issues with font size calcuation.</LI>
+<LI>Fixed an issue which caused the deskbar replicant tooltip not 
+    to be shown.</LI>
+</UL>
+
+<H3>Version 0.1.5</H3>
+
+<UL CLASS="doc">
+<LI>Fixed an issue where the localization files where read from the 
+    wrong directory during installation if TaskManager was previously
+    installed on that machine.</LI>
+<LI>The last selected tab in the main window is restored after a restart.</LI>
+<LI>Fixed some issues with the update of the team list.</LI>
+<LI>Team list updates: now correctly displays CPU usage of 100%
+    (in previous versions the string was truncated); dispays resize cursor
+    over column resize areas.</LI>
+</UL>
+
+<H3>Version 0.1.4</H3>
+
+<UL CLASS="doc">
+<LI>Added scripting properties to access the currently
+    running teams (see 
+    <A HREF="scripting.html#team_list_properties">Scripting Properties</A>
+    documentation for details).</LI>
+<LI>The X-Kill window can be accessed through a context menu entry of
+    the deskbar replicant.</LI>
+<LI>Fixed some bugs in tooltip handling code of the deskbar replicant.</LI>
+<LI>The currently selected team is highlighted in the Teams tab during
+    the drag of the X-Kill crosshair.</LI>
+</UL>
+
+<H3>Version 0.1.3</H3>
+
+<UL CLASS="doc">
+<LI>Deskbar replicant displays a bar for every CPU in a 
+    multiprocessor system (finally).
+<LI>Added volume information (capacity, used bytes etc.) to the
+    performance information.
+<LI>Some small bugfixes.
+<LI>Help button in the "New team" dialog.
+<LI>Language file for spanish (thanks to Double S).
+<LI>Some internal code changes.
+</UL>
+
+<H3>Version 0.1.2</H3>
+
+<UL CLASS="doc">
+<LI>Opens now the default browser to display links and help files.
+<LI>Better installer.
+<LI>Multiple language support. Currently English, French and German
+    are supported.
+<LI>X Kill: Simply kill teams by dropping a crosshair on one
+    of their windows.
+<LI>New command line option: <CODE>--install</CODE>. Shows the installation
+    dialog. This way you can change the languge after installation.
+</UL>
+
+<H3>Version 0.1.1</H3>
+
+<UL CLASS="doc">
+<LI>Removed some run-time warnings (like "Call of IsHidden() 
+    without window lock").
+<LI>Support for the new R5 deskbar addon API. This means it 
+    is no longer necessary to modify the UserBootscript.
+<LI>Displays a Net+ like cursor when the mouse hovers over a link.
+<LI>Compiled and tested PPC version.
+<LI>Some modifications for one button mice context menu support.
+<LI>Added help button to some dialogs.
+</UL>
+
+<H3>Version 0.1.0</H3>
+
+<UL CLASS="doc">
+<LI>Added performance tab.
+<LI>Added plugin API.
+<LI>Removed all performance information code (CPU usage of 
+  teams/threads, memory usage etc.) from the main application
+  and moved it to default plugin (taskmanager_default.so).
+<LI>Added LM78 motherboard sensor plugin (lm78.so). The plugin 
+depends
+  on the lm78 driver which is part of Sensor2.
+<LI>Extended scripting properties. Now almost all parts of the UI of
+  taskmanager can be changed via scripting.
+<LI>Less flickering during resize.
+<LI>Removed a bug which could cause the application to crash when the
+  context menu of a team was opened.
+<LI>If you try to kill a team which is controlled by a debugger a
+  dialog pops up asking you if you want to kill the debugger.
+</UL>
+
+<H3>Version 0.0.9</H3>
+
+<UL CLASS="doc">
+<LI>Faster listview redraw thanx to DrawBitmapAsync().
+<LI>Sorting bugs in the listview fixed. In the former version the
+  list view could not be sorted by "Memory Usage (absolute)".
+<LI>The position of the deskbar replicant's tooltip depends now on
+  the corner of the screen the deskbar is attached to.
+<LI>The views in the usage tab have a one pixel sunken border.
+<LI>In the last versions sometimes a B_MOUSE_UP message was lost.
+  This resulted in moving the selection in the team view, even
+  if the mouse was not down. This was caused by the 
+  B_ASYNCHRONOUS_CONTROLS flag which was set for the window.
+<LI>I reached a significant display speedup, if only the "Usage" tab
+  is displayed. In the last versions every view requested its own
+  system_info structure for each pulse cycle.
+  In this version the system_info is cached and only requested once
+  per cycle. This results in an overall speedup of 120% on my
+  computer.
+<LI>Every team has a context menu entry which allows the user to send
+  a B_QUIT_REQUESTED message to that team. If the team isn't
+  reacting on that request within 10 seconds, a dialog pops up,
+  asking if you want to kill that team.
+<LI>A double click on the deskbar replicant even works on areas which
+  are obscured by the tooltip.
+<LI>You can set the priority of a team.
+</UL>
+
+<H3>Version 0.0.8</H3>
+
+<UL CLASS="doc">
+<LI>Less LED view flickering
+<LI>New commandline option:
+    <TABLE>
+    <TR>
+    <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">--tweak_deskbar</TD>
+    <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+        Make deskbar topmost and then quit.<BR>
+        You can use your UserBootscript 
+        (/boot/home/config/boot/) to make the
+        deskbar topmost, every time the computer
+        comes up.
+        Simply add the line 
+        <CODE>&lt;dir&gt;/TaskManager --tweak_deskbar</CODE>
+    </TD>
+    </TR>
+    </TABLE>
+</LI>
+<LI>The user can select the columns of the team view in the settings
+  dialog.
+<LI>CPU usage and memory usage are displayed as bars in the team view.
+<LI>Some internal changes (Usage of scripting properties instead of
+  custom messages, template singleton class for dialog windows).
+</UL>
+
+<H3>Version 0.0.7</H3>
+
+<UL CLASS="doc">
+<LI>
+    Replicant graph views have context menu to:
+    <UL CLASS="doc">
+    <LI>Change update speed
+    <LI>Select CPU (for CPU Graph Views, if multiple CPUs are
+        installed)
+    </UL>
+</LI>
+<LI>Added border and context menu to deskbar replicant. It
+    also shows a small tooltip with the current CPU usage.
+<LI>
+    Added command line options:
+    <TABLE>
+    <TR>
+        <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">--help</TD>
+        <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">Display help text.</TD>
+    </TR>
+    <TR>
+        <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">--show_deskbar_rep</TD>
+        <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">Add replicant to deskbar and quit.</TD>
+    </TR>
+    <TR>
+        <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">--hide_deskbar_rep</TD>
+        <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+            Remove replicant from deskbar and quit.
+        </TD>
+    </TR>
+    </TABLE>
+</LI>
+<LI>GUI is now totally font sensitive. My old code assumed the 
+   font size to be &lt;= 12. But with Marco Nelissen's FontSelector
+   utility the user can specifiy font sizes up to 99. This is
+   handled correctly now.
+<LI>Included settings dialog which currently contains two settings:
+    <TABLE>
+    <TR>
+    <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+        "Don't hide deskbar replicant on close."
+    </TD>
+    <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+        Don't remove the deskbar replicant when the application is
+        closed.<BR>
+        The replicant remains visible. A double click on
+        it fires the taskmanager up again.
+    </TD>
+    </TR>
+    <TR>
+    <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+        "Hide system teams"
+    </TD>
+    <TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+        Hide the system teams (the blue ones) in the team view.
+    </TD>
+    </TR>
+    </TABLE>
+
+<LI>Entering a character in the team view, scrolls to teams that
+  start with that character.
+<LI>Added option to display the taskmanager in all workspaces.
+<LI>Removed a bug, which crashed the taskmanager after closing 
+  the "About TaskManager" window.
+<LI>The taskmanager includes a new improved blur code for the about
+  box. It features alpha blending, constant speed independent
+  of the size of the blur matrix and real-time hilbert dithering.
+  THANKS CHRIS!
+</UL>
+
+<H3>Version 0.0.6</H3>
+
+<UL CLASS="doc">
+<LI>Removed some memory leaks.
+<LI>Added "New Team" dialog which allows to launch
+  new teams. It remembers the last seven filenames
+  and supports drag'n'drop from the tracker.
+<LI>Added context menu to team view entries.
+<LI>Speeded up listview draw.
+<LI>Double click on entry in team view activates team.
+<LI>About window contains link to homepage.
+<LI>Added warning dialog if user tries to kill a team.
+  These dialogs can be disabled through a checkbox in
+  the warning alert. If the user disables the warning
+  for normal teams it's still displayed for system teams.
+<LI>Don't allow user to kill kernel team (which is impossible
+  anyway...)
+<LI>Display system teams in differnt color.
+<LI>Kill button is disabled, when no team is selected.
+<LI>Fixed assertion fail when window is displayed fullscreen
+  on very big screens (width&gt;=1600).
+<LI>Even less listview flickering.
+<LI>Team view display default icon if an application has no
+  icon stored in its resources.
+<LI>Uses ui_color() and tint_color() to get default UI colors.
+<LI>Double click on a column separator resizes the column to
+  fit the broadest content.
+<LI>Views in Usage tab are replicants. (You can drag them to the
+  Desktop! Simply activate "Show Replicants" in the Deskbar menu
+  and grap them on their handles. A dotted outline appears. Now you
+  can drop them on the desktop. To get rid of the desktop replicants
+  right-click on their handle and select "Delete")
+<LI>The Taskmanager automatically adds itself to the MIME database.
+</UL>
+
+<H3>Version 0.0.5</H3>
+
+<UL CLASS="doc">
+<LI>Listview displays sortmode (ascending, descending, no sort) with
+  a little arrow in the column header.
+<LI>Listview underlines prinary sort key and "underdotts" secundary
+  sort key.
+<LI>Saves and restores settings and location of the main window.
+<LI>Saves and restores column settings (sort mode, width, and display
+  order)
+</UL>
+
+<H3>Version 0.0.4</H3>
+
+<SPAN CLASS="doc">Internal release.</SPAN>
+
+<UL CLASS="doc">
+<LI>New icon
+<LI>New about box with blur effect.
+</UL>
+
+<H3>Version 0.0.3</H3>
+
+<UL CLASS="doc">
+<LI>Displays team information in multicolumn list view.
+<LI>Displays CPU usage as deskbar replicant. Doubleclick on the
+  deskbar replicant activates main window.
+<LI>Selectable update speeds
+</UL>
+
+<H3>Version 0.0.2</H3>
+
+<SPAN CLASS="doc">First public release.</SPAN>
+
+<UL CLASS="doc">
+<LI>Added team information tab with simple listview.
+</UL>
+
+<H3>Version 0.0.1</H3>
+
+<SPAN CLASS="doc">Internal Release.</SPAN>
+
+</FONT>
+
+<!-- Footer -->
+
+<BR>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="#top"><IMG ALT="Top" BORDER="0" WIDTH="11" HEIGHT="10" SRC="images/arrow_top.gif"></A>&nbsp;
+<A HREF="#top">Top</A>
+</P>
+</FONT>
+
+<HR>
+
+<CENTER>
+<FONT FACE="Helvetica" SIZE="-1">
+<I CLASS="footer">&copy; 2002 by <A HREF="mailto:tkrammer@3rd-evolution.de">Thomas Krammer</A></I>
+</FONT>
+</CENTER>
+
+</BODY>
+</HTML>

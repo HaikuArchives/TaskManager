@@ -1,0 +1,11 @@
+The files in source/ColumnListView are licensed under the terms noted 
+in the source files. Please note that this is a modified version of 
+the original ColumnListView code found in the "Santa's gift bag"
+package.
+
+The files in source/Splitter are licensed under the terms noted in 
+source/Splitter/readme.
+
+All other files are licensed unter the terms of the Apache License 
+Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+

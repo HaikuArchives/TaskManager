@@ -1,0 +1,24 @@
+/* Stylesheet for IE 3.x, 4.x and 5.x */
+
+a:link          { color:blue; text-decoration: none; }
+a:visited       { color:blue; text-decoration: none; }
+a:active        { color:blue; text-decoration: none; }
+a:hover         { color:blue; text-decoration: underline; }
+
+body            { background-color:#ffffff; }
+code            { font-family:monospace; }
+
+h1              { font-family:sans-serif; font-size:14pt; font-weight:bold; }
+h2              { font-family:sans-serif; font-size:12pt; font-weight:bold; }
+h3              { font-family:sans-serif; font-size:10pt; font-weight:bold; }
+
+.header         { font-family:sans-serif; font-size:10pt; font-weight:bold; }
+.footer         { font-family:sans-serif; font-size:8pt;  }
+
+.doc            { font-family:sans-serif; font-size:8pt;  }
+.classheader    { font-family:sans-serif; font-size:14pt; }
+.sectionheader  { font-family:sans-serif; font-size:10pt; }
+.linktext       { font-family:sans-serif; font-size:8pt;  }
+
+td.colheader    { background-color:#aaaaaa; font-family:sans-serif; font-size:8pt; vertical-align:top; }
+td.descr        { background-color:#dddddd; font-family:sans-serif; font-size:8pt; vertical-align:top; }

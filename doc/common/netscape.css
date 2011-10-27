@@ -1,0 +1,23 @@
+/* Stylesheet for Netscape 3.x and 4.x */
+
+a:link          { color:blue; }
+a:visited       { color:blue; }
+a:active        { color:blue; }
+
+body            { background-color:#ffffff; }
+code            { font-family:monospace; font-size:8pt; }
+
+h1              { font-family:arial, helvetica, sans-serif; font-size:14pt; font-weight:bold; }
+h2              { font-family:arial, helvetica, sans-serif; font-size:12pt; font-weight:bold; }
+h3              { font-family:arial, helvetica, sans-serif; font-size:10pt; font-weight:bold; }
+
+.header         { font-family:arial, helvetica, sans-serif; font-size:10pt; font-weight:bold; }
+.footer         { font-family:arial, helvetica, sans-serif; font-size:8pt;  }
+
+.doc            { font-family:arial, helvetica, sans-serif; font-size:8pt;  }
+.classheader    { font-family:arial, helvetica, sans-serif; font-size:14pt; }
+.sectionheader  { font-family:arial, helvetica, sans-serif; font-size:10pt; }
+.linktext       { font-family:arial, helvetica, sans-serif; font-size:8pt;  }
+
+td.colheader    { background-color:#aaaaaa; font-family:arial, helvetica, sans-serif; font-size:8pt; vertical-align:top; }
+td.descr        { background-color:#dddddd; font-family:arial, helvetica, sans-serif; font-size:8pt; vertical-align:top; }

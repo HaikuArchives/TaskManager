@@ -1,0 +1,463 @@
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" TYPE="text/css" HREF="common/opera.css">
+<SCRIPT LANGUAGE="JavaScript" SRC="common/stylesheet.js"></SCRIPT>
+<TITLE>Plugin Interface</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- Header -->
+
+<A NAME="top"></A>
+
+<TABLE WIDTH="100%" BORDER="0"> 
+<TR> 
+<TD COLSPAN="2" BGCOLOR="#FFCB00"> 
+<FONT FACE="Helvetica" SIZE="+1" CLASS="header">&nbsp;<I>Be TaskManager Documentation</I></FONT> 
+</TD> 
+</TR> 
+</TABLE>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="index.html"><IMG BORDER="0" ALT="Up" WIDTH="11" HEIGHT="6" SRC="images/arrow_up.gif"></A>&nbsp;
+<A HREF="index.html">Index</A>
+</P>
+</FONT>
+
+<HR>
+
+<!-- Content -->
+
+<FONT FACE="Helvetica">
+
+<H1>Plugin Interface</H1>
+
+<P CLASS="doc">
+The plugin interface of Be TaskManager allows you to define additional
+performance information, which can be added to the performance view.
+This information is represented in an hierarchical namespace. Objects
+in the namespace are called &quot;performance counter&quot;. These performane
+counter objects contain information needed to display the namespace in
+a hierachical listview. Each object also contains a &quot;data provider&quot;.
+This object is queryed to display your performance information inside
+the graph view. This object returns the current value of the performance 
+data.
+</P>
+<P CLASS="doc">
+The plugin API is inspired by COM. Therefore it seperates interface and 
+implementation. If you aren't familiar with COM: an interface is simply
+a pure abstract base class. Implementing an interface means to derive
+a class from the interface base class and implement all is pure virtual
+functions.
+</P>
+
+<H2>Warning</H2>
+
+<P CLASS="doc">This preliminary information and subject to change. I will ensure
+neigher binary nor source compablility with this interface. One of
+the next versions of Be TaskManager will include the final version
+of the plugin interface. Don't use this in production code.
+
+<H2>Interfaces</H2>
+<H3>IPerformanceCounter</H3>
+<P CLASS="doc">Implement this interface to create your own performance counter. A
+performance counter is simply an object in the hierarchical namespace.
+Through this interface the user (this means: Be TaskManager) can request
+the children of this performance counter and its name and path.</P>
+<P CLASS="doc">There are two name for a performance counter: &quot;internal name&quot; 
+and display name.
+The internal name is used to compose the path of
+the object and therefore has to be unique. The display name is displayed
+to the user and needs not to be unique. For example: if you want to display
+all teams in the namespace, you would use the name of the team as display name
+and the team id (because it's unique) as internal name. The internal name of
+a performance counter can be requested through InternalName(), the display
+name through Name().</P>
+<P CLASS="doc">ChildAt() and CountChildren() are normally implemented by calling
+the namespace's EnumChildren() and storing the returned children in a BList.
+The performance counter is responsible for deleting its children, when
+the object is destroyed.</P>
+<CODE>
+<PRE>class IPerformanceCounter
+{
+  public:
+    IPerformanceCounter() {}
+    virtual ~IPerformanceCounter() {}
+    
+    virtual int32 CountChildren() = 0;
+    virtual IPerformanceCounter *ChildAt(int32 i) = 0;
+    virtual IDataProvider *DataProvider() = 0;
+    virtual const char *Name() const = 0;
+    virtual const char *Path() const = 0;
+    virtual const char *InternalName() const = 0;
+};
+</PRE>
+</CODE>
+
+<P CLASS="doc">The following example shows a generic implementation of this interface:</P>
+<TABLE>
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+<PRE>class CPerformanceCounter : public IPerformanceCounter
+{
+    public:
+    CPerformanceCounter(IPerformanceCounterNamespace *counterNamespace, 
+        const char *parentPath, 
+        const char *name,
+        IDataProvider *dataProvider)
+    {
+        namesp = counterNamespace;
+
+        path = parentPath;
+    
+        if(path[path.Length()-1] != '/')
+            path.Append("/");
+        
+        path.Append(name);
+    
+        internalName = name;
+
+        provider = dataProvider;
+    
+        initChildren = true;
+    }
+        
+    virtual ~CPerformanceCounter()
+    {
+        IPerformanceCounter *counter;
+        
+        for(int i=0 ; (counter = dynamic_cast&lt;IPerformanceCounter *&gt;children.ItemAt(i)) != NULL ; i++)
+            delete counter;
+        
+        delete provider;
+    }
+
+    virtual int32 CountChildren()
+    {
+        InitChildren();
+        return children.CountItems();
+    }
+    
+    virtual IPerformanceCounter *ChildAt(int32 i)
+    {
+        InitChildren();
+        return reinterpret_cast&lt;IPerformanceCounter *&gt;(children.ItemAt(i));
+    }
+    
+    virtual IDataProvider *DataProvider() { return provider; }
+    virtual const char *Name() const { return InternalName(); }
+    virtual const char *InternalName() const { return internalName.String(); }
+    virtual const char *Path() const { return path.String(); }
+    
+    protected:
+    virtual void InitChildren()
+    {
+        if(initChildren) {
+            namesp->EnumChildren(path.String(), &amp;children);
+
+            initChildren = false;
+        }
+    }
+    
+    bool initChildren;
+    BString path;
+    BString internalName;
+    IDataProvider *provider;
+    IPerformanceCounterNamespace *namesp;
+    BList children;
+};
+</PRE>
+</CODE>
+</TD>
+</TR>
+</TABLE>
+
+<H3>IPerformanceCounterNamespace</H3>
+
+<P CLASS="doc">You don't need to implement this interface. It's implemented by the
+taskmanager and passed to you as parameter.</P>
+<P CLASS="doc">You normally don't call any other method than EnumChildren. This method
+iterates over all plugins and calls their EnumChildren function.
+See IPerformanceCounterPlugin for details.</P>
+
+<CODE>
+<PRE>class IPerformanceCounterNamespace
+{
+  public:
+    IPerformanceCounterNamespace() {}
+    virtual ~IPerformanceCounterNamespace() {}
+
+    virtual status_t EnumChildren(const char *path, BList *children) = 0;
+    virtual IDataProvider *DataProvider(const char *path) = 0;
+    virtual IPerformanceCounter *Root() = 0;
+};
+</PRE>
+</CODE>
+
+<H3>IPerformanceCounterPlugin</H3>
+
+<P CLASS="doc">This interface allows you to add additional objects to the namespace.
+By implementing the EnumChildren function you can add new nodes to 
+the namespace.</P>
+
+<CODE>
+<PRE>class IPerformanceCounterPlugin
+{
+  public:
+    IPerformanceCounterPlugin() {}
+    virtual ~IPerformanceCounterPlugin() {}
+
+    virtual status_t EnumChildren(IPerformanceCounterNamespace *counterNamespace, const char *path, BList *children) = 0;
+};
+</PRE>
+</CODE>
+
+<P CLASS="doc">This example implementation adds two new nodes to the namespace. It uses
+the generic implementation of IPerformanceCounter shown above:
+</P>
+<TABLE>
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+<PRE>status_t CMyPlugin::EnumChildren(
+    IPerformanceCounterNamespace *counterNamespace, 
+    const char *path, 
+    BList *children)
+{
+    if(strcmp(path, "/") == 0) {
+        // Root
+        children->AddItem(new CPerformanceCounter(counterNamespace, path, "My Plugin", NULL));
+    } else if(strcmp(path, "/My Plugin") == 0) {
+        children->AddItem(
+            new CPerformanceCounter(counterNamespace, path, "My Plugin Counter", 
+                new CMyDataProvider()));
+    }
+    
+    return B_OK;
+}
+</PRE>
+</CODE>
+</TD>
+</TR>
+</TABLE>
+
+<H3>IDataProvider</H3>
+
+<P CLASS="doc">
+Every time the current value of your performance information object is needed
+Be TaskManager calls the function IDataProvider::GetNextValue(). This value
+is displayed to the user in the graph view. The implemenation of GetNextValue()
+is very simple. Simply set the passed reference ('value') to the current value.
+Return true if the call was successful, false if it wasn't. If you return
+false you should set value to 0.0 before you return.</P>
+<P CLASS="doc">The function Clone() returns an exact clone of the object. Equal() compares
+two data providers. If they are equal it returns true. <B>Note:</B> Don't simply
+compare pointers the when you implement this function. First try to cast 
+the passed object to your implementation class (using dynamic_cast).
+If this succeeds you should compare all members.</P>
+
+<CODE>
+<PRE>class IDataProvider
+{
+   public:
+    IDataProvider() {}
+    virtual ~IDataProvider() {}
+
+    virtual bool GetNextValue(float &value) = 0;
+    virtual uint32 Flags() = 0;
+    virtual uint32 Unit() = 0;
+    virtual BString DisplayName() = 0;
+    
+    virtual IDataProvider *Clone() = 0;
+    virtual bool Equal(IDataProvider *other) = 0;
+    
+    enum enumFlags {
+        DP_TYPE_ABSOLUTE = 1,
+        DP_TYPE_RELATIVE = 2,
+        DP_TYPE_PERCENT  = 4,
+        DT_TYPE_HIDDEN   = 8,
+    };
+
+    enum enumUnit {
+        DP_UNIT_NONE,
+        DP_UNIT_BYTE,
+        DP_UNIT_KILOBYTE,
+        DP_UNIT_MEGABYTE,
+        DP_UNIT_PAGES,
+        DP_UNIT_RPM,
+        DP_UNIT_DEGREES,
+        DP_UNIT_VOLT,
+        DP_UNIT_WATT,
+        DP_UNIT_AMPERE,
+    };
+};
+</PRE>
+</CODE>
+
+<P CLASS="doc">Flags:</P>
+
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">DP_TYPE_ABSOLUTE</TD>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+    The value returned by GetNextValue() is used &quot;as-is&quot;</TD>
+</TR>
+<TR>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">DP_TYPE_RELATIVE</TD>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+    The returned value is divided by the time between the
+    the last two calls of GetNextValue() in milliseconds.
+</TD>
+</TR>
+<TR>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">DP_TYPE_PERCENT</TD>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">
+    The returned value is multiplyed by 100, before it's displayed to
+    the user. If the result is out of the range [0,100] it is restricted
+    to that range.
+</TD>
+</TR>
+<TR>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">DT_TYPE_HIDDEN</TD>
+<TD CLASS="descr" BGCOLOR="#DDDDDD" VALIGN="top">Currently unused.</TD>
+</TR>
+</TABLE>
+
+<P CLASS="doc">The meaning of the unit value should be clear. The returned value is
+currently only used to display the correct unit symbol. The only exception
+is DP_UNIT_PAGES. If that unit is used the returned value is converted to kilobytes
+(multiplyed by B_PAGE_SIZE/1024) before it is displayed to the user.
+</P>
+
+<H2>Plugin Entry Points</H2>
+
+<P CLASS="doc">
+A plugin is implemented as shared library. Be TaskManager loads all shared
+libraries in the &quot;add_ons&quot; directory during startup. Then
+it loads the exported function &quot;CreateCounterPlugin&quot; and calls it.
+That function must be declared like this:
+</P>
+
+<CODE>
+extern "C" status_t __declspec(dllexport) CreateCounterPlugin(IPerformanceCounterPlugin **plugin);
+</CODE>
+
+<P CLASS="doc">Example implementation:</P>
+<TABLE>
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+<PRE>status_t __declspec(dllexport) CreateCounterPlugin(IPerformanceCounterPlugin **plugin)
+{
+    *plugin = new CMyPlugin();
+
+    return (*plugin) != NULL ? B_OK : B_NO_MEMORY;
+}
+</PRE>
+</CODE>
+</TD>
+</TR>
+</TABLE>
+
+<H2>Archivable Data Provider</H2>
+
+<P CLASS="doc">If you implement IDataProvider you normally should derive the implementation
+class from BArchivable. This is necessary because the data provider objects
+get archived, when the view is replicated. If your data provider isn't derived
+from BArchivable, it isn't displayed in the replicant.</P>
+<P CLASS="doc">To implement an archivable data provider follow the following steps:</P>
+<OL CLASS="doc">
+<LI>Assing a mime type to your shared library. This is done by adding a
+resource file to your executable. That resource file contains the
+mime type of your shared libraray.
+<LI>Derive your implementation class from IDataProvider and BArchivable.
+<LI>Export your implementation class.
+<LI>Implement the static function Instantiate() and the virtual 
+function Archive() for your implementation class. See 
+<A HREF="file:///boot/beos/documentation/Be%20Book/The%20Support%20Kit/Archivable.html">BArchivable</A> in the
+BeBook for details.
+</OL>
+
+<P CLASS="doc">Example implementation:</P>
+<TABLE>
+<TR>
+<TD BGCOLOR="#DDDDDD">
+<CODE>
+<PRE>class _EXPORT CMyDataProvider : public IDataProvider, public BArchivable
+{
+    public:
+    CMyDataProvider()
+    {
+        someData = 123;
+    }
+    
+    CMyDataProvider(BMessage *archive) :
+        BArchivable(archive)
+    {
+        // load data from archive
+        someData = archive->FindInt32("someData");
+    }
+    
+    virtual ~CMyDataProvider() {}
+    
+    virtual status_t Archive(BMessage *archive, bool deep) const
+    {
+        BArchivable::Archive(archive, deep);
+        
+        archive->AddInt32("someData", someData);
+        archive->AddString("add_on", "application/my_addon");
+    }
+    
+    static BArchivable *Instantiate(BMessage *archive)
+    {
+        if(!validate_instantiation(archive, "CMyDataProvider"))
+            return NULL;
+
+        return new CMyDataProvider(archive);
+    }
+    
+    protected:
+    int32 someData;
+    
+    // Implementation of IDataProvider
+    // ...
+};
+</PRE>
+</CODE>
+</TD>
+</TR>
+</TABLE>
+</P>
+
+<H2>More Information</H2>
+
+<P CLASS="doc">If you need more information about how to write plugins simply write
+me an <A HREF="mailto:tkrammer@3rd-evolution.de">email</A>. 
+I will help you asap.
+</P>
+
+</FONT>
+
+<!-- Footer -->
+
+<BR>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="#top"><IMG ALT="Top" BORDER="0" WIDTH="11" HEIGHT="10" SRC="images/arrow_top.gif"></A>&nbsp;
+<A HREF="#top">Top</A>
+</P>
+</FONT>
+
+<HR>
+
+<CENTER>
+<FONT FACE="Helvetica" SIZE="-1">
+<I CLASS="footer">&copy; 2002 by <A HREF="mailto:tkrammer@3rd-evolution.de">Thomas Krammer</A></I>
+</FONT>
+</CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" TYPE="text/css" HREF="common/opera.css">
+<SCRIPT LANGUAGE="JavaScript" SRC="common/stylesheet.js"></SCRIPT>
+<TITLE>Settings</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- Header -->
+
+<A NAME="top"></A>
+
+<TABLE WIDTH="100%" BORDER="0"> 
+<TR> 
+<TD COLSPAN="2" BGCOLOR="#FFCB00"> 
+<FONT FACE="Helvetica" SIZE="+1" CLASS="header">&nbsp;<I>Be TaskManager Documentation</I></FONT> 
+</TD> 
+</TR> 
+</TABLE>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="index.html"><IMG BORDER="0" ALT="Up" WIDTH="11" HEIGHT="6" SRC="images/arrow_up.gif"></A>&nbsp;
+<A HREF="index.html">Index</A>
+</P>
+</FONT>
+
+<HR>
+
+<!-- Content -->
+
+<FONT FACE="Helvetica">
+
+<H1>Settings</H1>
+
+<P CLASS="doc">Be TaskManager stores the current state of almost every GUI element
+(e.g. postion of the main window, width of a column in the teams tab etc.)
+in its <A HREF="#settings_file">settings file</A>.
+This means you don't have to resize or move the window to your preferred
+position every time you start the program.</P>
+<P CLASS="doc">All settings are automatically saved, when you close the main window.</P>
+
+<A NAME="settings_dialog"></A>
+<H2>The Settings Dialog</H2>
+
+<P CLASS="doc">To open the settings dialog select &quot;Settings...&quot; menu entry in the
+&quot;View&quot; menu.</P>
+
+<IMG WIDTH="345" HEIGHT="338" SRC="images/taskmgr_settings.gif"><BR>
+
+<P CLASS="doc">The settings dialog provides the following options:</P>
+
+<DL CLASS="doc">
+<DT><B>Don't hide deskbar replicant on close</B></DT>
+<DD>
+    Normally the deskbar replicant is removed from the deskbar, when 
+    you close Be TaskManager. If you enable this setting, the deskbar
+    replicant is available, even when you close Be TaskManger. A double
+    click on the deskbar replicant re-opens the main window.
+</DD>
+<DT><B>Hide system teams</B></DT>
+<DD>Hides the system teams in the <A HREF="tabs.html#teams_tab">teams tab</A>.</DD>
+<DT><B>Columns</B></DT>
+<DD>Lets you select which columns are displayed in the <A HREF="tabs.html#teams_tab">teams tab</A>.</DD>
+</DL>
+
+<H2>Menu Settings</H2>
+
+<P CLASS="doc">All settings which aren't part of the settings dialog are change through
+entries in the view menu.</P>
+
+<IMG  WIDTH="241" HEIGHT="118" SRC="images/taskmgr_view_menu.gif">
+
+<DL CLASS="doc">
+<DT><B>UpdateSpeed</B></DT>
+<DD>
+Changes the update speed for all views inside the main window.
+All replicant views aren't affected by this setting. Following settings
+are available:
+<TABLE CELLSPACING="2" CELLPADDING="2" BORDER="0">
+<TR><TD BGCOLOR="#DDDDDD" CLASS="descr">Slow</TD>
+<TD BGCOLOR="#DDDDDD" CLASS="descr">One update every 2 seconds.</TD></TR>
+<TR><TD BGCOLOR="#DDDDDD" CLASS="descr">Normal</TD>
+<TD BGCOLOR="#DDDDDD" CLASS="descr">One update every 1 second.</TD></TR>
+<TR><TD BGCOLOR="#DDDDDD" CLASS="descr">Fast</TD>
+<TD BGCOLOR="#DDDDDD" CLASS="descr">One update every 0.5 seconds.</TD></TR>
+</TABLE>
+</DD>
+<DT><B>Show in Deskbar</B></DT>
+<DD>If this menu entry is marked, the deskbar replicant is displayed.</DD>
+<DT><B>Show in all Workspaces</B></DT>
+<DD>If this menu entry is marked Be TaskManager is displayed in every
+Workspace, not only the one it was opened in.</DD>
+</DL>
+
+<A NAME="settings_file"></A>
+<H2>The Settings File</H2>
+
+<P CLASS="doc">The settings are stored in /boot/home/config/settings/TaskMgr_settings.
+If you delete this file the default settings are restored.
+</P>
+
+</FONT>
+
+<!-- Footer -->
+
+<BR>
+
+<FONT FACE="Helvetica" SIZE="-1">
+<P ALIGN="right" CLASS="linktext">
+<A HREF="#top"><IMG ALT="Top" BORDER="0" WIDTH="11" HEIGHT="10" SRC="images/arrow_top.gif"></A>&nbsp;
+<A HREF="#top">Top</A>
+</P>
+</FONT>
+
+<HR>
+
+<CENTER>
+<FONT FACE="Helvetica" SIZE="-1">
+<I CLASS="footer">&copy; 2002 by <A HREF="mailto:tkrammer@3rd-evolution.de">Thomas Krammer</A></I>
+</FONT>
+</CENTER>
+
+</BODY>
+</HTML>

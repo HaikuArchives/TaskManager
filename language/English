@@ -1,0 +1,141 @@
+UsageTab.Label = Usage
+TeamsTab.Label = Teams
+PerformanceTab.Label = Performance
+
+FileMenu = File
+FileMenu.NewTeam = New Team...
+FileMenu.About = About TaskManager...
+FileMenu.Quit = Quit
+
+ViewMenu = View
+ViewMenu.UpdateSpeed = Update Speed
+ViewMenu.UpdateSpeed.Slow = Slow
+ViewMenu.UpdateSpeed.Normal = Normal
+ViewMenu.UpdateSpeed.Fast = Fast
+ViewMenu.InDeskBar = Show in Deskbar
+ViewMenu.InAllWorkspaces = Show in all Workspaces
+ViewMenu.Settings = Settings...
+
+CPULedBox.Label = CPU Usage
+CPUGraphBox.Label = CPU Usage Graph
+MemLedBox.Label = Memory Usage
+MemGraphBox.Label = Memory Usage Graph
+
+ColumnInfo.Name.Label	= Name
+ColumnInfo.TeamId.Label	= Team-ID
+ColumnInfo.ThreadCount.Label	= Thread Count
+ColumnInfo.AreaCount.Label	= Area Count
+ColumnInfo.ImageCount.Label	= Image Count
+ColumnInfo.CPUUsage.Label	= CPU Usage
+ColumnInfo.MemoryUsage.Label = Memory Usage (%)
+ColumnInfo.MemoryUsageAbs.Label = Memory Usage (absolute)
+ColumnInfo.Directory.Label = Directory
+
+DialogBase.OkButton.Label = OK
+DialogBase.CancelButton.Label = Cancel
+DialogBase.HelpButton.Label = Help
+
+CreateTeamWindow.Title = New Team
+MRUSelectFileView.PathControl.Label = Command:
+MRUSelectFileView.BrowseMenuItem.Label = Browse...
+
+SettingsWindow.Title = Settings
+SettingsWindow.DontHideCheckBox.Label = Don't hide deskbar replicant on close
+SettingsWindow.HideSystemTeamsCheckBox.Label = Hide system teams
+SettingsWindow.ColumnsGroup.Label = Columns
+
+TeamView.ContextMenu.Activate.Label = Activate
+TeamView.ContextMenu.Quit.Label = Quit
+TeamView.ContextMenu.Kill.Label = Kill
+TeamView.ContextMenu.AddToPerfTab.Label = Add to Performance Tab...
+TeamView.ContextMenu.Priority.Label = Priority
+TeamView.ContextMenu.Priority.Low.Label = Low Priority
+TeamView.ContextMenu.Priority.Normal.Label = Normal Priority
+TeamView.ContextMenu.Priority.Display.Label = Display Priority
+TeamView.ContextMenu.Priority.UrgentDisplay.Label = Urgent Display Priority
+TeamView.ContextMenu.Priority.Realtime.Label = Realtime Priority
+TeamView.KillButton.Label = Kill
+TeamView.SelectTeamButton.Label = X-Kill...
+
+TeamView.Warning.ShowAgain = Show this dialog again
+TeamView.Warning.CanKillKernel = You can't kill the kernel team!
+TeamView.Warning.BeOSTeam = The team '\0' is a component of the BeOS.\n\nKill the team anyway??
+TeamView.Warning.NormalTeam = Are you sure that you want to kill the team '\0'??
+TeamView.Warning.ControlledByDebugger = The team '\0' is controlled by a debugger.\nDo you want to kill the debugger??
+TeamView.Warning.NotResponding = The application '\0' isn't responding.
+TeamView.Warning.KillFailed = Can't kill team '\0'.\nReason: \1
+TeamView.Warnung.KillButton.Label = Kill
+TeamView.Warnung.RetryButton.Label = Retry
+
+PerformanceAddView.ChangeButton.Label = Change
+PerformanceAddView.DoneButton.Label = Done
+PerformanceAddView.AddButton.Label = Add
+
+PerformanceAddView.ColorSelector.Label = Color:
+PerformanceAddView.ScaleSelector.Label = Scale:
+
+PerformanceAddView.ColorSelectDialog.Title = Color
+PerformanceAddView.ErrorMessage.ScriptRequestFailed = Script request failed.\nReason: \0 (\1)
+
+PerformanceAddView.ColorList.Automatic.Label = Automatic
+PerformanceAddView.ColorList.Select.Label = Select...
+PerformanceAddView.ColorList.Red.Label = Red
+PerformanceAddView.ColorList.Green.Label = Green
+PerformanceAddView.ColorList.Blue.Label = Blue
+PerformanceAddView.ColorList.Magenta.Label = Magenta
+PerformanceAddView.ColorList.Cyan.Label	= Cyan
+PerformanceAddView.ColorList.Yellow.Label = Yellow
+PerformanceAddView.ColorList.DarkRed.Label = Dark red
+PerformanceAddView.ColorList.DarkGreen.Label = Dark green
+PerformanceAddView.ColorList.DarkBlue.Label = Dark blue
+PerformanceAddView.ColorList.LightRed.Label = Light red
+PerformanceAddView.ColorList.LightGreen.Label = Light green
+PerformanceAddView.ColorList.LightBlue.Label = Light blue
+PerformanceAddView.ColorList.Brown.Label = Brown
+
+PerformanceAddWindow.Title = Add
+
+PerformanceView.AddButton.Label	= Add...
+PerformanceView.RemoveButton.Label = Remove
+
+OverlayGraphView.Unit.Byte = bytes
+OverlayGraphView.Unit.KiloByte = K
+OverlayGraphView.Unit.MegaByte = M
+OverlayGraphView.Unit.RPM = RPM
+OverlayGraphView.Unit.Degress = °
+OverlayGraphView.Unit.Volt = V
+OverlayGraphView.Unit.Watt = W
+OverlayGraphView.Unit.Ampere = A
+
+OverlayGraphView.Current = cur:
+OverlayGraphView.Average = avg:
+OverlayGraphView.Maximum = max:
+
+OverlayGraphView.ContextMenu.Overlay = Overlay
+
+CPUGraphView.ContextMenu.CPU = CPU
+CPUGraphView.ContextMenu.CPU.Format = CPU %ld
+CPUGraphView.ContextMenu.CPU.Average = Average of all CPUs
+
+DeskbarLedView.Tooltip.Format = CPU Usage: %.0f %%
+DeskbarLedView.ContextMenu.ShowTaskManager = Show TaskManager
+DeskbarLedView.ContextMenu.HideReplicant = Hide Replicant
+
+AboutWindow.Title = About TaskManager
+
+CommandLineParser.ErrorMessage.FileNotFound = File '\0' not found.
+CommandLineParser.ErrorMessage.FileOnVFS = Can't launch team (application image is on virtual file system).
+CommandLineParser.ErrorMessage.LaunchFailed = Can't launch team.\nReason: \0
+
+CounterNamespace.ErrorMessage.LoadDefaultFailed = The default plugin '\0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '\1'.
+CounterNamespace.ErrorMessage.EntryPointFailed = CreateCounterPlugin() failed ('\0')\nReason: \1
+CounterNamespace.ErrorMessage.EntryPointNotFound = Can't find CreateCounterPlugin entry point in '\0'\nReason: \1
+CounterNamespace.ErrorMessage.LoadFailed = Can't load addon '\0'\nReason: \1
+
+OpenURL.ErrorMessage.OpenBrowserFailed = Can't open default browser.\nReason: \0
+
+MainWindow.ErrorMessage.ShowReplicantFailed = Can't add deskbar replicant.\nReason: \0
+MainWindow.ErrorMessage.HideReplicantFailed = Can't remove deskbar replicant.\nReason: \0
+
+SelectTeamWindow.Title = Select Team
+SelectTeamWindowView.HintText = Drag the crosshair on a window. This will kill the according application.
