@@ -21,14 +21,12 @@
 
 #include "Tab.h"
 #include "FlickerFreeTabView.h"
-#include "LocalizationHelper.h"
 #include "GraphView.h"
 #include "LedView.h"
 #include "UsageView.h"
 #include "PerformanceView.h"
 #include "IconStringItem.h"
 #include "ProcessView.h"
-#include "LocalizationHelper.h"
 #include "SettingsWindow.h"
 #include "TaskManager.h"
 #include "CreateTeamWindow.h"
@@ -36,6 +34,11 @@
 #include "DeskbarLedView.h"
 
 #include "MainWindow.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "MainWindow"
 
 // ====== globals ======
 
@@ -54,17 +57,17 @@ CMainWindowView::CMainWindowView(BRect rect) :
 	BTab *usageTab = new CBugFixedTab();
 	
 	tabView->AddTab(new CUsageView(tabRect), usageTab);
-	usageTab->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("UsageTab.Label"));
+	usageTab->SetLabel(B_TRANSLATE("Usage"));
 
 	BTab *teamTab = new CBugFixedTab();
 	
 	tabView->AddTab(new CProcessView(tabRect), teamTab);
-	teamTab->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("TeamsTab.Label"));
+	teamTab->SetLabel(B_TRANSLATE("Teams"));
 
 	BTab *perfTab = new CBugFixedTab();
 	
 	tabView->AddTab(new CPerformanceView(tabRect), perfTab);
-	perfTab->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("PerformanceTab.Label"));
+	perfTab->SetLabel(B_TRANSLATE("Performance"));
 
 	// This code ensures that the tabbed views are added to the view hierachry
 	// before there're first selected.
@@ -109,26 +112,26 @@ CMainWindow::CMainWindow(BRect rect, bigtime_t updateSpeed, bool showReplicant, 
 {
 	BMenuBar *menuBar = new BMenuBar(BRect(0,0,0,0), NULL);
 		
-	BMenu *fileSubMenu        = new BMenu(CLocalizationHelper::GetDefaultInstance()->String("FileMenu"));
-	BMenu *viewSubMenu        = new BMenu(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu"));
-	BMenu *updateSpeedSubMenu = new BMenu(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed"));
+	BMenu *fileSubMenu        = new BMenu(B_TRANSLATE("File"));
+	BMenu *viewSubMenu        = new BMenu(B_TRANSLATE("View"));
+	BMenu *updateSpeedSubMenu = new BMenu(B_TRANSLATE("Update Speed"));
 	
 	fileSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("FileMenu.NewTeam"), new BMessage(MSG_CREATE_TEAM), 'N'));
+		new BMenuItem(B_TRANSLATE("NewTeam..."), new BMessage(MSG_CREATE_TEAM), 'N'));
 	fileSubMenu->AddSeparatorItem();
 	fileSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("FileMenu.About"), new BMessage(B_ABOUT_REQUESTED)));
+		new BMenuItem(B_TRANSLATE("About"), new BMessage(B_ABOUT_REQUESTED)));
 	fileSubMenu->ItemAt(2)->SetTarget(be_app_messenger);
 	fileSubMenu->AddSeparatorItem();
 	fileSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("FileMenu.Quit"), new BMessage(B_QUIT_REQUESTED), 'Q'));
+		new BMenuItem(B_TRANSLATE("Quit"), new BMessage(B_QUIT_REQUESTED), 'Q'));
 	
 	updateSpeedSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed.Slow"), new BMessage(MSG_SLOW_UPDATE)));
+		new BMenuItem(B_TRANSLATE("Slow"), new BMessage(MSG_SLOW_UPDATE)));
 	updateSpeedSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed.Normal"), new BMessage(MSG_NORMAL_UPDATE)));
+		new BMenuItem(B_TRANSLATE("Normal"), new BMessage(MSG_NORMAL_UPDATE)));
 	updateSpeedSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed.Fast"), new BMessage(MSG_FAST_UPDATE)));
+		new BMenuItem(B_TRANSLATE("Fast"), new BMessage(MSG_FAST_UPDATE)));
 
 	if(PulseRate() == SLOW_PULSE_RATE) {
 		updateSpeedSubMenu->ItemAt(0)->SetMarked(true);
@@ -147,12 +150,12 @@ CMainWindow::CMainWindow(BRect rect, bigtime_t updateSpeed, bool showReplicant, 
 	viewSubMenu->AddItem(updateSpeedSubMenu);
 	viewSubMenu->AddSeparatorItem();
 	viewSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.InDeskBar"), new BMessage(MSG_SHOW_REPLICANT)));
+		new BMenuItem(B_TRANSLATE("Show in Deskbar"), new BMessage(MSG_SHOW_REPLICANT)));
 	viewSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.InAllWorkspaces"), new BMessage(MSG_SHOW_IN_ALL_WORKSPACES)));
+		new BMenuItem(B_TRANSLATE("Show in all Workspaces"), new BMessage(MSG_SHOW_IN_ALL_WORKSPACES)));
 	viewSubMenu->AddSeparatorItem();
 	viewSubMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.Settings"), new BMessage(MSG_SHOW_SETTINGS_WINDOW)));
+		new BMenuItem(B_TRANSLATE("Settings..."), new BMessage(MSG_SHOW_SETTINGS_WINDOW)));
 	
 	if(showReplicant)
 		ShowDeskbarReplicant();
@@ -275,7 +278,7 @@ status_t CMainWindow::ShowDeskbarReplicant(bool showAlert)
 	#endif
 	
 	if(err != B_OK && showAlert) {
-		CLocalizedString message("MainWindow.ErrorMessage.ShowReplicantFailed");
+		BString message (B_TRANSLATE("Can't add deskbar replicant.\nReason: \0"));
 		
 		message << strerror(err);
 	
@@ -295,7 +298,7 @@ status_t CMainWindow::HideDeskbarReplicant(bool showAlert)
 	status_t err;
 		
 	if((err = deskBar.RemoveItem(DESKBAR_REPLICANT_ID)) != B_OK && showAlert) {
-		CLocalizedString message("MainWindow.ErrorMessage.HideReplicantFailed");
+		BString message (B_TRANSLATE("Can't remove deskbar replicant.\nReason: \0"));
 		
 		message << strerror(err);
 	

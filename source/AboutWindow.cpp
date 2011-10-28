@@ -17,7 +17,6 @@
 
 #include "pch.h"
 #include "commondefines.h"
-#include "LocalizationHelper.h"
 #ifdef _TMGR_FULLBLUR
   #include "ABlur.h"
 #else
@@ -26,11 +25,16 @@
 #include "AboutView.h"
 #include "AboutWindow.h"
 
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "AboutWindow"
+
 // protected constructor
 CAboutWindow::CAboutWindow() : 
 	CSingletonWindow(
 		BRect(0,0,50,50), 
-		CLocalizationHelper::GetDefaultInstance()->String("AboutWindow.Title"), 
+		B_TRANSLATE("About TaskManager"), 
 		B_TITLED_WINDOW, 
 		B_NOT_ZOOMABLE | B_NOT_MINIMIZABLE | B_NOT_RESIZABLE | B_ASYNCHRONOUS_CONTROLS, 
 		B_CURRENT_WORKSPACE)

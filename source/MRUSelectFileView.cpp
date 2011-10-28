@@ -17,13 +17,17 @@
 
 #include "pch.h"
 #include "ArrowButton.h"
-#include "LocalizationHelper.h"
 #include "FileGlyphMenuItem.h"
 #include "Preferences.h"
 #include "CommandLineParser.h"
 #include "MRUSelectFileView.h"
 
 #include "my_assert.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "MRUSelectFileView"
 
 // message data identifier
 const char * const MESSAGE_DATA_ID_MRU_PATH	 = "MRU:Path";
@@ -62,7 +66,7 @@ CMRUSelectFileView::CMRUSelectFileView(BRect frame,
 		EnableOkButton(false);
 	}
 
-	const char *pathControlTitle = CLocalizationHelper::GetDefaultInstance()->String("MRUSelectFileView.PathControl.Label");
+	const char *pathControlTitle = B_TRANSLATE("Command:");
 
 	pathControl = new BTextControl(dummyPos, "PathCtrl", pathControlTitle, initialText, 
 										NULL, B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT);
@@ -181,7 +185,7 @@ void CMRUSelectFileView::DisplayMRUList()
 	
 	// add "Browse..." entry to menu
 	BMenuItem *browseMenuItem = new BMenuItem(
-		CLocalizationHelper::GetDefaultInstance()->String("MRUSelectFileView.BrowseMenuItem.Label"), 
+		B_TRANSLATE("Browse..."), 
 		new BMessage(MSG_BROWSE));
 		
 	browseMenuItem->SetTarget(this);

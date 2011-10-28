@@ -16,7 +16,6 @@
  */
 
 #include "pch.h"
-#include "LocalizationHelper.h"
 #include "ProcessView.h"
 #include "PrefCheckBox.h"
 #include "SettingsView.h"
@@ -24,11 +23,16 @@
 #include "ColumnListViewEx.h"
 #include "SettingsWindow.h"
 
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "SettingsWindow"
+
 // protected contructor
 CSettingsWindow::CSettingsWindow() :
 	CSingletonWindow(
 		BRect(0,0,50,50),
-		CLocalizationHelper::GetDefaultInstance()->String("SettingsWindow.Title"),
+		B_TRANSLATE("Settings"),
 		B_TITLED_WINDOW,
 		B_NOT_ZOOMABLE | B_NOT_MINIMIZABLE | B_NOT_RESIZABLE | B_ASYNCHRONOUS_CONTROLS,
 		B_CURRENT_WORKSPACE)
@@ -44,7 +48,7 @@ CSettingsWindow::CSettingsWindow() :
 	miscGroup->AddChild(new CPrefCheckBox(
 								dummy, 
 								PREF_HIDE_DESKBAR_REPLICANT_ON_CLOSE, 
-								CLocalizationHelper::GetDefaultInstance()->String("SettingsWindow.DontHideCheckBox.Label"), 
+								B_TRANSLATE("Don't hide deskbar replicant on close"), 
 								NULL,		// message
 								true,		// default value, if pref setting is not present
 								true		// invert value (also default value!)
@@ -63,7 +67,7 @@ CSettingsWindow::CSettingsWindow() :
 								dummy,
 								hideSystemTeamsProp,
 								PREF_HIDE_SYSTEM_TEAMS,
-								CLocalizationHelper::GetDefaultInstance()->String("SettingsWindow.HideSystemTeamsCheckBox.Label"),
+								B_TRANSLATE("Hide system teams"),
 								NULL,		// message
 								false,		// default value
 								false		// invert value
@@ -72,7 +76,7 @@ CSettingsWindow::CSettingsWindow() :
 	settingsView->InternalView()->AddChild(miscGroup);
 	
 	CSettingsGroup *teamColumnGroup = new CSettingsGroup(dummy, "Team Column Settings", 2);
-	teamColumnGroup->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("SettingsWindow.ColumnsGroup.Label"));
+	teamColumnGroup->SetLabel(B_TRANSLATE("Columns"));
 	
 	for(column_info *column=team_view_colomn_info ; column->key[0] != 0 ; column++) {
 		char prefName[255];
@@ -93,7 +97,7 @@ CSettingsWindow::CSettingsWindow() :
 		
 		sprintf(prefName, "%s%ld", PREF_COLUMN_VISIBLE_PREFIX, column->index);
 	
-		const char *title = CLocalizationHelper::GetDefaultInstance()->String(column->key);
+		const char *title = BString(column->key);
 	
 		teamColumnGroup->AddChild(new CScriptingPrefCheckBox(
 										dummy,						// frame

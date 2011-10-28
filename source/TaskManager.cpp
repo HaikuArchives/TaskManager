@@ -20,7 +20,6 @@
 #include "version.h"
 #include "my_assert.h"
 #include "CounterNamespaceImpl.h"
-#include "LocalizationHelper.h"
 #include "InstallationDialog.h"
 #include "AboutWindow.h"
 #include "MainWindow.h"
@@ -29,6 +28,11 @@
 #include "TaskManager.h"
 
 #include "TeamModel.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "TaskManager"
 
 // ====== globals ======
 

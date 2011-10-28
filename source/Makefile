@@ -44,7 +44,7 @@ SRCS=	AboutView.cpp              CreateTeamWindow.cpp    PerformanceView.cpp \
 		Color.cpp                  InstallationDialog.cpp  Singleton.cpp \
 		ColorSelectDialog.cpp      LedView.cpp             SystemInfo.cpp \
 		ColorSelectListItem.cpp    ListViewEx.cpp          TaskManager.cpp \
-		ColorSelectMenuItem.cpp    LocalizationHelper.cpp  TaskManagerPrefs.cpp \
+		ColorSelectMenuItem.cpp    TaskManagerPrefs.cpp \
 		ColumnListViewEx.cpp       MainWindow.cpp          TeamModel.cpp \
 		CommandLineParser.cpp      MenuField.cpp           Tooltip.cpp \
 		common.cpp                 MRUSelectFileView.cpp   URLTextView.cpp \

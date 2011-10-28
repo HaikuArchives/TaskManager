@@ -19,8 +19,12 @@
 #include "alert.h"
 #include "help.h"
 #include "my_assert.h"
-#include "LocalizationHelper.h"
 #include "CounterNamespaceImpl.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "CounterNamespaceImpl"
 
 // ==== globals ====
 
@@ -98,7 +102,7 @@ CPerformanceCounterNamespace::CPerformanceCounterNamespace()
 	
 	if(!defaultPluginLoaded) {
 		// default plugin couldn't be loaded. Display warning.
-		CLocalizedString message("CounterNamespace.ErrorMessage.LoadDefaultFailed");
+		BString message (B_TRANSLATE("The default plugin '\0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '\1'."));
 	
 		message << defaultPluginName
 				<< addonDirPath.Path();
@@ -169,7 +173,7 @@ IPerformanceCounter *CPerformanceCounterNamespace::FindObject(IPerformanceCounte
 
 CPerformanceCounterNamespace::CPlugin::CPlugin(const char *path)
 {
-	CLocalizedString message;
+	BString message;
 	initStatus = B_ERROR;
 
 	addonImage = load_add_on(path);
@@ -181,7 +185,7 @@ CPerformanceCounterNamespace::CPlugin::CPlugin(const char *path)
 			B_SYMBOL_TYPE_TEXT, (void **)&entryPoint)) == B_OK) {
 			// entry point located.
 			if((initStatus = entryPoint(&plugin)) != B_OK) {
-				message.Load("CounterNamespace.ErrorMessage.EntryPointFailed");
+				message << B_TRANSLATE("CreateCounterPlugin() failed ('\0')\nReason: \1");
 			
 				message << path 
 						<< strerror(initStatus);
@@ -191,7 +195,7 @@ CPerformanceCounterNamespace::CPlugin::CPlugin(const char *path)
 				// successfully loaded plugin.
 			}
 		} else {
-			message.Load("CounterNamespace.ErrorMessage.EntryPointNotFound");
+			message << B_TRANSLATE("Can't find CreateCounterPlugin entry point in '\0'\nReason: \1");
 		
 			message << path
 					<< strerror(initStatus);
@@ -202,7 +206,7 @@ CPerformanceCounterNamespace::CPlugin::CPlugin(const char *path)
 		// Negative values are a BeOS error codes.
 		initStatus = addonImage;
 
-		message.Load("CounterNamespace.ErrorMessage.LoadFailed");
+		message << B_TRANSLATE("Can't load addon '\0'\nReason: \1");
 
 		message << path
 				<< strerror(initStatus);

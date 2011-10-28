@@ -19,7 +19,6 @@
 #include "alert.h"
 #include "my_assert.h"
 #include "common.h"
-#include "LocalizationHelper.h"
 #include "SystemInfo.h"
 #include "CounterNamespaceImpl.h"
 #include "ProcessView.h"
@@ -33,6 +32,11 @@
 #include "Tooltip.h"
 #include "DeskbarLedView.h"
 
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "DeskbarLedView"
+
 // ==== globals ====
 
 BView *create_deskbar_replicant()
@@ -41,6 +45,7 @@ BView *create_deskbar_replicant()
 }
 
 #if B_BEOS_VERSION >= B_BEOS_VERSION_5
+
 
 // This function is called by the Deskbar to create a deskbar
 // item of a deskbar addon.
@@ -327,7 +332,7 @@ void CDeskbarLedView::UpdateTooltip(bool forceShow, BPoint point)
 
 			char buffer[255];
 		
-			sprintf(buffer, CLocalizationHelper::GetDefaultInstance()->String("DeskbarLedView.Tooltip.Format"), usage);
+			sprintf(buffer, B_TRANSLATE("CPU Usage: %.0f %%"), usage);
 
 			BRect  screenRect  = ConvertToScreen(Bounds());
 			BPoint screenPoint = ConvertToScreen(BPoint(Bounds().Width()/2, Bounds().Height()/2));
@@ -450,14 +455,14 @@ CAsynchronousPopUpMenu *CDeskbarLedView::ContextMenu()
 
 	popup->AddItem(
 		new BMenuItem(
-			CLocalizationHelper::GetDefaultInstance()->String("DeskbarLedView.ContextMenu.ShowTaskManager"),
+			B_TRANSLATE("Show TaskManager"),
 			new BMessage(MSG_SHOW_MAIN_WINDOW)));
 
 	popup->AddSeparatorItem();
 
 	popup->AddItem(
 		new BMenuItem(
-			CLocalizationHelper::GetDefaultInstance()->String("TeamView.SelectTeamButton.Label"),
+			B_TRANSLATE("X-Kill..."),
 			new BMessage(MSG_SELECT_AND_KILL_TEAM)));
 			
 	popup->AddSeparatorItem();
@@ -467,7 +472,7 @@ CAsynchronousPopUpMenu *CDeskbarLedView::ContextMenu()
 	
 	popup->AddItem(
 		new BMenuItem(
-			CLocalizationHelper::GetDefaultInstance()->String("DeskbarLedView.ContextMenu.HideReplicant"),
+			B_TRANSLATE("Hide Replicant"),
 			hideRepMsg));
 
 	popup->SetFont(be_plain_font);

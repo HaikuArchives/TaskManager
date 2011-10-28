@@ -20,15 +20,17 @@
 #include "common.h"
 #include "signature.h"
 #include "my_assert.h"
-#ifndef DISABLE_LOCALIZATION
-#include "LocalizationHelper.h"
-#endif // DISABLE_LOCALIZATION
 #include "ColorSelectMenuItem.h"
 #include "GraphView.h"
 #include "Detector.h"
 #include "DataProvider.h"
 
 #include "msg_helper.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "GraphView"
 
 // ====== globals ======
 
@@ -169,35 +171,34 @@ void COverlayGraphViewUI::Draw(BView *view, const BRect &updateRect)
 		const char *unitString="";
 		float mul=1.0;
 
-		#ifndef DISABLE_LOCALIZATION
 		switch(dataInfo->DataProvider()->Unit()) {
 			case IDataProvider::DP_UNIT_BYTE:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.Byte");
+				unitString = B_TRANSLATE("byte");
 				break;
 			case IDataProvider::DP_UNIT_KILOBYTE:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.KiloByte");
+				unitString = B_TRANSLATE("kB");
 				break;
 			case IDataProvider::DP_UNIT_MEGABYTE:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.MegaByte");
+				unitString = B_TRANSLATE("MB");
 				break;
 			case IDataProvider::DP_UNIT_PAGES:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.KiloByte");
+				unitString = B_TRANSLATE("kB");
 				mul = 1024/(float)B_PAGE_SIZE;
 				break;
 			case IDataProvider::DP_UNIT_RPM:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.RPM");
+				unitString = B_TRANSLATE("RPM");
 				break;
 			case IDataProvider::DP_UNIT_DEGREES:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.Degress");
+				unitString = B_TRANSLATE("°");
 				break;
 			case IDataProvider::DP_UNIT_VOLT:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.Volt");
+				unitString = B_TRANSLATE("V");
 				break;
 			case IDataProvider::DP_UNIT_WATT:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.Watt");
+				unitString = B_TRANSLATE("W");
 				break;
 			case IDataProvider::DP_UNIT_AMPERE:
-				unitString = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Unit.Ampere");
+				unitString = B_TRANSLATE("A");
 				break;
 			case IDataProvider::DP_UNIT_NONE:
 				if(dataInfo->DataProvider()->Flags() & IDataProvider::DP_TYPE_PERCENT) {
@@ -210,60 +211,12 @@ void COverlayGraphViewUI::Draw(BView *view, const BRect &updateRect)
 				unitString = "";
 				break;
 		}
-		#else // DISABLE_LOCALIZATION
-		switch(dataInfo->DataProvider()->Unit()) {
-			case IDataProvider::DP_UNIT_BYTE:
-				unitString = "byte";
-				break;
-			case IDataProvider::DP_UNIT_KILOBYTE:
-				unitString = "kB";
-				break;
-			case IDataProvider::DP_UNIT_MEGABYTE:
-				unitString = "MB";
-				break;
-			case IDataProvider::DP_UNIT_PAGES:
-				unitString = "kB";
-				mul = 1024/(float)B_PAGE_SIZE;
-				break;
-			case IDataProvider::DP_UNIT_RPM:
-				unitString = "RPM";
-				break;
-			case IDataProvider::DP_UNIT_DEGREES:
-				unitString = "°";
-				break;
-			case IDataProvider::DP_UNIT_VOLT:
-				unitString = "V";
-				break;
-			case IDataProvider::DP_UNIT_WATT:
-				unitString = "W";
-				break;
-			case IDataProvider::DP_UNIT_AMPERE:
-				unitString = "A";
-				break;
-			case IDataProvider::DP_UNIT_NONE:
-				if(dataInfo->DataProvider()->Flags() & IDataProvider::DP_TYPE_PERCENT) {
-					unitString = "%";
-				} else {
-					unitString = "";
-				}
-				break;				
-			default:
-				unitString = "";
-				break;
-		}
-		#endif // DISABLE_LOCALIZATION
 
 		char curString[255], maxString[255], avgString[255];
 
-		#ifndef DISABLE_LOCALIZATION
-		sprintf(curString, "%s %.2f %s", CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Current"), dataInfo->Cur()*mul, unitString);
-		sprintf(maxString, "%s %.2f %s", CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Average"), dataInfo->Avg()*mul, unitString);
-		sprintf(avgString, "%s %.2f %s", CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.Maximum"), dataInfo->Max()*mul, unitString);
-		#else // DISABLE_LOCALIZATION
-		sprintf(curString, "%s %.2f %s", "cur: ", dataInfo->Cur()*mul, unitString);
-		sprintf(maxString, "%s %.2f %s", "avg: ", dataInfo->Avg()*mul, unitString);
-		sprintf(avgString, "%s %.2f %s", "max: ", dataInfo->Max()*mul, unitString);
-		#endif // DISABLE_LOCALIZATION
+		sprintf(curString, "%s %.2f %s", B_TRANSLATE("cur:"), dataInfo->Cur()*mul, unitString);
+		sprintf(maxString, "%s %.2f %s", B_TRANSLATE("avg:"), dataInfo->Avg()*mul, unitString);
+		sprintf(avgString, "%s %.2f %s", B_TRANSLATE("max:"), dataInfo->Max()*mul, unitString);
 
 		maxStringWidth = MAX(maxStringWidth, view->StringWidth(curString));
 		maxStringWidth = MAX(maxStringWidth, view->StringWidth(maxString));
@@ -630,17 +583,10 @@ BPopUpMenu *CGraphView::ContextMenu()
 {
 	BPopUpMenu *contextMenu = new BPopUpMenu("Context Menu", false);
 
-	#ifndef DISABLE_LOCALIZATION
-	const char *updateSpeedMenuLabel   = CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed");
-	const char *updateSpeedSlowLabel   = CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed.Slow");
-	const char *updateSpeedNormalLabel = CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed.Normal");
-	const char *updateSpeedFastLabel   = CLocalizationHelper::GetDefaultInstance()->String("ViewMenu.UpdateSpeed.Fast");
-	#else // DISABLE_LOCALIZATION
-	const char *updateSpeedMenuLabel   = "Update Speed";
-	const char *updateSpeedSlowLabel   = "Slow";
-	const char *updateSpeedNormalLabel = "Normal";
-	const char *updateSpeedFastLabel   = "Fast";
-	#endif // DISABLE_LOCALIZATION
+	const char *updateSpeedMenuLabel   = B_TRANSLATE("Update Speed");
+	const char *updateSpeedSlowLabel   = B_TRANSLATE("Slow");
+	const char *updateSpeedNormalLabel = B_TRANSLATE("Normal");
+	const char *updateSpeedFastLabel   = B_TRANSLATE("Fast");
 
 	BMenu *updateSpeedSubMenu = new BMenu(updateSpeedMenuLabel);
 	
@@ -1873,11 +1819,7 @@ BPopUpMenu *COverlayGraphView::ContextMenu()
 {
 	BPopUpMenu *contextMenu = CGraphView::ContextMenu();
 
-	#ifndef DISABLE_LOCALIZATION
-	const char *overlayMenuLabel = CLocalizationHelper::GetDefaultInstance()->String("OverlayGraphView.ContextMenu.Overlay");
-	#else
-	const char *overlayMenuLabel = "Overlay";
-	#endif // DISABLE_LOCALIZATION
+	const char *overlayMenuLabel = B_TRANSLATE("Overlay");
 
 	BMenu *overlaySubMenu = new BMenu(overlayMenuLabel);
 	

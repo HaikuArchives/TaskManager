@@ -1,0 +1,21 @@
+1	russian	x-vnd.task_manager	1832526303
+'\n Reason: 	InstallationDialog		'\n Причина: 
+Can't locate Be Menu directory\n Reason: 	InstallationDialog		Не удается найти каталог Be Menu\n Причина: 
+Applications	InstallationDialog		Applications
+Change	PerformanceView		Изменить
+View Deskbar Replicant on Startup	InstallationDialog		View Deskbar Replicant on Startup
+Install 	InstallationDialog		Установка
+Add	PerformanceView		Добавить
+Scale:	PerformanceView		Scale:
+Can't locate Desktop directory\n Reason: 	InstallationDialog		Не удается найти каталог Desktop\n Причина: 
+Add Link to Desktop	InstallationDialog		Добавить линк Desktop
+Add Link to Be Menu	InstallationDialog		Добавить линк Be Menu
+Automatic	PerformanceView		Автоматически
+<Select>	InstallationDialog		<Выбрать>
+Select...	PerformanceView		Выбрать...
+Done	PerformanceView		Готово
+Can't create link in '	InstallationDialog		Не могу создать линк в '
+Group:	InstallationDialog		Группа:
+Remove	PerformanceView		Удалить
+Color	PerformanceView		Цвет
+Script request failed.\nReason: 0 (1)	PerformanceView		Сбой скрипта запроса.\nПричина: 0 (1)

@@ -21,7 +21,6 @@
 #include "BugfixedDragger.h"
 #include "BorderView.h"
 #include "GraphView.h"
-#include "LocalizationHelper.h"
 #include "LedView.h"
 #include "UsageView.h"
 #include "BorderView.h"
@@ -29,6 +28,11 @@
 #include "CounterNamespaceImpl.h"
 
 #include "my_assert.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "UsageView"
 
 // ====== globals ======
 
@@ -98,15 +102,15 @@ BPopUpMenu *CCPUGraphView::ContextMenu()
 		if(dataProvider) {
 			int32 cpuNum = dataProvider->CPUNum();
 
-			BMenu *cpuSubMenu = new BMenu(CLocalizationHelper::GetDefaultInstance()->String("CPUGraphView.ContextMenu.CPU"));
+			BMenu *cpuSubMenu = new BMenu(B_TRANSLATE("CPUGraphView.ContextMenu.CPU"));
 		
 			for(int32 i=-1 ; i<sysInfo.cpu_count ; i++) {
 				char buffer[255];
 			
 				if(i >= 0)
-					sprintf(buffer, CLocalizationHelper::GetDefaultInstance()->String("CPUGraphView.ContextMenu.CPU.Format"), i+1);
+					sprintf(buffer, B_TRANSLATE("CPUGraphView.ContextMenu.CPU.Format"), i+1);
 				else
-					strcpy(buffer, CLocalizationHelper::GetDefaultInstance()->String("CPUGraphView.ContextMenu.CPU.Average"));
+					strcpy(buffer, B_TRANSLATE("CPUGraphView.ContextMenu.CPU.Average"));
 			
 				BMessage *selMessage = new BMessage(MSG_CPU_NUM_SEL);
 				selMessage->AddInt32(MESSAGE_DATA_ID_CPU_NUM, i);
@@ -293,16 +297,16 @@ CUsageView::CUsageView(BRect rect) :
 	BRect defaultPos(5, 5, 75, 75);
 
 	cpuLedBox   = new CBox(defaultPos, "CPU Led Box");
-	cpuLedBox->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("CPULedBox.Label"));
+	cpuLedBox->SetLabel(B_TRANSLATE("CPU Usage"));
 	 
 	cpuGraphBox = new CBox(defaultPos, "CPU Graph Box");
-	cpuGraphBox->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("CPUGraphBox.Label"));
+	cpuGraphBox->SetLabel(B_TRANSLATE("CPU Usage Graph"));
 	
 	memLedBox	= new CBox(defaultPos, "Mem Led Box");
-	memLedBox->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("MemLedBox.Label"));
+	memLedBox->SetLabel(B_TRANSLATE("Memory Usage"));
 	
 	memGraphBox  = new CBox(defaultPos, "Mem Graph Box");
-	memGraphBox->SetLabel(CLocalizationHelper::GetDefaultInstance()->String("MemGraphBox.Label"));
+	memGraphBox->SetLabel(B_TRANSLATE("Memory Usage Graph"));
 
 	AddChild(cpuLedBox);
 	AddChild(cpuGraphBox);

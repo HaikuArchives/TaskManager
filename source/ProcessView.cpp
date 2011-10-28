@@ -22,7 +22,6 @@
 #include "my_assert.h"
 #include "AsynchronousPopupMenu.h"
 #include "FlickerFreeButton.h"
-#include "LocalizationHelper.h"
 #include "SelectTeamWindow.h"
 #include "MainWindow.h"
 #include "TaskManagerPrefs.h"
@@ -36,6 +35,11 @@
 #include "Process.h"
 #include "ColumnListViewEx.h"
 #include "ProcessView.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "ProcessView"
 
 // ====== internal classes =======
 
@@ -443,18 +447,18 @@ void CProcessItem::DisplayContextMenu(BView *owner, BPoint point)
 	// "Activate" is the default item of this menu. (Displayed using a bold font).
 	contextMenu->AddItem(
 		new CGlyphMenuItem(
-			CLocalizationHelper::GetDefaultInstance()->String("TeamView.ContextMenu.Activate.Label"),
+			B_TRANSLATE("Activate"),
 			NULL,
 			true,
 			activateMessage));
 	contextMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("TeamView.ContextMenu.Quit.Label"), quitMessage));
+		new BMenuItem(B_TRANSLATE("Quit"), quitMessage));
 	contextMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("TeamView.ContextMenu.Kill.Label"), killMessage));
+		new BMenuItem(B_TRANSLATE("Kill"), killMessage));
 
 	contextMenu->AddSeparatorItem();
 	contextMenu->AddItem(
-		new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String("TeamView.ContextMenu.AddToPerfTab.Label"), 
+		new BMenuItem(B_TRANSLATE("Add to Performance Tab..."), 
 			new BMessage(MSG_VIEW_PERFORMANCE_OBJECTS)));
 	
 	contextMenu->SetTargetForItems(owner);
@@ -480,18 +484,18 @@ void CProcessItem::DisplayContextMenu(BView *owner, BPoint point)
 	}
 	
 	// Add prio submenu
-	BMenu *prioSubMenu = new BMenu(CLocalizationHelper::GetDefaultInstance()->String("TeamView.ContextMenu.Priority.Label"));
+	BMenu *prioSubMenu = new BMenu(B_TRANSLATE("Priority"));
 
 	const int32 maxEntries=5;
 	struct {
 		const char *key;
 		int32 prio;
 	} menuInfo[maxEntries] = {
-		{ "TeamView.ContextMenu.Priority.Low.Label",			 5, },
-		{ "TeamView.ContextMenu.Priority.Normal.Label",			10, },
-		{ "TeamView.ContextMenu.Priority.Display.Label",		15, },
-		{ "TeamView.ContextMenu.Priority.UrgentDisplay.Label",	20, },
-		{ "TeamView.ContextMenu.Priority.Realtime.Label",	   100, },
+		{ B_TRANSLATE_MARK("Low Priority"),			 5, },
+		{ B_TRANSLATE_MARK("Normal Priority"),			10, },
+		{ B_TRANSLATE_MARK("Display Priority"),		15, },
+		{ B_TRANSLATE_MARK("Urgent Display Priority"),	20, },
+		{ B_TRANSLATE_MARK("Realtime Priority"),	   100, },
 	};
 	
 	for(int32 i=0 ; i<maxEntries ; i++) {
@@ -500,7 +504,7 @@ void CProcessItem::DisplayContextMenu(BView *owner, BPoint point)
 		msg->AddInt32(MESSAGE_DATA_ID_ACTION, TEAM_ACTION_SET_PRIORITY);
 		msg->AddInt32(MESSAGE_DATA_ID_PRIORITY, menuInfo[i].prio);
 	
-		prioSubMenu->AddItem(new BMenuItem(CLocalizationHelper::GetDefaultInstance()->String(menuInfo[i].key), msg));
+		prioSubMenu->AddItem(new BMenuItem(menuInfo[i].key, msg));
 	}
 	
 	prioSubMenu->SetTargetForItems(owner);
@@ -637,11 +641,11 @@ CProcessView::CProcessView(BRect rect) :
 	killMessage->AddInt32(MESSAGE_DATA_ID_ACTION, TEAM_ACTION_KILL);
 
 	killButton = new CFlickerFreeButton(dummyRect, "KillButton", 
-						CLocalizationHelper::GetDefaultInstance()->String("TeamView.KillButton.Label"), 
+						B_TRANSLATE("Kill"), 
 						killMessage, B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
 	
 	selectTeamButton = new CFlickerFreeButton(dummyRect, "SelectTeamButton", 
-						CLocalizationHelper::GetDefaultInstance()->String("TeamView.SelectTeamButton.Label"),
+						B_TRANSLATE("X-Kill..."),
 						new BMessage(MSG_SELECT_AND_KILL_TEAM), B_FOLLOW_LEFT | B_FOLLOW_BOTTOM);
 	
 	killButton->GetPreferredSize(&bw, &bh);
@@ -697,7 +701,7 @@ CProcessView::CProcessView(BRect rect) :
 	
 		listView->AddColumn(
 			new CLVColumn(
-				CLocalizationHelper::GetDefaultInstance()->String(column->key), 
+				BString(column->key), 
 				prefs.ColumnWidth(column->index, column->defaultWidth),
 				prefs.ColumnVisible(column->index, column->defaultVisible) ? stdFlags : stdFlags|CLV_HIDDEN,
 			 	column->minWidth
@@ -862,7 +866,7 @@ int32 CProcessView::ShowWarning(const char *text, const char *button0,
 								B_WIDTH_AS_USUAL,
 								B_EVEN_SPACING,
 								B_WARNING_ALERT,
-								CLocalizationHelper::GetDefaultInstance()->String("TeamView.Warning.ShowAgain"),
+								B_TRANSLATE("Show this dialog again"),
 								prefs,
 								prefName,
 								showWarning);
@@ -944,13 +948,13 @@ void CProcessView::KillTeamWithWarning(team_id id)
 	CTeam team(id);	
 
 	if(team.IsIdleTeam()) {
-		show_alert_async(CLocalizationHelper::GetDefaultInstance()->String("TeamView.Warning.CanKillKernel"),
+		show_alert_async(B_TRANSLATE("You can't kill the kernel team!"),
 					NULL, "Warning", B_STOP_ALERT);
 		
 		return;
 	}
 
-	CLocalizedString warning;
+	BString warning;
 	BString name;
 	
 	if(team.GetName(&name) != B_OK)
@@ -959,13 +963,13 @@ void CProcessView::KillTeamWithWarning(team_id id)
 	const char *prefName = PREF_SHOW_KILL_WARNING;
 
 	if(team.IsSystemTeam()) {
-		warning.Load("TeamView.Warning.BeOSTeam");
+		warning << B_TRANSLATE("The team '\0' is a component of the BeOS.\n\nKill the team anyway??") << name;
 		
 		warning << name;
 				  
 		prefName = PREF_SHOW_SYSTEM_KILL_WARNING;
 	} else {
-		warning.Load("TeamView.Warning.NormalTeam");
+		warning << B_TRANSLATE("Are you sure that you want to kill the team '\0'??") << name;
 	
 		warning << name;
 	}
@@ -977,7 +981,7 @@ void CProcessView::KillTeamWithWarning(team_id id)
 
 	int32 result;
 
-	const char *killButton = CLocalizationHelper::GetDefaultInstance()->String("TeamView.Warnung.KillButton.Label");
+	const char *killButton = B_TRANSLATE("Kill");
 
 	// Shows a warning, if the user didn't disable it in
 	// the preferences.
@@ -1006,7 +1010,7 @@ void CProcessView::KillTeam(team_id id)
 
 	if((result = team.Kill()) != B_OK) {
 		BString teamName;
-		CLocalizedString message;
+		BString message;
 		CProcessItem *item = FindItem(id);
 	
 		if(item) {
@@ -1022,7 +1026,7 @@ void CProcessView::KillTeam(team_id id)
 			team_id debuggerTeam;
 
 			if(team.GetDebuggerTeam(debuggerTeam) == B_OK) {
-				message.Load("TeamView.Warning.ControlledByDebugger");
+				message << B_TRANSLATE("The team '\0' is controlled by a debugger.\nDo you want to kill the debugger??");
 
 				message << teamName;
 				
@@ -1048,7 +1052,7 @@ void CProcessView::KillTeam(team_id id)
 				alert->Go(new BInvoker(msg, this));
 			}
 		} else {
-			message.Load("TeamView.Warning.KillFailed");
+			message << B_TRANSLATE("Can't kill team '\0'.\nReason: \1");
 			message << teamName;
 			message << strerror(result);
 	
@@ -1248,12 +1252,12 @@ void CProcessView::MessageReceived(BMessage *message)
 								// SendMessage(B_QUIT_REQUESTED) timed out.
 								// Application hangs!
 							
-								CLocalizedString text("TeamView.Warning.NotResponding");
+								BString text(B_TRANSLATE("The application '\0' isn't responding."));
 						
 								text << item->GetColumnContentText(COLUMN_NUM_NAME);
 						
-								const char *killButton  = CLocalizationHelper::GetDefaultInstance()->String("TeamView.Warnung.KillButton.Label");
-								const char *retryButton = CLocalizationHelper::GetDefaultInstance()->String("TeamView.Warnung.RetryButton.Label");
+								const char *killButton  = B_TRANSLATE("Kill");
+								const char *retryButton = B_TRANSLATE("Retry");
 						
 								BAlert *alert = new BAlert("App not responding",			// Title
 														text.String(),						// Text

@@ -24,7 +24,6 @@
 #include "BugfixedDragger.h"
 #include "MenuField.h"
 #include "FlickerFreeButton.h"
-#include "LocalizationHelper.h"
 #include "TaskManagerPrefs.h"
 #include "ListViewEx.h"
 #include "ColorSelectListItem.h"
@@ -35,20 +34,16 @@
 #include "PerformanceView.h"
 #include "CounterNamespaceImpl.h"
 
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "PerformanceView"
+
 // ==== globals ====
 
 // message fields for MSG_SELECT_DATA_PROVIDER
 const char * const MESSAGE_DATA_ID_PERF_COUNTER_PATH  = "SELECTDP:PerfCounterPath";
 const char * const MESSAGE_DATA_ID_EXPAND_FOUND		  = "SELECTDP:ExpandFound";
-
-// localization keys
-const char * const LOC_KEY_ADD_BUTTON_LABEL			  = "PerformanceAddView.AddButton.Label";
-const char * const LOC_KEY_CHANGE_BUTTON_LABEL		  = "PerformanceAddView.ChangeButton.Label";
-const char * const LOC_KEY_DONE_BUTTON_LABEL		  = "PerformanceAddView.DoneButton.Label";
-const char * const LOC_KEY_COLOR_SELECTOR_LABEL		  = "PerformanceAddView.ColorSelector.Label";
-const char * const LOC_KEY_SCALE_SELECTOR_LABEL		  = "PerformanceAddView.ScaleSelector.Label";
-const char * const LOC_KEY_COLOR_AUTOMATIC			  = "PerformanceAddView.ColorList.Automatic.Label";
-const char * const LOC_KEY_COLOR_SELECT				  = "PerformanceAddView.ColorList.Select.Label";
 
 // ==== CPerformanceAddView ====
 
@@ -61,8 +56,8 @@ CPerformanceAddView::CPerformanceAddView(BRect frame, BHandler *handler) :
 		"AddDialog",
 		B_FOLLOW_ALL_SIDES,
 		0,
-		CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_CHANGE_BUTTON_LABEL),
-		CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_DONE_BUTTON_LABEL),
+		B_TRANSLATE("Change"),
+		B_TRANSLATE("Done"),
 		true),
 	BInvoker(NULL, handler)
 {
@@ -98,19 +93,19 @@ void CPerformanceAddView::CreateColorMenuField()
 
 	static const color_message_info colorList[] =
 	{
-		{ { 255,   0,   0, 255 },	"Red"			},
-		{ {   0, 255,   0, 255 },   "Green"			},
-		{ {   0,   0, 255, 255 },   "Blue"			},
-		{ { 255,   0, 255, 255 },  	"Magenta"		},
-		{ {   0, 255, 255, 255 },	"Cyan"			},
-		{ { 255, 255,   0, 255 },	"Yellow"		},
-		{ { 160,  20,  20, 255 },	"DarkRed"		},
-		{ {  20, 160,  20, 255 },	"DarkGreen"		},
-		{ {  20,  20, 180, 255 },	"DarkBlue"		},
-		{ { 240,  90,  90, 255 },	"LightRed"		},
-		{ { 120, 240, 120, 255 },	"LightGreen"	},
-		{ {  64, 162, 255, 255 },	"LightBlue"		},
-		{ { 154, 110,  45, 255 },	"Brown"			},
+		{ { 255,   0,   0, 255 },	B_TRANSLATE_MARK("Red")			},
+		{ {   0, 255,   0, 255 },   B_TRANSLATE_MARK("Green")			},
+		{ {   0,   0, 255, 255 },   B_TRANSLATE_MARK("Blue")			},
+		{ { 255,   0, 255, 255 },  	B_TRANSLATE_MARK("Magenta")		},
+		{ {   0, 255, 255, 255 },	B_TRANSLATE_MARK("Cyan")			},
+		{ { 255, 255,   0, 255 },	B_TRANSLATE_MARK("Yellow")		},
+		{ { 160,  20,  20, 255 },	B_TRANSLATE_MARK("DarkRed")		},
+		{ {  20, 160,  20, 255 },	B_TRANSLATE_MARK("DarkGreen")		},
+		{ {  20,  20, 180, 255 },	B_TRANSLATE_MARK("DarkBlue")		},
+		{ { 240,  90,  90, 255 },	B_TRANSLATE_MARK("LightRed")		},
+		{ { 120, 240, 120, 255 },	B_TRANSLATE_MARK("LightGreen")	},
+		{ {  64, 162, 255, 255 },	B_TRANSLATE_MARK("LightBlue")		},
+		{ { 154, 110,  45, 255 },	B_TRANSLATE_MARK("Brown")			},
 		{ {   0,   0,   0, 255 },	""				} 	// terminate list
 	};
 
@@ -120,14 +115,14 @@ void CPerformanceAddView::CreateColorMenuField()
 
 	BMenuItem *automaticItem = 
 		new BMenuItem(
-			CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_COLOR_AUTOMATIC),
+			B_TRANSLATE("Automatic"),
 			new BMessage(MSG_COLOR_SELECTED));
 	automaticItem->SetMarked(true);
 	
 	colorMenu->AddItem(automaticItem);
 	colorMenu->AddItem(
 		new BMenuItem(
-			CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_COLOR_SELECT),
+			B_TRANSLATE("Select..."),
 			new BMessage(MSG_VIEW_COLOR_SELECTOR)));
 	colorMenu->AddSeparatorItem();
 	
@@ -135,10 +130,10 @@ void CPerformanceAddView::CreateColorMenuField()
 		messageInfo->key[0] ; ++messageInfo) {
 		BString colorKey;
 
-		colorKey << "PerformanceAddView.ColorList." << messageInfo->key << ".Label";
-		const char *colorName = CLocalizationHelper::GetDefaultInstance()->String(colorKey.String());
+		colorKey <<  messageInfo->key ;
+	//	const char *colorName = BString colorKey;
 		
-		BMenuItem *item = CreateColorItem(messageInfo->color, colorName);
+		BMenuItem *item = CreateColorItem(messageInfo->color, colorKey);
 
 		colorMenu->AddItem(item);
 	}
@@ -154,7 +149,7 @@ void CPerformanceAddView::CreateColorMenuField()
 	colorSelect = create_menu_field(
 						B_ORIGIN,
 						"ColorSelector",
-						CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_COLOR_SELECTOR_LABEL),
+						B_TRANSLATE("Color"),
 						colorMenu,
 						B_FOLLOW_LEFT | B_FOLLOW_BOTTOM
 						/*B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS*/);
@@ -187,7 +182,7 @@ void CPerformanceAddView::CreateScaleMenuField()
 	scaleSelect = create_menu_field(
 						B_ORIGIN, 
 						"ScaleSelector",
-						CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_SCALE_SELECTOR_LABEL),
+						B_TRANSLATE("Scale:"),
 						scaleMenu, 
 						B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
 	
@@ -209,7 +204,7 @@ void CPerformanceAddView::AttachedToWindow()
 
 	BRect bounds = Bounds();
 
-	SetOkButtonLabel(CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_ADD_BUTTON_LABEL));
+	SetOkButtonLabel(B_TRANSLATE("Add"));
 	EnableOkButton(false);
 
 	float buttonHeight = okButton->Bounds().Height();
@@ -704,19 +699,19 @@ void CPerformanceAddView::MessageReceived(BMessage *message)
 								SelectColor(color, true);
 								SelectScale(scale);
 								
-								SetOkButtonLabel(CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_CHANGE_BUTTON_LABEL));
+								SetOkButtonLabel(B_TRANSLATE("Change"));
 							} else {
-								SetOkButtonLabel(CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_ADD_BUTTON_LABEL));
+								SetOkButtonLabel(B_TRANSLATE("Add"));
 							}
 						} else {
-							CLocalizedString message("PerformanceAddView.ErrorMessage.ScriptRequestFailed");
+							BString message (B_TRANSLATE("Script request failed.\nReason: \0 (\1)"));
 							
 							message << strerror(result) << result;
 							
 							show_alert(message);
 						}
 					} else {
-						SetOkButtonLabel(CLocalizationHelper::GetDefaultInstance()->String(LOC_KEY_ADD_BUTTON_LABEL));
+						SetOkButtonLabel(B_TRANSLATE("Add"));
 					}
 				}
 				
@@ -741,7 +736,7 @@ void CPerformanceAddView::MessageReceived(BMessage *message)
 			{
 				CColorSelectDialog *colorSelDialog =
 					new CColorSelectDialog(Window(),
-					CLocalizationHelper::GetDefaultInstance()->String("PerformanceAddView.ColorSelectDialog.Title"));
+					B_TRANSLATE("Color"));
 					
 				colorSelDialog->SetTarget(this);
 				colorSelDialog->SetMessage(new BMessage(MSG_COLOR_SELECTOR_CLOSED));
@@ -851,7 +846,7 @@ CPerformanceAddView::CCounterItem::~CCounterItem()
 // correctly, if this flag is set.
 CPerformanceAddWindow::CPerformanceAddWindow() :
 	CSingletonWindow(BRect(30,30,300,350), 
-		CLocalizationHelper::GetDefaultInstance()->String("PerformanceAddWindow.Title"), B_TITLED_WINDOW, 
+		B_TRANSLATE("Add"), B_TITLED_WINDOW, 
 		/*B_ASYNCHRONOUS_CONTROLS |*/ B_NOT_ZOOMABLE, B_CURRENT_WORKSPACE)
 {
 	// create view
@@ -1002,12 +997,12 @@ CPerformanceView::CPerformanceView(BRect frame) :
 	BRect dummyPos = BRect(0, 0, 40, 40);
 	
 	addButton = new CFlickerFreeButton(dummyPos, "AddButton", 
-			CLocalizationHelper::GetDefaultInstance()->String("PerformanceView.AddButton.Label"),
+			B_TRANSLATE("Add"),
 			new BMessage(MSG_VIEW_PERFORMANCE_OBJECTS),
 			B_FOLLOW_LEFT_RIGHT | B_FOLLOW_TOP);
 								
 	removeButton = new CFlickerFreeButton(dummyPos, "RemoveButton", 
-			CLocalizationHelper::GetDefaultInstance()->String("PerformanceView.RemoveButton.Label"),
+			B_TRANSLATE("Remove"),
 			new BMessage(MSG_REMOVE_PERFORMANCE_OBJECT), B_FOLLOW_LEFT_RIGHT | B_FOLLOW_TOP);
 
 	CBorderView *borderView = new CBorderView(BRect(0,0,40,40), 

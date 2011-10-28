@@ -38,62 +38,62 @@
 #define	_IMPEXP_BE		__declspec(dllimport)
 #endif // !_IMPEXP_BE
 
-#include <kernel/OS.h>
-#include <kernel/image.h>
-#include <kernel/scheduler.h>
-#include <kernel/fs_attr.h>
+#include <OS.h>
+#include <image.h>
+#include <scheduler.h>
+#include <fs_attr.h>
 
-#include <app/Application.h>
-#include <app/MessageRunner.h>
-#include <app/Messenger.h>
-#include <app/MessageFilter.h>
-#include <app/Roster.h>
-#include <app/PropertyInfo.h>
+#include <Application.h>
+#include <MessageRunner.h>
+#include <Messenger.h>
+#include <MessageFilter.h>
+#include <Roster.h>
+#include <PropertyInfo.h>
 
-#include <storage/File.h>
-#include <storage/Path.h>
-#include <storage/AppFileInfo.h>
-#include <storage/FindDirectory.h>
-#include <storage/FilePanel.h>
-#include <storage/Volume.h>
-#include <storage/VolumeRoster.h>
-#include <storage/SymLink.h>
+#include <File.h>
+#include <Path.h>
+#include <AppFileInfo.h>
+#include <FindDirectory.h>
+#include <FilePanel.h>
+#include <Volume.h>
+#include <VolumeRoster.h>
+#include <SymLink.h>
 
-#include <interface/View.h>
-#include <interface/Window.h>
-#include <interface/Box.h>
-#include <interface/TabView.h>
-#include <interface/ListView.h>
-#include <interface/Bitmap.h>
-#include <interface/Button.h>
-#include <interface/Menu.h>
-#include <interface/MenuBar.h>
-#include <interface/PopUpMenu.h>
-#include <interface/MenuItem.h>
-#include <interface/ScrollView.h>
-#include <interface/Alert.h>
-#include <interface/Screen.h>
-#include <interface/StringView.h>
-#include <interface/TextView.h>
-#include <interface/TextControl.h>
-#include <interface/PictureButton.h>
-#include <interface/Region.h>
-#include <interface/CheckBox.h>
-#include <interface/Dragger.h>
-#include <interface/OutlineListView.h>
-#include <interface/MenuField.h>
-#include <interface/ColorControl.h>
+#include <View.h>
+#include <Window.h>
+#include <Box.h>
+#include <TabView.h>
+#include <ListView.h>
+#include <Bitmap.h>
+#include <Button.h>
+#include <Menu.h>
+#include <MenuBar.h>
+#include <PopUpMenu.h>
+#include <MenuItem.h>
+#include <ScrollView.h>
+#include <Alert.h>
+#include <Screen.h>
+#include <StringView.h>
+#include <TextView.h>
+#include <TextControl.h>
+#include <PictureButton.h>
+#include <Region.h>
+#include <CheckBox.h>
+#include <Dragger.h>
+#include <OutlineListView.h>
+#include <MenuField.h>
+#include <ColorControl.h>
 
-#include <be_apps/Deskbar/Deskbar.h>
-#include <be_apps/NetPositive/NetPositive.h>
+#include <Deskbar.h>
+#include <NetPositive.h>
 
-#include <support/Beep.h>
-#include <support/Autolock.h>
-#include <support/String.h>
-#include <support/StopWatch.h>
+#include <Beep.h>
+#include <Autolock.h>
+#include <String.h>
+#include <StopWatch.h>
 
-#if B_BEOS_VERSION >= B_BEOS_VERSION_5
-	#include <app/Cursor.h>
-#endif // B_BEOS_VERSION_5
+//#if B_BEOS_VERSION >= B_BEOS_VERSION_5
+	#include <Cursor.h>
+//#endif // B_BEOS_VERSION_5
 
 #include "Color.h"

@@ -16,16 +16,20 @@
  */
  
 #include "pch.h"
-#include "LocalizationHelper.h"
 #include "MRUSelectFileView.h"
 #include "TaskManagerPrefs.h"
 #include "CreateTeamWindow.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "CreateTeamWindow"
 
 // protected constructor
 CCreateTeamWindow::CCreateTeamWindow() :
 	CSingletonWindow(
 		BRect(10,10,50,50), 
-		CLocalizationHelper::GetDefaultInstance()->String("CreateTeamWindow.Title"), 
+		B_TRANSLATE("New Team"), 
 		B_TITLED_WINDOW,
 		B_NOT_ZOOMABLE | B_NOT_V_RESIZABLE |
 		B_ASYNCHRONOUS_CONTROLS,

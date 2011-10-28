@@ -19,48 +19,25 @@
 #include "help.h"
 #include "alert.h"
 #include "DialogBase.h"
-#ifndef DISABLE_LOCALIZATION
-#include "LocalizationHelper.h"
-#endif // DISABLE_LOCALIZATION
 
-const char * const DEFAULT_OK_BUTTON_LABEL	   = "OK";
-const char * const DEFAULT_CANCEL_BUTTON_LABEL = "Cancel";
-const char * const DEFAULT_HELP_BUTTON_LABEL   = "Help";
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "alert"
 
 const char* ok_button_label()
 {
-	#ifndef DISABLE_LOCALIZATION
-	if(CLocalizationHelper::GetDefaultInstance() == NULL || CLocalizationHelper::GetDefaultInstance()->InitCheck() != B_OK)
-		return DEFAULT_OK_BUTTON_LABEL;
-		
-	return CLocalizationHelper::GetDefaultInstance()->String("DialogBase.OkButton.Label");
-	#else
-	return DEFAULT_OK_BUTTON_LABEL;
-	#endif
+	return B_TRANSLATE("Ok");
 }
 
 const char* help_button_label()
 {
-	#ifndef DISABLE_LOCALIZATION
-	if(CLocalizationHelper::GetDefaultInstance() == NULL || CLocalizationHelper::GetDefaultInstance()->InitCheck() != B_OK)
-		return DEFAULT_HELP_BUTTON_LABEL;
-		
-	return CLocalizationHelper::GetDefaultInstance()->String("DialogBase.HelpButton.Label");
-	#else
-	return DEFAULT_HELP_BUTTON_LABEL;
-	#endif
+	return B_TRANSLATE("Help");
 }
 
 const char* cancel_button_label()
 {
-	#ifndef DISABLE_LOCALIZATION
-	if(CLocalizationHelper::GetDefaultInstance() == NULL || CLocalizationHelper::GetDefaultInstance()->InitCheck() != B_OK)
-		return DEFAULT_CANCEL_BUTTON_LABEL;
-		
-	return CLocalizationHelper::GetDefaultInstance()->String("DialogBase.CancelButton.Label");
-	#else
-	return DEFAULT_CANCEL_BUTTON_LABEL;
-	#endif
+	return B_TRANSLATE("Cancel");
 }
 
 void show_alert(const char *text, const char *title, alert_type type)

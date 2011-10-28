@@ -26,6 +26,11 @@
 #include "TaskManagerPrefs.h"
 #include "InstallationDialog.h"
 
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "InstallationDialog"
+
 // ==== CInstallationDialog ====
 
 // protected constructor
@@ -92,9 +97,9 @@ struct check_box_info
 
 const check_box_info checkBoxInfo[] = 
 {
-	{ "Add Link to Be Menu", true	},
-	{ "Add Link to Desktop", false	},
-	{ "View Deskbar Replicant on Startup", true	},	
+	{ B_TRANSLATE("Add Link to Be Menu"), true	},
+	{ B_TRANSLATE("Add Link to Desktop"), false	},
+	{ B_TRANSLATE("View Deskbar Replicant on Startup"), true	},	
 };
 
 CInstallationDialogView::CInstallationDialogView(BRect frame) :
@@ -124,7 +129,7 @@ CInstallationDialogView::CInstallationDialogView(BRect frame) :
 
 	// Initialize group menu field
 
-	BMenu *groupsMenu = new BPopUpMenu("<Select>");
+	BMenu *groupsMenu = new BPopUpMenu(B_TRANSLATE("<Select>"));
 	
 	BPath beMenuPath;
 		
@@ -142,7 +147,7 @@ CInstallationDialogView::CInstallationDialogView(BRect frame) :
 				CFileGlyphMenuItem *item = 
 					new CFileGlyphMenuItem(NULL, &entryPath, false);
 				
-				if(strcmp(entryPath.Leaf(), "Applications") == 0) {
+				if(strcmp(entryPath.Leaf(), B_TRANSLATE("Applications")) == 0) {
 					item->SetMarked(true);
 				}
 				
@@ -151,18 +156,18 @@ CInstallationDialogView::CInstallationDialogView(BRect frame) :
 		}
 	}
 	
-	groupMenuField = create_menu_field(B_ORIGIN, "GroupsMenuField", "Group:", groupsMenu);
+	groupMenuField = create_menu_field(B_ORIGIN, "GroupsMenuField", B_TRANSLATE("Group:"), groupsMenu);
 
 	generalOptionsBox->AddChild(groupMenuField);
 	
 	// Initialize language selection box
 
-	BPath languageDirPath = get_app_dir();
+/*	BPath languageDirPath = get_app_dir();
 	languageDirPath.Append("language");
 
 	BDirectory languageDir(languageDirPath.Path());
 	
-	BMenu *languagesMenu = new BPopUpMenu("<Select>");
+	BMenu *languagesMenu = new BPopUpMenu(B_TRANSLATE("<Select>"));
 	BEntry entry;
 	
 	BString selectedLanguage = CTaskManagerPrefs().Language();
@@ -187,8 +192,8 @@ CInstallationDialogView::CInstallationDialogView(BRect frame) :
 	
 	languageMenuField = create_menu_field(B_ORIGIN, "LanguageMenuField", "Language:", languagesMenu);
 	
-	languageOptionsBox->AddChild(languageMenuField);
-}
+	languageOptionsBox->AddChild(languageMenuField);*/
+} 
 
 void CInstallationDialogView::AttachedToWindow()
 {
@@ -340,9 +345,9 @@ bool CInstallationDialogView::Ok()
 			if((status = dir.CreateSymLink(APP_NAME, exePath.Path(), &symLink)) != B_OK) {
 				BString message;
 				
-				message << "Can't create link in '"
+				message << B_TRANSLATE("Can't create link in '")
 						<< applicationsPath.Path()
-						<< "'\n Reason: "
+						<< B_TRANSLATE("'\n Reason: ")
 						<< strerror(status);
 				
 				show_alert(message);
@@ -350,7 +355,7 @@ bool CInstallationDialogView::Ok()
 		} else {
 			BString message;
 			
-			message << "Can't locate Be Menu directory\n Reason: "
+			message << B_TRANSLATE("Can't locate Be Menu directory\n Reason: ")
 					<< strerror(status);
 			
 			show_alert(message);
@@ -376,9 +381,9 @@ bool CInstallationDialogView::Ok()
 			if((status = desktopDir.CreateSymLink(APP_NAME, exePath.Path(), &symLink)) != B_OK) {
 				BString message;
 				
-				message << "Can't create link in '"
+				message << B_TRANSLATE("Can't create link in '")
 						<< desktopPath.Path()
-						<< "'\n Reason: "
+						<< B_TRANSLATE("'\n Reason: ")
 						<< strerror(status);
 				
 				show_alert(message);
@@ -386,7 +391,7 @@ bool CInstallationDialogView::Ok()
 		} else {
 			BString message;
 			
-			message << "Can't locate Desktop directory\n Reason: "
+			message << B_TRANSLATE("Can't locate Desktop directory\n Reason: ")
 					<< strerror(status);
 			
 			show_alert(message);
@@ -399,11 +404,11 @@ bool CInstallationDialogView::Ok()
 		CMainWindow::ShowDeskbarReplicant();
 	}
 
-	BMenuItem *languageSelItem = languageMenuField->Menu()->FindMarked();
+//	BMenuItem *languageSelItem = languageMenuField->Menu()->FindMarked();
 	
-	if(languageSelItem != NULL) {
-		CTaskManagerPrefs().SetLanguage(languageSelItem->Label());
-	}
+//	if(languageSelItem != NULL) {
+//		CTaskManagerPrefs().SetLanguage(languageSelItem->Label());
+//	}
 	
 	return true;
 }

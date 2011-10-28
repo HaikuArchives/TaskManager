@@ -18,17 +18,21 @@
 #include "pch.h"
 #include "Process.h"	// for enumTeamAction (TEAM_ACTION_xxx)
 #include "my_assert.h"
-#include "LocalizationHelper.h"
 #include "ProcessView.h"
 #include "ADither.h"	// for CreateCloneBitmap
 #include "SelectTeamWindow.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "SelectTeamWindow"
 
 // ==== CSelectTeamWindow ====
 
 CSelectTeamWindow::CSelectTeamWindow() :
 	CSingletonWindow(
 		BRect(0,0,10,10), 
-		CLocalizationHelper::GetDefaultInstance()->String("SelectTeamWindow.Title"), 
+		B_TRANSLATE("Select Team"), 
 		B_TITLED_WINDOW, 
 		B_NOT_ZOOMABLE | B_NOT_MINIMIZABLE | B_NOT_RESIZABLE | B_ASYNCHRONOUS_CONTROLS, 
 		B_CURRENT_WORKSPACE)
@@ -99,7 +103,7 @@ CSelectTeamWindowView::CSelectTeamWindowView(BRect frame) :
 
 	textView->MakeEditable(false);
 	textView->MakeSelectable(false);
-	textView->Insert(CLocalizationHelper::GetDefaultInstance()->String("SelectTeamWindowView.HintText"));
+	textView->Insert(B_TRANSLATE("Drag the crosshair on a window. This will kill the according application."));
 
 	float textHeight = textView->TextHeight(0, 10000);
 	

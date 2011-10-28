@@ -19,10 +19,12 @@
 #include "my_assert.h"
 #include "alert.h"
 #include "TaskManager.h"
-#ifndef DISABLE_LOCALIZATION
-#include "LocalizationHelper.h"
-#endif
 #include "help.h"
+
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "help"
 
 int32 taskmgr_image_tag_symbol = 0;
 
@@ -101,21 +103,11 @@ void open_url(const char *url)
 	
 	if((result = be_roster->Launch(appMime.String(), &message, &browserId)) != B_OK &&
 		result != B_ALREADY_RUNNING ) {
-		#ifndef DISABLE_LOCALIZATION
-		CLocalizedString err("OpenURL.ErrorMessage.OpenBrowserFailed");
-		#else
-		BString err("Can't open default browser\nReason: ");
-		#endif
+		BString err(B_TRANSLATE("Can't open default browser.\nReason: \0"));
 		
 		err << strerror(result);
 	
-		#ifndef DISABLE_LOCALIZATION
 		show_alert(err);
-		#else
-		BAlert *alert = new BAlert("OpenBrowser", err.String(), "OK");
-		
-		alert->Go();
-		#endif
 	} 
 }
 

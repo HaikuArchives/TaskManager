@@ -17,10 +17,15 @@
  
 #include "pch.h"
 #include "alert.h"
-#include "LocalizationHelper.h"
 #include "CommandLineParser.h"
 
 #include "my_assert.h"
+#include <Catalog.h>
+#include <Locale.h>
+#undef B_TRANSLATE_CONTEXT
+#define B_TRANSLATE_CONTEXT "CommandLineParser"
+
+
 
 // LaunchTeam
 // Launches a new team with the command line 'cmdLine'. If the first token of the
@@ -55,7 +60,7 @@ bool CCommandLineParser::LaunchTeam(const char *cmdLine)
 	// try to find application file. (in $PATH if no directory is specified)
 	if(!GetFullAppPath(parsedCmdLine.ItemAt(0)->String(), &appPath, &appEntry)) {
 		// file not found.
-		CLocalizedString message("CommandLineParser.ErrorMessage.FileNotFound");
+		BString message (B_TRANSLATE("File '\0' not found."));
 		
 		message << parsedCmdLine.ItemAt(0)->String();
 
@@ -88,7 +93,7 @@ bool CCommandLineParser::LaunchTeam(const char *cmdLine)
 		// BRoster::Lauch crashes, if I pass a entry_ref to an entry
 		// in a virtual file system.
 		// This bug seems to be removed in R5.
-		show_alert(CLocalizationHelper::GetDefaultInstance()->String("CommandLineParser.ErrorMessage.FileOnVFS"));
+		show_alert(B_TRANSLATE("Can't launch team (application image is on virtual file system)."));
 		
 		return false;
 	}
@@ -98,7 +103,7 @@ bool CCommandLineParser::LaunchTeam(const char *cmdLine)
 	// start application
 	if((result = be_roster->Launch(&appEntryRef, argc, argv, NULL)) != B_OK) {
 		if(result != B_ALREADY_RUNNING) {
-			CLocalizedString message("CommandLineParser.ErrorMessage.LaunchFailed");
+			BString message (B_TRANSLATE("Can't launch team.\nReason: \0"));
 		
 			message << strerror(result);
 		
