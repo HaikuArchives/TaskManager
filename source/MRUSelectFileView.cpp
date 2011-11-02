@@ -269,7 +269,7 @@ void CMRUSelectFileView::DisplayMRUList()
 			msg->AddInt32(MESSAGE_DATA_ID_MRU_INDEX, -1);
 			msg->AddString(MESSAGE_DATA_ID_MRU_PATH, recentAppPath.Path());
 			
-			BBitmap *icon = new BBitmap(BRect(0,0,15,15), B_CMAP8);
+			BBitmap *icon = new BBitmap(BRect(0,0,15,15), B_RGBA32);
 				
 			// load icon for file
 			if(BNodeInfo::GetTrackerIcon(&recentAppRef, icon, B_MINI_ICON) != B_OK) {

@@ -1,21 +1,117 @@
-1	russian	x-vnd.task_manager	1832526303
+1	russian	x-vnd.task_manager	3071059365
+CPUGraphView.ContextMenu.CPU.Format	UsageView		CPUGraphView.ContextMenu.CPU.Format
+Show TaskManager	DeskbarLedView		Show TaskManager
+The application '0' isn't responding.	ProcessView		The application '0' isn't responding.
+X-Kill...	DeskbarLedView		X-Kill...
 '\n Reason: 	InstallationDialog		'\n Причина: 
-Can't locate Be Menu directory\n Reason: 	InstallationDialog		Не удается найти каталог Be Menu\n Причина: 
+New Team	CreateTeamWindow		New Team
+kB	GraphView		kB
+Settings...	MainWindow		Настройки...
+DarkBlue	PerformanceView		ТемГолубой
+Display Priority	ProcessView		Приоритет отображения
+Activate	ProcessView		Activate
+Show in Deskbar	MainWindow		Показать в Deskbar'е
+Can't locate Be Menu directory\n Reason: 	InstallationDialog		Can't locate Be Menu directory\n Причина: 
 Applications	InstallationDialog		Applications
+Usage	MainWindow		Usage
+DarkRed	PerformanceView		DarkRed
 Change	PerformanceView		Изменить
 View Deskbar Replicant on Startup	InstallationDialog		View Deskbar Replicant on Startup
-Install 	InstallationDialog		Установка
-Add	PerformanceView		Добавить
+The default plugin '0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '1'.	CounterNamespaceImpl		The default plugin '0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '1'.
+Brown	PerformanceView		Brown
+A	GraphView		A
+Add	PerformanceView		Add
+Hide Replicant	DeskbarLedView		Скрыть Репликант
+Show this dialog again	ProcessView		Show this dialog again
+RPM	GraphView		RPM
+Green	PerformanceView		Green
+Can't launch team (application image is on virtual file system).	CommandLineParser		Can't launch team (application image is on virtual file system).
+Low Priority	ProcessView		Low Priority
+Cancel	alert		Cancel
+NewTeam...	MainWindow		NewTeam...
+About TaskManager	AboutWindow		About TaskManager
+Add to Performance Tab...	ProcessView		Add to Performance Tab...
+Fast	MainWindow		Fast
+File	MainWindow		File
+View	MainWindow		View
+Command:	MRUSelectFileView		Command:
+Drag the crosshair on a window. This will kill the according application.	SelectTeamWindow		Drag the crosshair on a window. This will kill the according application.
 Scale:	PerformanceView		Scale:
-Can't locate Desktop directory\n Reason: 	InstallationDialog		Не удается найти каталог Desktop\n Причина: 
-Add Link to Desktop	InstallationDialog		Добавить линк Desktop
-Add Link to Be Menu	InstallationDialog		Добавить линк Be Menu
-Automatic	PerformanceView		Автоматически
+Memory Usage Graph	UsageView		Memory Usage Graph
+Magenta	PerformanceView		Magenta
+Retry	ProcessView		Retry
+Can't locate Desktop directory\n Reason: 	InstallationDialog		Can't locate Desktop directory\n Причина: 
+Can't open default browser.\nReason: 0	help		Can't open default browser.\nПричина: 0
+cur:	GraphView		cur:
+Can't kill team '0'.\nReason: 1	ProcessView		Can't kill team '0'.\nПричина: 1
+Add Link to Desktop	InstallationDialog		Add Link to Desktop
+LightBlue	PerformanceView		LightBlue
+LightGreen	PerformanceView		LightGreen
+Add Link to Be Menu	InstallationDialog		Создать линк Be Menu
+Update Speed	GraphView		Update Speed
+Normal	GraphView		Normal
+Priority	ProcessView		Priority
+Memory Usage	UsageView		Memory Usage
+Quit	MainWindow		Quit
+CPU Usage: %.0f %%	DeskbarLedView		CPU Usage: %.0f %%
+MB	GraphView		MB
+Automatic	PerformanceView		Automatic
 <Select>	InstallationDialog		<Выбрать>
-Select...	PerformanceView		Выбрать...
-Done	PerformanceView		Готово
-Can't create link in '	InstallationDialog		Не могу создать линк в '
+Select...	PerformanceView		Select...
+Yellow	PerformanceView		Yellow
+avg:	GraphView		avg:
+Realtime Priority	ProcessView		Realtime Priority
+Fast	GraphView		Fast
+Performance	MainWindow		Performance
+Kill	ProcessView		Kill
+V	GraphView		V
+File '0' not found.	CommandLineParser		File '0' not found.
+Slow	MainWindow		Slow
+Done	PerformanceView		Done
+Browse...	MRUSelectFileView		Browse...
+Can't create link in '	InstallationDialog		Can't create link in '
+Slow	GraphView		Slow
+Can't launch team.\nReason: 0	CommandLineParser		Can't launch team.\nПричина: 0
+The team '0' is a component of the BeOS.\n\nKill the team anyway??	ProcessView		The team '0' is a component of the BeOS.\n\nKill the team anyway??
+byte	GraphView		byte
 Group:	InstallationDialog		Группа:
-Remove	PerformanceView		Удалить
-Color	PerformanceView		Цвет
-Script request failed.\nReason: 0 (1)	PerformanceView		Сбой скрипта запроса.\nПричина: 0 (1)
+Ok	alert		Ok
+Can't load addon '0'\nReason: 1	CounterNamespaceImpl		Can't load addon '0'\nПричина: 1
+Quit	ProcessView		Quit
+CPUGraphView.ContextMenu.CPU	UsageView		CPUGraphView.ContextMenu.CPU
+°	GraphView		°
+W	GraphView		W
+Remove	PerformanceView		Remove
+The team '0' is controlled by a debugger.\nDo you want to kill the debugger??	ProcessView		The team '0' is controlled by a debugger.\nDo you want to kill the debugger??
+Normal	MainWindow		Normal
+CPU Usage Graph	UsageView		CPU Usage Graph
+Color	PerformanceView		Color
+CPUGraphView.ContextMenu.CPU.Average	UsageView		CPUGraphView.ContextMenu.CPU.Average
+Cyan	PerformanceView		Cyan
+Don't hide deskbar replicant on close	SettingsWindow		Don't hide deskbar replicant on close
+Settings	SettingsWindow		Settings
+Blue	PerformanceView		Blue
+Help	alert		Help
+Can't remove deskbar replicant.\nReason: 0	MainWindow		Can't remove deskbar replicant.\nПричина: 0
+DarkGreen	PerformanceView		DarkGreen
+Script request failed.\nReason: 0 (1)	PerformanceView		Script request failed.\nПричина: 0 (1)
+Can't add deskbar replicant.\nReason: 0	MainWindow		Can't add deskbar replicant.\nПричина: 0
+Urgent Display Priority	ProcessView		Urgent Display Priority
+X-Kill...	ProcessView		X-Kill...
+Red	PerformanceView		Red
+Hide system teams	SettingsWindow		Hide system teams
+You can't kill the kernel team!	ProcessView		You can't kill the kernel team!
+Update Speed	MainWindow		Update Speed
+Columns	SettingsWindow		Columns
+About	MainWindow		About
+Overlay	GraphView		Overlay
+Select Team	SelectTeamWindow		Select Team
+Are you sure that you want to kill the team '0'??	ProcessView		Are you sure that you want to kill the team '0'??
+Teams	MainWindow		Teams
+Can't find CreateCounterPlugin entry point in '0'\nReason: 1	CounterNamespaceImpl		Can't find CreateCounterPlugin entry point in '0'\nПричина: 1
+Show in all Workspaces	MainWindow		Show in all Workspaces
+CreateCounterPlugin() failed ('0')\nReason: 1	CounterNamespaceImpl		CreateCounterPlugin() failed ('0')\nПричина: 1
+CPU Usage	UsageView		CPU Usage
+LightRed	PerformanceView		LightRed
+Normal Priority	ProcessView		Normal Priority
+max:	GraphView		max:

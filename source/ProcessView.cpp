@@ -143,15 +143,15 @@ const char * const PROCESS_VIEW_PROP_HIDE_SYSTEM_TEAMS		= "HideSystemTeams";
 const char * const PROCESS_VIEW_PROP_TEAM_MODEL				= "TeamModel";
 
 column_info team_view_colomn_info[] = {
-	{ "ColumnInfo.Name.Label",				COLUMN_NUM_NAME,			true,	108.0,	50.0	},
-	{ "ColumnInfo.TeamId.Label",			COLUMN_NUM_TEAM_ID,			true,	 40.0,	20.0	},
-	{ "ColumnInfo.ThreadCount.Label",		COLUMN_NUM_THREAD_COUNT,	true,	 40.0,	20.0	},
-	{ "ColumnInfo.AreaCount.Label",			COLUMN_NUM_AREA_COUNT,		false,	 40.0,	20.0	},
-	{ "ColumnInfo.ImageCount.Label",		COLUMN_NUM_IMAGE_COUNT,		false,	 40.0,	20.0	},
-	{ "ColumnInfo.CPUUsage.Label",			COLUMN_NUM_CPU_USAGE,		true,	 80.0,	20.0	},
-	{ "ColumnInfo.MemoryUsage.Label",		COLUMN_NUM_MEM_USAGE,		false,	 80.0,	20.0	},
-	{ "ColumnInfo.MemoryUsageAbs.Label",	COLUMN_NUM_MEM_USAGE_ABS,	false,	 40.0,	20.0	},
-	{ "ColumnInfo.Directory.Label",			COLUMN_NUM_DIRECTORY,		true,	200.0,	50.0	},
+	{ B_TRANSLATE("Name"),				COLUMN_NUM_NAME,			true,	108.0,	50.0	},
+	{ B_TRANSLATE("Team-ID"),			COLUMN_NUM_TEAM_ID,			true,	 40.0,	20.0	},
+	{ B_TRANSLATE("Thread Count"),		COLUMN_NUM_THREAD_COUNT,	true,	 40.0,	20.0	},
+	{ B_TRANSLATE("Area Count"),			COLUMN_NUM_AREA_COUNT,		false,	 40.0,	20.0	},
+	{ B_TRANSLATE("Image Count"),		COLUMN_NUM_IMAGE_COUNT,		false,	 40.0,	20.0	},
+	{ B_TRANSLATE("CPU Usage"),			COLUMN_NUM_CPU_USAGE,		true,	 80.0,	20.0	},
+	{ B_TRANSLATE("Memory Usage (%)"),		COLUMN_NUM_MEM_USAGE,		false,	 80.0,	20.0	},
+	{ B_TRANSLATE("Memory Usage (absolute)"),	COLUMN_NUM_MEM_USAGE_ABS,	false,	 40.0,	20.0	},
+	{ B_TRANSLATE("Directory"),			COLUMN_NUM_DIRECTORY,		true,	200.0,	50.0	},
 	// terminate list
 	{ "", 									-1, 						false,	  0.0,	 0.0 	},			
 };
@@ -348,7 +348,7 @@ CProcessItem::CProcessItem(CTeamModelEntry *_teamModelEntry) :
 
 		appEntry.GetRef(&appEntryRef);
 
-		BBitmap *icon = new BBitmap(BRect(0,0,15,15), B_CMAP8);
+		BBitmap *icon = new BBitmap(BRect(0,0,15,15), B_RGBA32);
 		
 		// This code also returns an icon for applications not on BeFS devices
 		// and/or without an icon in their resources.

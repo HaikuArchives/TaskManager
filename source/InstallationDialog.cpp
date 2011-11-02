@@ -108,10 +108,10 @@ CInstallationDialogView::CInstallationDialogView(BRect frame) :
 	BRect dummyFrame(0, 0, 200, 5);
 	
 	generalOptionsBox  = new BBox(dummyFrame, "GeneralOptionsBox");
-	languageOptionsBox = new BBox(dummyFrame, "LanguageOptionsBox");
+//	languageOptionsBox = new BBox(dummyFrame, "LanguageOptionsBox");
 	
 	AddChild(generalOptionsBox);
-	AddChild(languageOptionsBox);
+//	AddChild(languageOptionsBox);
 	
 	// Initialize check boxes
 	
@@ -229,10 +229,10 @@ void CInstallationDialogView::FrameResized(float width, float height)
 	generalOptionsBox->MoveTo(dist, dist);
 	generalOptionsBox->ResizeTo(width-2*dist, pos_y);
 	
-	languageMenuField->MoveTo(dist, dist);
+//	languageMenuField->MoveTo(dist, dist);
 	
-	languageOptionsBox->MoveTo(dist, pos_y+2*dist);
-	languageOptionsBox->ResizeTo(width-2*dist, 2*dist+checkBoxHeight);
+//	languageOptionsBox->MoveTo(dist, pos_y+2*dist);
+//	languageOptionsBox->ResizeTo(width-2*dist, 2*dist+checkBoxHeight);
 }
 
 void CInstallationDialogView::MessageReceived(BMessage *msg)
@@ -272,7 +272,7 @@ void CInstallationDialogView::GetPreferredSize(float *width, float *height)
 	}
 	
 	elementWidth = MAX(elementWidth, groupMenuField->Bounds().Width()+1*dist); 
-	elementWidth = MAX(elementWidth, languageMenuField->Bounds().Width());
+//	elementWidth = MAX(elementWidth, languageMenuField->Bounds().Width());
 	
 	float baseWidth, baseHeight;
 	

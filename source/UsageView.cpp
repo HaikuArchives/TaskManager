@@ -102,15 +102,15 @@ BPopUpMenu *CCPUGraphView::ContextMenu()
 		if(dataProvider) {
 			int32 cpuNum = dataProvider->CPUNum();
 
-			BMenu *cpuSubMenu = new BMenu(B_TRANSLATE("CPUGraphView.ContextMenu.CPU"));
+			BMenu *cpuSubMenu = new BMenu(B_TRANSLATE("CPU"));
 		
 			for(int32 i=-1 ; i<sysInfo.cpu_count ; i++) {
 				char buffer[255];
 			
 				if(i >= 0)
-					sprintf(buffer, B_TRANSLATE("CPUGraphView.ContextMenu.CPU.Format"), i+1);
+					sprintf(buffer, B_TRANSLATE("CPU %ld"), i+1);
 				else
-					strcpy(buffer, B_TRANSLATE("CPUGraphView.ContextMenu.CPU.Average"));
+					strcpy(buffer, B_TRANSLATE("Average of all CPUs"));
 			
 				BMessage *selMessage = new BMessage(MSG_CPU_NUM_SEL);
 				selMessage->AddInt32(MESSAGE_DATA_ID_CPU_NUM, i);

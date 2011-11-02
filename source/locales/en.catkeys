@@ -1,5 +1,4 @@
-1	english	x-vnd.task_manager	3071059365
-CPUGraphView.ContextMenu.CPU.Format	UsageView		CPUGraphView.ContextMenu.CPU.Format
+1	english	x-vnd.task_manager	1086427099
 Show TaskManager	DeskbarLedView		Show TaskManager
 The application '0' isn't responding.	ProcessView		The application '0' isn't responding.
 X-Kill...	DeskbarLedView		X-Kill...
@@ -7,18 +6,24 @@ X-Kill...	DeskbarLedView		X-Kill...
 New Team	CreateTeamWindow		New Team
 kB	GraphView		kB
 Settings...	MainWindow		Settings...
+Thread Count	ProcessView		Thread Count
 DarkBlue	PerformanceView		DarkBlue
 Display Priority	ProcessView		Display Priority
 Activate	ProcessView		Activate
 Show in Deskbar	MainWindow		Show in Deskbar
+Memory Usage (%)	ProcessView		Memory Usage (%)
 Can't locate Be Menu directory\n Reason: 	InstallationDialog		Can't locate Be Menu directory\n Reason: 
+CPU	UsageView		CPU
 Applications	InstallationDialog		Applications
+Directory	ProcessView		Directory
 Usage	MainWindow		Usage
 DarkRed	PerformanceView		DarkRed
 Change	PerformanceView		Change
 View Deskbar Replicant on Startup	InstallationDialog		View Deskbar Replicant on Startup
 The default plugin '0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '1'.	CounterNamespaceImpl		The default plugin '0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '1'.
 Brown	PerformanceView		Brown
+Average of all CPUs	UsageView		Average of all CPUs
+Team-ID	ProcessView		Team-ID
 A	GraphView		A
 Add	PerformanceView		Add
 Hide Replicant	DeskbarLedView		Hide Replicant
@@ -26,6 +31,7 @@ Show this dialog again	ProcessView		Show this dialog again
 RPM	GraphView		RPM
 Green	PerformanceView		Green
 Can't launch team (application image is on virtual file system).	CommandLineParser		Can't launch team (application image is on virtual file system).
+Image Count	ProcessView		Image Count
 Low Priority	ProcessView		Low Priority
 Cancel	alert		Cancel
 NewTeam...	MainWindow		NewTeam...
@@ -33,6 +39,8 @@ About TaskManager	AboutWindow		About TaskManager
 Add to Performance Tab...	ProcessView		Add to Performance Tab...
 Fast	MainWindow		Fast
 File	MainWindow		File
+Name	ProcessView		Name
+CPU Usage	ProcessView		CPU Usage
 View	MainWindow		View
 Command:	MRUSelectFileView		Command:
 Drag the crosshair on a window. This will kill the according application.	SelectTeamWindow		Drag the crosshair on a window. This will kill the according application.
@@ -59,6 +67,7 @@ Automatic	PerformanceView		Automatic
 <Select>	InstallationDialog		<Select>
 Select...	PerformanceView		Select...
 Yellow	PerformanceView		Yellow
+Memory Usage (absolute)	ProcessView		Memory Usage (absolute)
 avg:	GraphView		avg:
 Realtime Priority	ProcessView		Realtime Priority
 Fast	GraphView		Fast
@@ -78,7 +87,6 @@ Group:	InstallationDialog		Group:
 Ok	alert		Ok
 Can't load addon '0'\nReason: 1	CounterNamespaceImpl		Can't load addon '0'\nReason: 1
 Quit	ProcessView		Quit
-CPUGraphView.ContextMenu.CPU	UsageView		CPUGraphView.ContextMenu.CPU
 °	GraphView		°
 W	GraphView		W
 Remove	PerformanceView		Remove
@@ -86,7 +94,6 @@ The team '0' is controlled by a debugger.\nDo you want to kill the debugger??	Pr
 Normal	MainWindow		Normal
 CPU Usage Graph	UsageView		CPU Usage Graph
 Color	PerformanceView		Color
-CPUGraphView.ContextMenu.CPU.Average	UsageView		CPUGraphView.ContextMenu.CPU.Average
 Cyan	PerformanceView		Cyan
 Don't hide deskbar replicant on close	SettingsWindow		Don't hide deskbar replicant on close
 Settings	SettingsWindow		Settings
@@ -98,6 +105,7 @@ Script request failed.\nReason: 0 (1)	PerformanceView		Script request failed.\nR
 Can't add deskbar replicant.\nReason: 0	MainWindow		Can't add deskbar replicant.\nReason: 0
 Urgent Display Priority	ProcessView		Urgent Display Priority
 X-Kill...	ProcessView		X-Kill...
+Area Count	ProcessView		Area Count
 Red	PerformanceView		Red
 Hide system teams	SettingsWindow		Hide system teams
 You can't kill the kernel team!	ProcessView		You can't kill the kernel team!
@@ -105,6 +113,7 @@ Update Speed	MainWindow		Update Speed
 Columns	SettingsWindow		Columns
 About	MainWindow		About
 Overlay	GraphView		Overlay
+CPU %ld	UsageView		CPU %ld
 Select Team	SelectTeamWindow		Select Team
 Are you sure that you want to kill the team '0'??	ProcessView		Are you sure that you want to kill the team '0'??
 Teams	MainWindow		Teams
