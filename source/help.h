@@ -23,7 +23,7 @@
 // image when it is loaded as addon by a different application.
 // GetAppInfo() would return the image of the host application
 // in that case.
-extern "C" __declspec(dllexport) int32 taskmgr_image_tag_symbol;
+extern "C" int32 taskmgr_image_tag_symbol;
 
 // Returns the application signature of the preferred browser.
 BString get_preferred_browser();

@@ -134,10 +134,10 @@ enum window_action {
 };
 
 // from interface_misc.h
-_IMPEXP_BE void		do_window_action(int32 window_id, int32 action, 
+void		do_window_action(int32 window_id, int32 action, 
 							 BRect zoomRect, bool zoom);
-_IMPEXP_BE window_info	*get_window_info(int32 a_token);
-_IMPEXP_BE int32		*get_token_list(team_id app, int32 *count);
+window_info	*get_window_info(int32 a_token);
+int32		*get_token_list(team_id app, int32 *count);
 
 
 #endif // SELECT_TEAM_WINDOW_H

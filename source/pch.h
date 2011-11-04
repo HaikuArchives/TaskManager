@@ -34,10 +34,6 @@
 #define B_BEOS_VERSION_DANO	0x0510
 #endif // !B_BEOS_VERSION_DANO
 
-#ifndef _IMPEXP_BE
-#define	_IMPEXP_BE		__declspec(dllimport)
-#endif // !_IMPEXP_BE
-
 #include <OS.h>
 #include <image.h>
 #include <scheduler.h>

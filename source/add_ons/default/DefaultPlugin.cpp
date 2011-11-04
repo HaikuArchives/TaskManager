@@ -83,7 +83,7 @@ BString thread_name(const thread_info &threadInfo)
 
 // ==== entry point ====
 
-status_t __declspec(dllexport) CreateCounterPlugin(IPerformanceCounterPlugin **plugin)
+status_t CreateCounterPlugin(IPerformanceCounterPlugin **plugin)
 {
 	*plugin = new CDefaultPlugin();
 

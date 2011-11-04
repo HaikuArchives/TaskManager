@@ -98,6 +98,6 @@ class CThreadPerformanceCounter : public CPerformanceCounter
 	BString name;
 };
 
-extern "C" status_t __declspec(dllexport) CreateCounterPlugin(IPerformanceCounterPlugin **plugin);
+extern "C" status_t CreateCounterPlugin(IPerformanceCounterPlugin **plugin);
 
 #endif // DEFAULT_PLUGIN_H
