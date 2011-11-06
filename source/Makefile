@@ -144,7 +144,7 @@ APP_VERSION =
 #	/dev/video/usb when loaded. Default is "misc".
 DRIVER_PATH = 
 
-LOCALES = en ru
+LOCALES = en ru es de ja it fr
 ## include the makefile-engine
 include $(BUILDHOME)/etc/makefile-engine
 

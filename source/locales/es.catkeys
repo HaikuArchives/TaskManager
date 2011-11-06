@@ -1,0 +1,126 @@
+1	spanish	x-vnd.task_manager	1086427099
+Show TaskManager	DeskbarLedView		Muestra TaskManager
+The application '0' isn't responding.	ProcessView		La aplicacion '\0' no responde.
+X-Kill...	DeskbarLedView		X-Kill...
+'\n Reason: 	InstallationDialog		'\n Reason: 
+New Team	CreateTeamWindow		Nuevo Proceso
+kB	GraphView		kB
+Settings...	MainWindow		Opciones...
+Thread Count	ProcessView		Contador de Proceso
+DarkBlue	PerformanceView		Azul oscuro
+Display Priority	ProcessView		Muestra Prioridad
+Activate	ProcessView		Activar
+Show in Deskbar	MainWindow		Muestra en Deskbar
+Memory Usage (%)	ProcessView		Uso Memoria (%)
+Can't locate Be Menu directory\n Reason: 	InstallationDialog		Can't locate Be Menu directory\n Reason: 
+CPU	UsageView		CPU
+Applications	InstallationDialog		Applications
+Directory	ProcessView		Carpeta
+Usage	MainWindow		Uso
+DarkRed	PerformanceView		Rojo oscuro
+Change	PerformanceView		Cambiar
+View Deskbar Replicant on Startup	InstallationDialog		View Deskbar Replicant on Startup
+The default plugin '0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '1'.	CounterNamespaceImpl		El plugin por defecto'\0' no pudo ser cargado. Be TaskManager no podra funcionar correctamente.\n\nBe TaskManager buscaba en esta carpeta por plugins: '\1'.
+Brown	PerformanceView		Marron
+Average of all CPUs	UsageView		Promedio de todos los CPUs
+Team-ID	ProcessView		Ident. Proceso
+A	GraphView		A
+Add	PerformanceView		Agregar
+Hide Replicant	DeskbarLedView		Oculta Replicante
+Show this dialog again	ProcessView		Muestra este mensaje de nuevo
+RPM	GraphView		RPM
+Green	PerformanceView		Verde
+Can't launch team (application image is on virtual file system).	CommandLineParser		Imposible ejecutar proceso (la aplicacion esta hubicada en un sistema de ficheros virtual).
+Image Count	ProcessView		Contador de Imagen
+Low Priority	ProcessView		Baja Prioridad
+Cancel	alert		Cancelar
+NewTeam...	MainWindow		Nuevo Proceso...
+About TaskManager	AboutWindow		Acerca de TaskManager
+Add to Performance Tab...	ProcessView		Añadir al tabulador Rendimiento...
+Fast	MainWindow		Rapido
+File	MainWindow		Archivo
+Name	ProcessView		Nombre
+CPU Usage	ProcessView		Uso CPU
+View	MainWindow		Ver
+Command:	MRUSelectFileView		Controlar:
+Drag the crosshair on a window. This will kill the according application.	SelectTeamWindow		Arrastra el punto de mira sobre una ventana. Esto parara (kill) la aplicacion seleccionada.
+Scale:	PerformanceView		Escala:
+Memory Usage Graph	UsageView		Grafico Uso Memoria
+Magenta	PerformanceView		Magenta
+Retry	ProcessView		Reintentar
+Can't locate Desktop directory\n Reason: 	InstallationDialog		Can't locate Desktop directory\n Reason: 
+Can't open default browser.\nReason: 0	help		No se pudo abrir navegador por defecto.\nRazon: \0
+cur:	GraphView		act:
+Can't kill team '0'.\nReason: 1	ProcessView		No se puede parar (kill) el proceso '\0'.\nRazon: \1
+Add Link to Desktop	InstallationDialog		Add Link to Desktop
+LightBlue	PerformanceView		Azul claro
+LightGreen	PerformanceView		Verde claro
+Add Link to Be Menu	InstallationDialog		Add Link to Be Menu
+Update Speed	GraphView		Velocidad de refresco
+Normal	GraphView		Normal
+Priority	ProcessView		Prioridad
+Memory Usage	UsageView		Uso Memoria
+Quit	MainWindow		Salir
+CPU Usage: %.0f %%	DeskbarLedView		CPU Usage: %.0f %%
+MB	GraphView		MB
+Automatic	PerformanceView		Automatico
+<Select>	InstallationDialog		<Selecionar>
+Select...	PerformanceView		Selecionar...
+Yellow	PerformanceView		Amarillo
+Memory Usage (absolute)	ProcessView		Uso Memoria (absoluto)
+avg:	GraphView		promed:
+Realtime Priority	ProcessView		Prioridad en Tiempo Real
+Fast	GraphView		Rapido
+Performance	MainWindow		Rendimiento
+Kill	ProcessView		Kill
+V	GraphView		V
+File '0' not found.	CommandLineParser		Archivo '\0' no encontrado.
+Slow	MainWindow		Lento
+Done	PerformanceView		Listo
+Browse...	MRUSelectFileView		Navegar...
+Can't create link in '	InstallationDialog		Can't create link in '
+Slow	GraphView		Lento
+Can't launch team.\nReason: 0	CommandLineParser		Imposible ejecutar proceso.\nRazon: \0
+The team '0' is a component of the BeOS.\n\nKill the team anyway??	ProcessView		El proceso '\0' es un componente de BeOS.\n\nKill a pesar de ello el proceso ??
+byte	GraphView		byte
+Group:	InstallationDialog		Group:
+Ok	alert		Ok
+Can't load addon '0'\nReason: 1	CounterNamespaceImpl		No se pudo cargar addon '\0'\nRazon: \1
+Quit	ProcessView		Salir
+°	GraphView		°
+W	GraphView		W
+Remove	PerformanceView		Suprimir
+The team '0' is controlled by a debugger.\nDo you want to kill the debugger??	ProcessView		El proceso '\0' esta siendo controlado por un debugger.\nDesea parar (kill) el debugger??
+Normal	MainWindow		Normal
+CPU Usage Graph	UsageView		Grafico Uso CPU
+Color	PerformanceView		Color
+Cyan	PerformanceView		Cyan
+Don't hide deskbar replicant on close	SettingsWindow		No ocultar replica deskbar al salir
+Settings	SettingsWindow		Opciones
+Blue	PerformanceView		Azul
+Help	alert		Ayuda
+Can't remove deskbar replicant.\nReason: 0	MainWindow		Imposible suprimir replicante deskbar.\nRazon: \0
+DarkGreen	PerformanceView		Verde oscuro
+Script request failed.\nReason: 0 (1)	PerformanceView		Peticion fallida de Script.\nRazon: \0 (\1)
+Can't add deskbar replicant.\nReason: 0	MainWindow		Imposible agregar replicante deskbar.\nRazon: \0
+Urgent Display Priority	ProcessView		Muestra Urgente Prioridad
+X-Kill...	ProcessView		X-Kill...
+Area Count	ProcessView		Contador de Area
+Red	PerformanceView		Rojo
+Hide system teams	SettingsWindow		Ocultar procesos del sistema
+You can't kill the kernel team!	ProcessView		No se puede parar (kill) el proceso kernel!
+Update Speed	MainWindow		Velocidad de refresco
+Columns	SettingsWindow		Columnas
+About	MainWindow		Acerca de TaskManager...
+Overlay	GraphView		Overlay
+CPU %ld	UsageView		CPU %ld
+Select Team	SelectTeamWindow		Selecionar Proceso
+Are you sure that you want to kill the team '0'??	ProcessView		Esta seguro de querer parar (Kill) el proceso '\0'??
+Teams	MainWindow		Procesos
+Can't find CreateCounterPlugin entry point in '0'\nReason: 1	CounterNamespaceImpl		No se pudo encontrar punto de entrada del CrearContadorPlugin en '\0'\nRazon: \1
+Show in all Workspaces	MainWindow		Muestra en todos los escritorios
+CreateCounterPlugin() failed ('0')\nReason: 1	CounterNamespaceImpl		CrearContadorPlugin() fallo ('\0')\nRazon: \1
+CPU Usage	UsageView		Uso CPU
+LightRed	PerformanceView		Rojo claro
+Normal Priority	ProcessView		Prioridad Normal
+max:	GraphView		max:

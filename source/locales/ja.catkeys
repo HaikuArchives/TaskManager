@@ -1,0 +1,129 @@
+1	japanese	x-vnd.task_manager	1086427099
+Show TaskManager	DeskbarLedView		TaskManagerを表示
+The application '0' isn't responding.	ProcessView		このアプリケーション '\0' は応答していません.
+X-Kill...	DeskbarLedView		X-Kill...
+'\n Reason: 	InstallationDialog		'\n Reason: 
+New Team	CreateTeamWindow		新規チーム
+kB	GraphView		キロバイト
+Settings...	MainWindow		設定...
+Thread Count	ProcessView		スレッド数
+DarkBlue	PerformanceView		濃青
+Display Priority	ProcessView		高
+Activate	ProcessView		アクティブ
+Show in Deskbar	MainWindow		デスクバーに表示
+Memory Usage (%)	ProcessView		メモリ使用率 (%)
+Can't locate Be Menu directory\n Reason: 	InstallationDialog		Can't locate Be Menu directory\n Reason: 
+CPU	UsageView		CPU
+Applications	InstallationDialog		Applications
+Directory	ProcessView		ディレクトリ
+Usage	MainWindow		使用状況
+DarkRed	PerformanceView		濃赤
+Change	PerformanceView		変更
+View Deskbar Replicant on Startup	InstallationDialog		View Deskbar Replicant on Startup
+The default plugin '0' couldn't be loaded. Be TaskManager won't work correctly.\n\nBe TaskManager was looking in this directory for plugins: '1'.	CounterNamespaceImpl		既定のプラグイン '\0' がロードできません. Be TaskManagerは正常に動かないでしょう.\n\nBe TaskManagerはプラグインの場所を以下のディレクトリに設定しています: '\1'.
+Brown	PerformanceView		茶
+Average of all CPUs	UsageView		CPUの平均
+Team-ID	ProcessView		チームID
+A	GraphView		アンペア
+Add	PerformanceView		追加
+Hide Replicant	DeskbarLedView		レプリカントを非表示
+Show this dialog again	ProcessView		このダイアログを常に表示
+RPM	GraphView		回転
+Green	PerformanceView		緑
+Can't launch team (application image is on virtual file system).	CommandLineParser		チームを起動できません (アプリケーションイメージが仮想ファイルシステムにあります).
+Image Count	ProcessView		イメージ数
+Low Priority	ProcessView		低
+Cancel	alert		キャンセル
+NewTeam...	MainWindow		新規チーム...
+About TaskManager	AboutWindow		TaskManagerについて
+Add to Performance Tab...	ProcessView		パフォーマンスタブへ追加...
+Fast	MainWindow		短い
+File	MainWindow		ファイル
+Name	ProcessView		名称
+CPU Usage	ProcessView		CPU使用状況
+View	MainWindow		ビュー
+Command:	MRUSelectFileView		パス:
+Drag the crosshair on a window. This will kill the according application.	SelectTeamWindow		照準をウィンドウにドラッグすると, そのウィンドウのアプリケーションを終了させます.
+Scale:	PerformanceView		スケール:
+Memory Usage Graph	UsageView		メモリ使用状況グラフ
+Magenta	PerformanceView		紫
+Retry	ProcessView		リトライ
+Can't locate Desktop directory\n Reason: 	InstallationDialog		Can't locate Desktop directory\n Reason: 
+Can't open default browser.\nReason: 0	help		既定のブラウザが起動できません.\n原因: \0
+cur:	GraphView		現在:
+Can't kill team '0'.\nReason: 1	ProcessView		このチーム '\0' を終了できません.\n原因: \1
+Add Link to Desktop	InstallationDialog		Add Link to Desktop
+LightBlue	PerformanceView		薄青
+LightGreen	PerformanceView		薄緑
+Add Link to Be Menu	InstallationDialog		Add Link to Be Menu
+Update Speed	GraphView		更新間隔
+Normal	GraphView		通常
+Priority	ProcessView		優先度
+Memory Usage	UsageView		メモリ使用状況
+Quit	MainWindow		終了
+CPU Usage: %.0f %%	DeskbarLedView		CPU使用状況: %.0f %%
+MB	GraphView		メガバイト
+Automatic	PerformanceView		自動
+<Select>	InstallationDialog		<選択>
+Select...	PerformanceView		選択...
+Yellow	PerformanceView		黄
+Memory Usage (absolute)	ProcessView		メモリ使用量
+avg:	GraphView		平均:
+Realtime Priority	ProcessView		リアルタイム
+Fast	GraphView		短い
+Performance	MainWindow		パフォーマンス
+Kill	ProcessView		強制終了
+V	GraphView		ボルト
+File '0' not found.	CommandLineParser		ファイル '\0' が見つかりません.
+Slow	MainWindow		長い
+Done	PerformanceView		完了
+Browse...	MRUSelectFileView		選択...
+Can't create link in '	InstallationDialog		Can't create link in '
+Slow	GraphView		長い
+Can't launch team.\nReason: 0	CommandLineParser		チームを起動できません.\n原因: \0
+The team '0' is a component of the BeOS.\n\nKill the team anyway??	ProcessView		このチーム '\0' はBeOSの一部です.\n\nこのチームを終了させますか??
+byte	GraphView		バイト
+Group:	InstallationDialog		Group:
+Ok	alert		了解
+Can't load addon '0'\nReason: 1	CounterNamespaceImpl		アドオン '\0' がロードできません.\n原因: \1
+Quit	ProcessView		終了
+°	GraphView		℃
+W	GraphView		ワット
+Remove	PerformanceView		削除
+The team '0' is controlled by a debugger.\nDo you want to kill the debugger??	ProcessView		このチーム '\0' はデバッガで使われています.\nデバッガを終了させますか??
+Normal	MainWindow		通常
+CPU Usage Graph	UsageView		CPU使用状況グラフ
+Color	PerformanceView		カラー
+Cyan	PerformanceView		青緑
+Don't hide deskbar replicant on close	SettingsWindow		終了時にデスクバーレプリカントを残す
+Settings	SettingsWindow		設定
+Blue	PerformanceView		青
+Help	alert		ヘルプ
+Can't remove deskbar replicant.\nReason: 0	MainWindow		デスクバーレプリカントを削除できません.\n原因: \0
+DarkGreen	PerformanceView		濃緑
+Script request failed.\nReason: 0 (1)	PerformanceView		スクリプトの要求に失敗しました.\n原因: \0 (\1)
+Can't add deskbar replicant.\nReason: 0	MainWindow		レプリカントをデスクバーに表示できません.\n原因: \0
+Urgent Display Priority	ProcessView		最優先
+X-Kill...	ProcessView		X-Kill...
+Area Count	ProcessView		エリア数
+Red	PerformanceView		赤
+Hide system teams	SettingsWindow		システムのチームを非表示
+You can't kill the kernel team!	ProcessView		カーネルチームは終了できません!
+Update Speed	MainWindow		更新間隔
+Columns	SettingsWindow		表示項目
+About	MainWindow		TaskManagerについて...
+Overlay	GraphView		オーバーレイ
+CPU %ld	UsageView		CPU %ld
+Select Team	SelectTeamWindow		チームの選択
+Are you sure that you want to kill the team '0'??	ProcessView		このチーム '\0' を本当に終了させるのですね??
+Teams	MainWindow		チーム
+Can't find CreateCounterPlugin entry point in '0'\nReason: 1	CounterNamespaceImpl		CreateCounterPluginがエントリポイント '\0' に見つかりません.\n原因: \1
+Show in all Workspaces	MainWindow		すべてのワークスペースに表示
+CreateCounterPlugin() failed ('0')\nReason: 1	CounterNamespaceImpl		CreateCounterPlugin() のエラー ('\0')\n原因: \1
+CPU Usage	UsageView		CPU使用状況
+LightRed	PerformanceView		薄赤
+Normal Priority	ProcessView		中
+max:	GraphView		最大:
+
+
+
