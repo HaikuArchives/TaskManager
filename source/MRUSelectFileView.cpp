@@ -25,9 +25,9 @@
 #include "my_assert.h"
 
 #include <Catalog.h>
-#include <Locale.h>
-#undef B_TRANSLATE_CONTEXT
-#define B_TRANSLATE_CONTEXT "MRUSelectFileView"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "MRUSelectFileView"
 
 // message data identifier
 const char * const MESSAGE_DATA_ID_MRU_PATH	 = "MRU:Path";

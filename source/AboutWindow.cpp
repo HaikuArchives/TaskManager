@@ -26,9 +26,9 @@
 #include "AboutWindow.h"
 
 #include <Catalog.h>
-#include <Locale.h>
-#undef B_TRANSLATE_CONTEXT
-#define B_TRANSLATE_CONTEXT "AboutWindow"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "AboutWindow"
 
 // protected constructor
 CAboutWindow::CAboutWindow() : 

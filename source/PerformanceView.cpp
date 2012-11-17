@@ -35,9 +35,9 @@
 #include "CounterNamespaceImpl.h"
 
 #include <Catalog.h>
-#include <Locale.h>
-#undef B_TRANSLATE_CONTEXT
-#define B_TRANSLATE_CONTEXT "PerformanceView"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "PerformanceView"
 
 // ==== globals ====
 

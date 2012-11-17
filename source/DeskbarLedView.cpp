@@ -33,9 +33,9 @@
 #include "DeskbarLedView.h"
 
 #include <Catalog.h>
-#include <Locale.h>
-#undef B_TRANSLATE_CONTEXT
-#define B_TRANSLATE_CONTEXT "DeskbarLedView"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "DeskbarLedView"
 
 // ==== globals ====
 
@@ -45,7 +45,6 @@ BView *create_deskbar_replicant()
 }
 
 #if B_BEOS_VERSION >= B_BEOS_VERSION_5
-
 
 // This function is called by the Deskbar to create a deskbar
 // item of a deskbar addon.

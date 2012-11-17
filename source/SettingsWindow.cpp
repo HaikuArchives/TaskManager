@@ -24,9 +24,9 @@
 #include "SettingsWindow.h"
 
 #include <Catalog.h>
-#include <Locale.h>
-#undef B_TRANSLATE_CONTEXT
-#define B_TRANSLATE_CONTEXT "SettingsWindow"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "SettingsWindow"
 
 // protected contructor
 CSettingsWindow::CSettingsWindow() :

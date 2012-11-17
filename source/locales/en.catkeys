@@ -111,7 +111,7 @@ Hide system teams	SettingsWindow		Hide system teams
 You can't kill the kernel team!	ProcessView		You can't kill the kernel team!
 Update Speed	MainWindow		Update Speed
 Columns	SettingsWindow		Columns
-About	MainWindow		About TaskManager...
+About	MainWindow		About
 Overlay	GraphView		Overlay
 CPU %ld	UsageView		CPU %ld
 Select Team	SelectTeamWindow		Select Team

@@ -97,13 +97,13 @@ void CURLTextView::MouseMoved(BPoint point, uint32 transit,
 				// Mouse is over a link. Display "URL hover cursor".
 				// That cursor is identical to the BeOS hand cursor
 				// but contains a little arrow (like in Net+).
-				#if B_BEOS_VERSION >= B_BEOS_VERSION_5
+#if B_BEOS_VERSION >= B_BEOS_VERSION_5
 				const BCursor URLHoverCursor((const void *)url_hover_cursor);
 				
 				SetViewCursor(&URLHoverCursor);
-				#else
+#else
 				be_app->SetCursor((const void *)url_hover_cursor);
-				#endif
+#endif
 				
 				overURL = true;
 				
@@ -111,11 +111,11 @@ void CURLTextView::MouseMoved(BPoint point, uint32 transit,
 			}
 		}
 		
-		#if B_BEOS_VERSION >= B_BEOS_VERSION_5
+#if B_BEOS_VERSION >= B_BEOS_VERSION_5
 		if(!overURL) {
 			SetViewCursor(B_CURSOR_I_BEAM);
 		}
-		#endif
+#endif
 	}
 	
 	if(!overURL)

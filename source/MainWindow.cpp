@@ -36,9 +36,9 @@
 #include "MainWindow.h"
 
 #include <Catalog.h>
-#include <Locale.h>
-#undef B_TRANSLATE_CONTEXT
-#define B_TRANSLATE_CONTEXT "MainWindow"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "MainWindow"
 
 // ====== globals ======
 
@@ -261,21 +261,21 @@ status_t CMainWindow::ShowDeskbarReplicant(bool showAlert)
 	
 	status_t err;
 	
-	#if B_BEOS_VERSION >= B_BEOS_VERSION_5
+#if B_BEOS_VERSION >= B_BEOS_VERSION_5
 	// Get app_info about myself.
 	app_info appInfo;
 	be_app->GetAppInfo(&appInfo);
 	
 	// Add this application as deskbar addon.
 	err = deskBar.AddItem(&appInfo.ref);
-	#else
+#else
 	BView *deskBarLedView = create_deskbar_replicant();
 
 	// Add view as deskbar replicant.
 	err = deskBar.AddItem(deskBarLedView);
 
 	delete deskBarLedView;
-	#endif
+#endif
 	
 	if(err != B_OK && showAlert) {
 		BString message (B_TRANSLATE("Can't add deskbar replicant.\nReason: \0"));
