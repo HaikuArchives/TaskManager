@@ -32,14 +32,19 @@ APP_MIME_SIG=x-vnd.task_manager_default
 #	if two source files with the same name (source.c or source.cpp)
 #	are included from different directories.  Also note that spaces
 #	in folder names do not work well with this makefile.
-SRCS=	DefaultDataProvider.cpp  DefaultPlugin.cpp \
-		../common/DataProvider.cpp  ../common/Plugin.cpp
+SRCS=	DefaultDataProvider.cpp\
+		DefaultPlugin.cpp\
+		../common/common.cpp\
+		../common/DataProvider.cpp\
+		../common/Plugin.cpp\
+		../common/Singleton.cpp\
+		../common/SystemInfo.cpp
 
 #	specify the resource files to use
 #	full path or a relative path to the resource file can be used.
- RDEFS= DefaultPlugin.rdef
+# RDEFS= DefaultPlugin.rdef
 
-#RSRCS=	DefaultPlugin.rsrc
+RSRCS=	DefaultPlugin.rsrc
 
 # @<-src@ 
 #%}

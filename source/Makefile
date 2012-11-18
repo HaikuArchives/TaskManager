@@ -32,31 +32,71 @@ APP_MIME_SIG=x-vnd.task_manager
 #	if two source files with the same name (source.c or source.cpp)
 #	are included from different directories.  Also note that spaces
 #	in folder names do not work well with this makefile.
-SRCS=	AboutView.cpp              CreateTeamWindow.cpp    PerformanceView.cpp \
-		AboutWindow.cpp            DeskbarLedView.cpp      PrefCheckBox.cpp \
-		alert.cpp                  Detector.cpp            Preferences.cpp \
-		AlertEx.cpp                DialogBase.cpp          Process.cpp \
-		ArrowButton.cpp            DoubleBufferView.cpp    ProcessView.cpp \
-		AsynchronousPopupMenu.cpp  FlickerFreeButton.cpp   PulseView.cpp \
-		Blur.cpp                   GlyphMenuItem.cpp       SelectTeamWindow.cpp \
-		BorderView.cpp             GraphView.cpp           SettingsView.cpp \
-		BugfixedDragger.cpp        help.cpp                SettingsWindow.cpp \
-		Color.cpp                  InstallationDialog.cpp  Singleton.cpp \
-		ColorSelectDialog.cpp      LedView.cpp             SystemInfo.cpp \
-		ColorSelectListItem.cpp    ListViewEx.cpp          TaskManager.cpp \
-		ColorSelectMenuItem.cpp    TaskManagerPrefs.cpp \
-		ColumnListViewEx.cpp       MainWindow.cpp          TeamModel.cpp \
-		CommandLineParser.cpp      MenuField.cpp           Tooltip.cpp \
-		common.cpp                 MRUSelectFileView.cpp   URLTextView.cpp \
-		CounterNamespaceImpl.cpp   msg_helper.cpp          UsageView.cpp \
-		Splitter/MakSplitterView.cpp \
-		Effects/ABlur.cpp  Effects/ADither.cpp  Effects/CFBitmap.cpp \
-		ColumnListView/BetterScrollView.cpp ColumnListView/CLVColumn.cpp \
-		ColumnListView/CLVColumnLabelView.cpp ColumnListView/CLVEasyItem.cpp \
-		ColumnListView/CLVListItem.cpp ColumnListView/ColumnListView.cpp \
-		ColumnListView/MouseDragOrPopupWatcher.cpp ColumnListView/MouseWatcher.cpp \
-		ColumnListView/NewStrings.cpp ColumnListView/PrefilledBitmap.cpp \
-		ColumnListView/ScrollViewCorner.cpp
+SRCS=	AboutView.cpp\
+		AboutWindow.cpp\
+		AlertEx.cpp\
+		ArrowButton.cpp\
+		AsynchronousPopupMenu.cpp\
+		Blur.cpp\
+		BorderView.cpp\
+		BugfixedDragger.cpp\
+		Color.cpp\
+		ColorSelectDialog.cpp\
+		ColorSelectListItem.cpp\
+		ColorSelectMenuItem.cpp\
+		CommandLineParser.cpp\
+		CounterNamespaceImpl.cpp\
+		CreateTeamWindow.cpp\
+		DeskbarLedView.cpp\
+		Detector.cpp\
+		DialogBase.cpp\
+		DoubleBufferView.cpp\
+		FlickerFreeButton.cpp\
+		GlyphMenuItem.cpp\
+		GraphView.cpp\
+		InstallationDialog.cpp\
+		LedView.cpp\
+		ListViewEx.cpp\
+		MainWindow.cpp\
+		MenuField.cpp\
+		MRUSelectFileView.cpp\
+		PerformanceView.cpp\
+		PrefCheckBox.cpp\
+		Preferences.cpp\
+		Process.cpp\
+		ProcessView.cpp\
+		PulseView.cpp\
+		SelectTeamWindow.cpp\
+		SettingsView.cpp\
+		SettingsWindow.cpp\
+		Splitter/MakSplitterView.cpp\
+		TaskManager.cpp\
+		TaskManagerPrefs.cpp\
+		TeamModel.cpp\
+		Tooltip.cpp\
+		URLTextView.cpp\
+		UsageView.cpp\
+		ColumnListView/BetterScrollView.cpp\
+		ColumnListView/CLVColumn.cpp\
+		ColumnListView/CLVColumnLabelView.cpp\
+		ColumnListView/CLVEasyItem.cpp\
+		ColumnListView/CLVListItem.cpp\
+		ColumnListView/ColumnListView.cpp\
+		ColumnListView/MouseDragOrPopupWatcher.cpp\
+		ColumnListView/MouseWatcher.cpp\
+		ColumnListView/NewStrings.cpp\
+		ColumnListView/PrefilledBitmap.cpp\
+		ColumnListView/ScrollViewCorner.cpp\
+		ColumnListViewEx.cpp\
+		Effects/ABlur.cpp\
+		Effects/ADither.cpp\
+		Effects/CFBitmap.cpp\
+		alert.cpp\
+		help.cpp\
+		msg_helper.cpp\
+		add_ons/common/common.cpp\
+		add_ons/common/Singleton.cpp\
+		add_ons/common/SystemInfo.cpp
 
 #	specify the resource files to use
 #	full path or a relative path to the resource file can be used.
