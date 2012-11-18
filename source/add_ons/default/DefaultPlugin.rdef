@@ -1,0 +1,16 @@
+
+resource file_types message;
+
+resource app_signature "application/x-vnd.task_manager_default";
+
+resource app_version {
+	major  = 0,
+	middle = 1,
+	minor  = 0,
+
+	variety = B_APPV_FINAL,
+	internal = 0,
+
+	short_info = "TaskManager addon",
+	long_info = "Be TaskManager V 0.1.7 default addon"
+};
