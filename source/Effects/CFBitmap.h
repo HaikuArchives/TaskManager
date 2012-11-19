@@ -43,7 +43,7 @@ class CFBitmap
     uint32 BytesPerRow() { return cfrowbytes; }
   protected:
     // Bitmap Data
-    void *buffer;
+    char *buffer;
     uint32 width;
     uint32 height;
     uint32 cfrowbytes;
@@ -71,7 +71,7 @@ class CFBitmap
     void HSubControlUDownPot(uint32 width,uint32 height);
     void HilbertController(uint32 width,uint32 height);
     // Dither-ColorSpace specific Functions
-    typedef struct color
+    struct color
     { int16 r;
       int16 g;
       int16 b;

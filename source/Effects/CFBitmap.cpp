@@ -95,7 +95,7 @@ CFBitmap::CFBitmap(uint32 _width,uint32 _height)
 /* destroyes the image-data (if there any) */
 CFBitmap::~CFBitmap()
 { 
-  if (buffer) delete buffer;
+  if (buffer) delete[] buffer;
 }
 
 CFBitmap::color CFBitmap::Dither256(CFBitmap::color coloraddin)
