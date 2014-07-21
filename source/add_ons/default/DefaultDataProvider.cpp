@@ -73,17 +73,21 @@ void CCPUDataProvider::Init()
 	lastActiveTime = 0;
 
 	system_info sysInfo;
+	get_system_info(&sysInfo);
+	cpu_info* cpuInfos = new cpu_info[sysInfo.cpu_count];
+	get_cpu_info(0, sysInfo.cpu_count, cpuInfos);
 
 	if(get_cached_system_info(&sysInfo, NULL) == B_OK) {
 		if(cpuNum == CPU_NUM_ALL) {
 			// average usage of all cpu's
-			for(int32 i=0 ; i<sysInfo.cpu_count ; i++) {
-				lastActiveTime += sysInfo.cpu_infos[i].active_time;
+			for(uint32 i=0 ; i<sysInfo.cpu_count ; i++) {
+				lastActiveTime += cpuInfos[i].active_time;
 			}
 		} else {
-			lastActiveTime = sysInfo.cpu_infos[cpuNum].active_time;
+			lastActiveTime = cpuInfos[cpuNum].active_time;
 		}
 	}
+	delete[] cpuInfos;
 }
 
 status_t CCPUDataProvider::Archive(BMessage *archive, bool deep) const
@@ -107,23 +111,26 @@ BArchivable *CCPUDataProvider::Instantiate(BMessage *archive)
 bool CCPUDataProvider::GetNextValue(float &value)
 {
 	system_info sysInfo;
+	get_system_info(&sysInfo);
+	cpu_info* cpuInfos = new cpu_info[sysInfo.cpu_count];
+	get_cpu_info(0, sysInfo.cpu_count, cpuInfos);
 
 	if(get_cached_system_info(&sysInfo, NULL) == B_OK) {
 		// current accumulated CPU active time
 		bigtime_t activeTime=0;
 
-		int32 cpuCount = 1;
+		uint32 cpuCount = 1;
 
 		if(cpuNum == CPU_NUM_ALL) {
 			// show average usage of all cpu's
 		
-			for(int32 i=0 ; i<sysInfo.cpu_count ; i++) {
-				activeTime += sysInfo.cpu_infos[i].active_time;
+			for(uint32 i=0 ; i<sysInfo.cpu_count ; i++) {
+				activeTime += cpuInfos[i].active_time;
 			}
 			
 			cpuCount = sysInfo.cpu_count;
 		} else {
-			activeTime = sysInfo.cpu_infos[cpuNum].active_time;
+			activeTime = cpuInfos[cpuNum].active_time;
 		}
 
 		if(lastActiveTime != 0) {
@@ -136,7 +143,7 @@ bool CCPUDataProvider::GetNextValue(float &value)
 
 		lastActiveTime = activeTime;	
 	}
-	
+	delete[] cpuInfos;
 	return false;
 }
 

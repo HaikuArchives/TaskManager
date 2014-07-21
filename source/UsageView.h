@@ -101,9 +101,9 @@ class CUsageView : public CTabNotifcationView
 	const float distLeftRight;
 	const int32 borderSize;
 
-	CCPUGraphView *cpuGraphViews[B_MAX_CPU_COUNT];
-	BDragger *cpuGraphViewDragger[B_MAX_CPU_COUNT];
-	CBorderView *cpuGraphBorder[B_MAX_CPU_COUNT];
+	CCPUGraphView *cpuGraphViews[_SC_NPROCESSORS_CONF];
+	BDragger *cpuGraphViewDragger[_SC_NPROCESSORS_CONF];
+	CBorderView *cpuGraphBorder[_SC_NPROCESSORS_CONF];
 	
 	CBox *cpuLedBox;
 	CBox *memLedBox;

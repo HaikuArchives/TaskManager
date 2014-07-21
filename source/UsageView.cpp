@@ -100,11 +100,11 @@ BPopUpMenu *CCPUGraphView::ContextMenu()
 			dataProvider = dynamic_cast<ICPUDataProvider *>(dataInfo->DataProvider());
 		
 		if(dataProvider) {
-			int32 cpuNum = dataProvider->CPUNum();
+			uint32 cpuNum = dataProvider->CPUNum();
 
 			BMenu *cpuSubMenu = new BMenu(B_TRANSLATE("CPU"));
 		
-			for(int32 i=-1 ; i<sysInfo.cpu_count ; i++) {
+			for(uint32 i=-1 ; i<sysInfo.cpu_count ; i++) {
 				char buffer[255];
 			
 				if(i >= 0)
