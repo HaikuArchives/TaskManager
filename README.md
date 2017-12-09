@@ -1,5 +1,7 @@
 TaskManager
-===========
+==
+![TaskManager Screenshot](TaskManager.png "TaskManager")
+
 Be TaskManager displays all relevant system information in three tabs in its main window. These are:
 
   - The Usage tab: Displays general system information like memory and CPU usage.
