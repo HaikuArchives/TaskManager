@@ -395,7 +395,7 @@ bool CTeamMemoryDataProvider::Equal(IDataProvider *other)
 
 bool CTeamMemoryDataProvider::GetNextValue(float &value)
 {
-	int32 cookie = 0;
+	ssize_t cookie = 0;
 	size_t totalAreaSize = 0;
 		
 	area_info areaInfo;

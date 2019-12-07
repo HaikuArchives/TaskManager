@@ -139,7 +139,7 @@ CLVEasyItemEx::~CLVEasyItemEx()
 	// delete painters
 	for(int column = 0; column < num_columns; column++)
 	{
-		if((int32)m_column_types.ItemAt(column) == CLVColPainter)
+		if((intptr_t)m_column_types.ItemAt(column) == CLVColPainter)
 			delete (CLVPainter *)(m_column_content.ItemAt(column));
 	}
 }
@@ -207,7 +207,7 @@ void CLVEasyItemEx::SetColumnContent(int column_index, CLVPainter *newPainter)
 
 	PrepListsForSet(column_index);
 
-	((int32*)m_column_types.Items())[column_index] = CLVColPainter;
+	((intptr_t*)m_column_types.Items())[column_index] = CLVColPainter;
 	((const CLVPainter **)m_column_content.Items())[column_index] = newPainter;
 	((char**)m_aux_content.Items())[column_index] = NULL;
 }
@@ -217,7 +217,7 @@ void CLVEasyItemEx::SetColumnContent(int column_index, const char *text, bool tr
 	CLVTextPainter *textPainter = NULL;
 
 	if(m_column_types.CountItems() > column_index && 
-		(int32)m_column_types.ItemAt(column_index) == CLVColPainter) {
+		(intptr_t)m_column_types.ItemAt(column_index) == CLVColPainter) {
 		textPainter = dynamic_cast<CLVTextPainter *>(GetColumnContentPainter(column_index));
 	}
 	
@@ -235,7 +235,7 @@ void CLVEasyItemEx::SetColumnContent(int column_index, const BBitmap *bitmap, fl
 
 CLVPainter *CLVEasyItemEx::GetColumnContentPainter(int column_index) const
 {
-	if((int32)m_column_types.ItemAt(column_index) == CLVColPainter) {
+	if((intptr_t)m_column_types.ItemAt(column_index) == CLVColPainter) {
 		return static_cast<CLVPainter *>((m_column_content.ItemAt(column_index)));
 	}
 	
@@ -244,7 +244,7 @@ CLVPainter *CLVEasyItemEx::GetColumnContentPainter(int column_index) const
 
 float CLVEasyItemEx::GetColumnContentWidth(BView *owner, BFont *font, int column_index) const
 {
-	if((int32)m_column_types.ItemAt(column_index) == CLVColPainter) {
+	if((intptr_t)m_column_types.ItemAt(column_index) == CLVColPainter) {
 		return GetColumnContentPainter(column_index)->ContentWidth(owner, font);
 	}
 	
@@ -256,7 +256,7 @@ const char* CLVEasyItemEx::GetColumnContentText(int column_index) const
 	CLVTextPainter *textPainter = NULL;
 
 	if(m_column_types.CountItems() > column_index && 
-		(int32)m_column_types.ItemAt(column_index) == CLVColPainter) {
+		(intptr_t)m_column_types.ItemAt(column_index) == CLVColPainter) {
 		textPainter = dynamic_cast<CLVTextPainter *>(GetColumnContentPainter(column_index));
 	}
 	
