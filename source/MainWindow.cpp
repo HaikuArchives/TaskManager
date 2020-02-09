@@ -76,7 +76,7 @@ CMainWindowView::CMainWindowView(BRect rect) :
 	
 		tabView->ContainerView()->AddChild(tabbedView);
 		
-		if(i >= 1) tabbedView->Hide();
+		tabbedView->Hide();
 	}
 
 	AddChild(tabView);  
