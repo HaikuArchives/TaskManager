@@ -63,7 +63,7 @@ class CLVEasyItem : public CLVListItem
 	protected:
 		void PrepListsForSet(int column_index);
 		
-		BList m_column_types;	//List of int32's converted from CLVColumnTypes
+		BList m_column_types;	//List of intptr_t's converted from CLVColumnTypes
 		BList m_column_content;	//List of char* (full content) or BBitmap*
 		BList m_aux_content;	//List of char* (truncated content) or int32 for bitmap horizontal offset
 		BList m_cached_rects;	//List of BRect for truncated text

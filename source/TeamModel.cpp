@@ -252,6 +252,7 @@ void CTeamModelEntry::Update(const team_info &teamInfo)
 	kernelTime=0;
 	
 	int32 cookie = 0;
+	ssize_t scookie = 0;
 	
 	while(get_next_thread_info(id, &cookie, &threadInfo) == B_OK) {
 		userTime   += threadInfo.user_time;
@@ -262,13 +263,12 @@ void CTeamModelEntry::Update(const team_info &teamInfo)
 	areaCount   = teamInfo.area_count;
 	imageCount  = teamInfo.image_count;
 	
-	cookie = 0;
-		
+	scookie = 0;	
 	areaSize = 0;
 		
 	area_info areaInfo;
 		
-	while(get_next_area_info(id, &cookie, &areaInfo) == B_OK) {
+	while(get_next_area_info(id, &scookie, &areaInfo) == B_OK) {
 		areaSize += areaInfo.ram_size;
 	}
 }
